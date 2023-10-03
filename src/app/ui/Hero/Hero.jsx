@@ -1,4 +1,5 @@
 'use client'
+import 'client-only'
 
 import {PiStarFourFill} from "react-icons/pi"
 
@@ -6,19 +7,19 @@ import Image from "next/image"
 
 import { useEffect, useState } from "react";
 
-// function getWindowSize() {
-//     const { innerWidth, innerHeight } = window;
-//     return { innerWidth, innerHeight };
-//   }
+function getWindowSize() {
+    const { innerWidth, innerHeight } = window;
+    return { innerWidth, innerHeight };
+  }
 
 function Hero() {
 
-    const [windowSize, setWindowsize] = useState(null);
+    const [windowSize, setWindowsize] = useState(getWindowSize());
 
-    useEffect(() => {  
+    useEffect(() => {
+        
       function handleWindowResize() {
-        if(window !== "undefined" )
-        setWindowsize(window.innerWidth)
+        setWindowsize(getWindowSize());
       }
   
       window.addEventListener("resize", handleWindowResize);
@@ -28,7 +29,6 @@ function Hero() {
       };
     }, []);
 
-    
     return (
         <header className="pt-4  bg-[#F2F0F1]">
             <div className="md:grid md:grid-cols-2  ">
@@ -75,9 +75,10 @@ function Hero() {
 
 
                     <div className="md:h-[52dvh] md:mr-8" >
-                    {windowSize < 768 ?  <Image src={"/mobileHeroImage.png"} alt="photo of two models with black jeans jackets"
+                    {windowSize.innerWidth < 768 ?  <Image src={"/mobileHeroImage.png"} alt="photo of two models with black jeans jackets"
                         width={500} height={500}
-                        /> :  <Image src={"/heroImage.png"} alt="photo of two models with black jeans jackets"
+                        quality={100} /> 
+                        :  <Image src={"/heroImage.png"} alt="photo of two models with black jeans jackets"
                         width={500} height={500}
                         style={{
                             
@@ -85,6 +86,7 @@ function Hero() {
                             
                             
                           }}
+                          quality={100}
                         />}
                        
                     </div>

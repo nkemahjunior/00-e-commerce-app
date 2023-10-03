@@ -44,7 +44,7 @@ function MobileHeader() {
         <span className="capitalize underline font-semibold">Sign up Now</span>
       </div>
 
-      <ul className="flex items-center justify-between  px-2  py-2  bg-white backdrop-filter backdrop-blur-lg bg-opacity-10">
+      <ul className="flex items-center justify-between  px-2  py-2  bg-white backdrop-filter backdrop-blur-lg bg-opacity-10 h-[4rem]">
         <div className="flex items-center space-x-2">
           <li onClick={handleShowNav}>
             <div className="bg-black w-6 h-1 mb-1"></div>
@@ -90,14 +90,14 @@ function MobileHeader() {
         className={`  absolute top-0  w-[100dvw] h-[100dvh]  ${
           showNav === true ? "" : "hidden"
         } transition-all
-         backdrop-filter backdrop-blur-lg bg-opacity-1 `}
+         backdrop-filter backdrop-blur-lg bg-opacity-1  `}
          
       >
         <div
-          className="w-[70dvw] pl-4  border-solid border-2  shadow-lg bg-white pb-4  "
+          className=" pl-4  border-solid border-2  shadow-lg bg-white pb-4  h-[100vh] w-[80vw]"
           ref={ref}
         >
-          <ul className="space-y-3 mt-2">
+          <ul className="space-y-5 mt-2">
             <div className="flex justify-between items-center mr-8">
               <li className="font-semibold">shop</li>
 

@@ -12,20 +12,20 @@ import LargeHeader from "./LargeHeader";
 
 function BothHeaders() {
 
-    const [windowSize, setWindowsize] = useState(null);
+    const [windowSize, setWindowsize] = useState(700);
 
-    useEffect(() => {
-      function handleWindowResize() {
-        if(window !== "undefined" )
-        setWindowsize(window.innerWidth)
-      }
+    // useEffect(() => {
+    //   function handleWindowResize() {
+    //     if(window !== "undefined" )
+    //     setWindowsize(window.innerWidth)
+    //   }
   
-      window.addEventListener("resize", handleWindowResize);
+    //   window.addEventListener("resize", handleWindowResize);
   
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    },[]);
+    //   return () => {
+    //     window.removeEventListener("resize", handleWindowResize);
+    //   };
+    // },[]);
 
 
     return (

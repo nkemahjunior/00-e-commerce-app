@@ -6,19 +6,19 @@ import Image from "next/image"
 
 import { useEffect, useState } from "react";
 
-function getWindowSize() {
-    const { innerWidth, innerHeight } = window;
-    return { innerWidth, innerHeight };
-  }
+// function getWindowSize() {
+//     const { innerWidth, innerHeight } = window;
+//     return { innerWidth, innerHeight };
+//   }
 
 function Hero() {
 
-    const [windowSize, setWindowsize] = useState(getWindowSize());
+    const [windowSize, setWindowsize] = useState(null);
 
-    useEffect(() => {
-        
+    useEffect(() => {  
       function handleWindowResize() {
-        setWindowsize(getWindowSize());
+        if(window !== "undefined" )
+        setWindowsize(window.innerWidth)
       }
   
       window.addEventListener("resize", handleWindowResize);
@@ -28,6 +28,7 @@ function Hero() {
       };
     }, []);
 
+    
     return (
         <header className="pt-4  bg-[#F2F0F1]">
             <div className="md:grid md:grid-cols-2  ">
@@ -74,7 +75,7 @@ function Hero() {
 
 
                     <div className="md:h-[52dvh] md:mr-8" >
-                    {windowSize.innerWidth < 768 ?  <Image src={"/mobileHeroImage.png"} alt="photo of two models with black jeans jackets"
+                    {windowSize < 768 ?  <Image src={"/mobileHeroImage.png"} alt="photo of two models with black jeans jackets"
                         width={500} height={500}
                         /> :  <Image src={"/heroImage.png"} alt="photo of two models with black jeans jackets"
                         width={500} height={500}

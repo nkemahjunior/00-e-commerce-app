@@ -1,5 +1,6 @@
 'use client'
 
+import 'client-only'
 
 import { useEffect, useState } from "react";
 import MobileHeader from "./MobileHeader";

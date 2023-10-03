@@ -1,25 +1,25 @@
 'use client'
 
-import 'client-only'
-
 import { useEffect, useState } from "react";
 import MobileHeader from "./MobileHeader";
 import LargeHeader from "./LargeHeader";
 
 
-function getWindowSize() {
-    const { innerWidth, innerHeight } = window;
-    return { innerWidth, innerHeight };
-  }
+// function getWindowSize() {
+//     const { innerWidth, innerHeight } = window;
+//     return { innerWidth, innerHeight };
+//   }
 
 function BothHeaders() {
 
-    const [windowSize, setWindowsize] = useState(getWindowSize());
+    const [windowSize, setWindowsize] = useState(null);
 
     useEffect(() => {
+
         
       function handleWindowResize() {
-        setWindowsize(getWindowSize());
+        if(window.innerWidth )
+        setWindowsize(innerWidth)
       }
   
       window.addEventListener("resize", handleWindowResize);
@@ -27,12 +27,12 @@ function BothHeaders() {
       return () => {
         window.removeEventListener("resize", handleWindowResize);
       };
-    }, []);
+    });
 
 
     return (
         <>
-      {windowSize.innerWidth < 768 ? <MobileHeader /> : <LargeHeader />}
+      {windowSize < 768 ? <MobileHeader /> : <LargeHeader />}
       </>
     )
 }

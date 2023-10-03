@@ -15,11 +15,9 @@ function BothHeaders() {
     const [windowSize, setWindowsize] = useState(null);
 
     useEffect(() => {
-
-        
       function handleWindowResize() {
-        if(window.innerWidth )
-        setWindowsize(innerWidth)
+        if(window !== "undefined" )
+        setWindowsize(window.innerWidth)
       }
   
       window.addEventListener("resize", handleWindowResize);
@@ -27,7 +25,7 @@ function BothHeaders() {
       return () => {
         window.removeEventListener("resize", handleWindowResize);
       };
-    });
+    },[]);
 
 
     return (

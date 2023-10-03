@@ -1,5 +1,5 @@
 'use client'
-import 'client-only'
+
 
 import {PiStarFourFill} from "react-icons/pi"
 
@@ -12,15 +12,19 @@ function getWindowSize() {
     return { innerWidth, innerHeight };
   }
 
+  
+
 function Hero() {
 
     const [windowSize, setWindowsize] = useState(getWindowSize());
 
     useEffect(() => {
         
-      function handleWindowResize() {
-        setWindowsize(getWindowSize());
-      }
+        function handleWindowResize() {
+            
+            setWindowsize(getWindowSize())
+          }
+      
   
       window.addEventListener("resize", handleWindowResize);
   

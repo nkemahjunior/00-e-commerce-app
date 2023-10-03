@@ -1,3 +1,5 @@
+'use client'
+import 'client-only'
 
 import Categories from "./features/clothes categories/Categories";
 import Reviews from "./features/customerReviews/Reviews";

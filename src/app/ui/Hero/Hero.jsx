@@ -1,5 +1,5 @@
-'use client'
 
+'use client'
 
 import {PiStarFourFill} from "react-icons/pi"
 
@@ -31,7 +31,7 @@ function Hero() {
       return () => {
         window.removeEventListener("resize", handleWindowResize);
       };
-    }, []);
+    },[]);
 
     return (
         <header className="pt-4  bg-[#F2F0F1]">
@@ -69,27 +69,22 @@ function Hero() {
 
                 <div className="relative">
 
-                    <div className="absolute  left-[17rem] top-[4rem] md:left-[20rem] lg:left-[27rem] xl:left-[30rem]">
+                    <div className="absolute z-10 left-[17rem] top-[4rem] md:left-[20rem] lg:left-[27rem] xl:left-[38rem]">
                         <PiStarFourFill style={{color:"black", fill:"black", height:"2rem", width:"2rem"}}/>
                     </div>
 
-                    <div className="absolute left-[2rem] top-[8rem] md:left-[7rem] lg:left-[13rem] xl:left-[16rem]">
+                    <div className="absolute z-10 left-[2rem] top-[8rem] md:left-[7rem] lg:left-[13rem] xl:left-[20rem]">
                         <PiStarFourFill style={{color:"red", fill:"black",height:"1.5rem", width:"1.5rem"}}/>
                     </div>
 
 
-                    <div className="md:h-[52dvh] md:mr-8" >
-                    {windowSize.innerWidth < 768 ?  <Image src={"/mobileHeroImage.png"} alt="photo of two models with black jeans jackets"
+                    <div className="md:h-[20rem] md:mr-8 relative" >
+{                    windowSize.innerWidth < 768 ?  <Image src={"/mobileHeroImage.png"} alt="photo of two models with black jeans jackets"
                         width={500} height={500}
-                        quality={100} /> 
-                        :  <Image src={"/heroImage.png"} alt="photo of two models with black jeans jackets"
-                        width={500} height={500}
-                        style={{
-                            
-                            height:"100%",
-                            
-                            
-                          }}
+                        quality={100} /> :
+
+                          <Image src={"/heroImage.png"} alt="photo of two models with black jeans jackets"
+                        fill
                           quality={100}
                         />}
                        

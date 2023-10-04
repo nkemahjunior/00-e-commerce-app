@@ -5,32 +5,34 @@ import MobileHeader from "./MobileHeader";
 import LargeHeader from "./LargeHeader";
 
 
-// function getWindowSize() {
-//     const { innerWidth, innerHeight } = window;
-//     return { innerWidth, innerHeight };
-//   }
+function getWindowSize() {
+    const { innerWidth, innerHeight } = window;
+    return { innerWidth, innerHeight };
+  }
 
 function BothHeaders() {
 
-    const [windowSize, setWindowsize] = useState(null);
+  const [windowSize, setWindowsize] = useState(getWindowSize());
 
-    useEffect(() => {
+  useEffect(() => {
+      
       function handleWindowResize() {
-        if(window !== "undefined" )
-        setWindowsize(window.innerWidth)
-      }
-  
-      window.addEventListener("resize", handleWindowResize);
-  
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    },[]);
+          
+          setWindowsize(getWindowSize())
+        }
+    
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  },[]);
 
 
     return (
         <>
-      {windowSize < 768 ? <MobileHeader /> : <LargeHeader />}
+      {windowSize.innerWidth < 768 ? <MobileHeader /> : <LargeHeader />}
       </>
     )
 }

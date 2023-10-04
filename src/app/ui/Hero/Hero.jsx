@@ -33,6 +33,8 @@ function Hero() {
       };
     },[]);
 
+    if (window ==='undefined') return(<p>loading window</p>)
+
     return (
         <header className="pt-4  bg-[#F2F0F1]">
             <div className="md:grid md:grid-cols-2  ">

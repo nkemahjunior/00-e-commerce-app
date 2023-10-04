@@ -29,6 +29,8 @@ function BothHeaders() {
     };
   },[]);
 
+    if (window==='undefined') return(<p>loading window</p>)
+
 
     return (
         <>

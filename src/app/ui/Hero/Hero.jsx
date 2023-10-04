@@ -23,14 +23,9 @@ function Hero() {
         return { innerWidth, innerHeight };
       }
 
-    const [windowSize, setWindowsize] = useState(getWindowSize());
+    const [windowSize, setWindowsize] = useState(0);
 
     useEffect(() => {
-        
-        
-        
-
-
         function handleWindowResize() {
             
             setWindowsize(getWindowSize())
@@ -44,7 +39,7 @@ function Hero() {
       };
     },[]);
 
-    if (window ==='undefined') return(<p>loading window</p>)
+    if(windowSize.innerWidth === 0) return (<p>window is null....</p>)
 
     return (
         <header className="pt-4  bg-[#F2F0F1]">

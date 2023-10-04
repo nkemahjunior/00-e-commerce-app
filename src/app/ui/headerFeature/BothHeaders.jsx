@@ -12,14 +12,11 @@ function BothHeaders() {
   function getWindowSize() {
 
     if(window === 'undefined') return;
-
-
-
     const { innerWidth, innerHeight } = window;
     return { innerWidth, innerHeight };
   }
 
-  const [windowSize, setWindowsize] = useState(getWindowSize());
+  const [windowSize, setWindowsize] = useState(0);
 
   useEffect(() => {
     if (window==='undefined') return(<p>loading window</p>)
@@ -39,7 +36,7 @@ function BothHeaders() {
   },[]);
 
    
-
+    if(windowSize.innerWidth === 0) return (<p>window is null....</p>)
 
     return (
         <>

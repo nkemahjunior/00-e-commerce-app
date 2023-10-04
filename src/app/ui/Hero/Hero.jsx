@@ -1,6 +1,7 @@
 
 'use client'
 
+
 import {PiStarFourFill} from "react-icons/pi"
 
 import Image from "next/image"
@@ -10,36 +11,32 @@ import { useEffect, useState } from "react";
 
 
   
+function getWindowSize() {
+ //if(window === 'undefined') return;
+    const { innerWidth, innerHeight } = window;
+    return { innerWidth, innerHeight };
+  }
 
 function Hero() {
 
-    
-    function getWindowSize() {
-
-     if(window === 'undefined') return;
-
-
-        const { innerWidth, innerHeight } = window;
-        return { innerWidth, innerHeight };
-      }
-
     const [windowSize, setWindowsize] = useState(0);
-
+    
     useEffect(() => {
-        function handleWindowResize() {
-            
+
+        function handleWindowResize() { 
             setWindowsize(getWindowSize())
-          }
-      
-  
+        }
+        handleWindowResize();
+ 
       window.addEventListener("resize", handleWindowResize);
   
       return () => {
         window.removeEventListener("resize", handleWindowResize);
       };
-    },[]);
+    }
+    ,[]);
 
-    if(windowSize.innerWidth === 0) return (<p>window is null....</p>)
+   if(windowSize === 0 ) return
 
     return (
         <header className="pt-4  bg-[#F2F0F1]">
@@ -86,12 +83,11 @@ function Hero() {
                     </div>
 
 
-                    <div className="md:h-[20rem] md:mr-8 relative" >
-{                    windowSize.innerWidth < 768 ?  <Image src={"/mobileHeroImage.png"} alt="photo of two models with black jeans jackets"
-                        width={500} height={500}
-                        quality={100} /> :
-
-                          <Image src={"/heroImage.png"} alt="photo of two models with black jeans jackets"
+                    <div className=" h-[25rem] md:h-[20rem] md:mr-8 relative" >
+                        
+                        {windowSize.innerWidth < 768 ?  <Image src={"/mobileHeroImage.png"} alt="photo of two models with black jeans jackets"
+                        fill
+                        quality={100} /> :  <Image src={"/heroImage.png"} alt="photo of two models with black jeans jackets"
                         fill
                           quality={100}
                         />}

@@ -36,7 +36,7 @@ function Hero() {
     }
     ,[]);
 
-   if(windowSize === 0 ) return
+   
 
     return (
         <header className="pt-4  bg-[#F2F0F1]">

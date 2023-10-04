@@ -1,7 +1,8 @@
-
-
-import Button from "@/app/ui/Button";
+import Button from "@/ui/Button";
 import ArrivalsCard from "./ArrivalsCard";
+
+
+
 
 function Arrivals() {    
 

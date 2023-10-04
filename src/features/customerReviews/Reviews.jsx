@@ -1,5 +1,6 @@
-import Button from "@/app/ui/Button"
+import Button from "@/ui/Button"
 import ReviewCard from "./ReviewCard"
+
 
 function Reviews() {
     return (

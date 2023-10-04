@@ -1,5 +1,5 @@
-
 import FooterContent from "./FooterContent"
+
 
 function Footer() {
     return (

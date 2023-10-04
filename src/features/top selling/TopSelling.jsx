@@ -1,4 +1,4 @@
-import Button from "@/app/ui/Button";
+import Button from "@/ui/Button";
 import TopSellingCards from "./TopSellingCards";
 
 function TopSelling() {

@@ -7,6 +7,7 @@ import LargeHeader from "./LargeHeader";
 
 
 
+
 function getWindowSize() {
   const { innerWidth, innerHeight } = window;
   return { innerWidth, innerHeight };

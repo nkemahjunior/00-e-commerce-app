@@ -1,8 +1,9 @@
 import Image from "next/image"
-import casual from "../../../../public/casual.png"
-import formal from "../../../../public/formal.png"
-import party from "../../../../public/party.png"
-import gym from "../../../../public/gym.png"
+import casual from "../../../public//casual.png"
+
+import formal from "../../../public/formal.png"
+import party from "../../../public/party.png"
+import gym from "../../../public/gym.png"
 
 function Categories() {
     return (

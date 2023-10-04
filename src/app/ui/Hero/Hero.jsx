@@ -19,7 +19,11 @@ function Hero() {
     const [windowSize, setWindowsize] = useState(getWindowSize());
 
     useEffect(() => {
+        if (window==='undefined') return(<p>loading window</p>)
+        else handleWindowResize()
         
+
+
         function handleWindowResize() {
             
             setWindowsize(getWindowSize())

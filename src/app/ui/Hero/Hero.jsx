@@ -7,14 +7,16 @@ import Image from "next/image"
 
 import { useEffect, useState } from "react";
 
-function getWindowSize() {
-    const { innerWidth, innerHeight } = window;
-    return { innerWidth, innerHeight };
-  }
+
 
   
 
 function Hero() {
+
+    function getWindowSize() {
+        const { innerWidth, innerHeight } = window;
+        return { innerWidth, innerHeight };
+      }
 
     const [windowSize, setWindowsize] = useState(getWindowSize());
 

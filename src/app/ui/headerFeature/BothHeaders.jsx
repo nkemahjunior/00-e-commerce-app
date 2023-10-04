@@ -5,12 +5,14 @@ import MobileHeader from "./MobileHeader";
 import LargeHeader from "./LargeHeader";
 
 
-function getWindowSize() {
+
+
+function BothHeaders() {
+
+  function getWindowSize() {
     const { innerWidth, innerHeight } = window;
     return { innerWidth, innerHeight };
   }
-
-function BothHeaders() {
 
   const [windowSize, setWindowsize] = useState(getWindowSize());
 

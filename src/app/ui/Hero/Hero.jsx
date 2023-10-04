@@ -13,7 +13,12 @@ import { useEffect, useState } from "react";
 
 function Hero() {
 
+    
     function getWindowSize() {
+
+     if(window === 'undefined') return;
+
+
         const { innerWidth, innerHeight } = window;
         return { innerWidth, innerHeight };
       }
@@ -21,8 +26,8 @@ function Hero() {
     const [windowSize, setWindowsize] = useState(getWindowSize());
 
     useEffect(() => {
-        if (window==='undefined') return(<p>loading window</p>)
-        else handleWindowResize()
+        
+        
         
 
 

@@ -10,6 +10,11 @@ import LargeHeader from "./LargeHeader";
 function BothHeaders() {
 
   function getWindowSize() {
+
+    if(window === 'undefined') return;
+
+
+
     const { innerWidth, innerHeight } = window;
     return { innerWidth, innerHeight };
   }

@@ -1,6 +1,5 @@
 import dynamic  from "next/dynamic";
 
-
 import Categories from "@/features/clothes categories/Categories";
 import Reviews from "@/features/customerReviews/Reviews";
 import Arrivals from "@/features/new arrivals/Arrivals";
@@ -17,9 +16,13 @@ const Hero = dynamic(() => import("@/ui/Hero/Hero"),{
   loading:() => <LoadingHero/>
 } )
 
-export default function Home() {
+
+
+export default  function Home() {
+ 
   return (
     <>
+      
       <Hero />
       <Arrivals />
       <TopSelling />

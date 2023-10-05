@@ -14,8 +14,9 @@ function Reviews() {
                 <ReviewCard/>
             </div>
 
-            <div className="flex justify-center mt-2">
+            <div className="flex flex-col md:flex-row justify-center space-x-2 space-y-2  mt-2">
                 <Button text={"see all"}/>
+                
             </div>
 
 

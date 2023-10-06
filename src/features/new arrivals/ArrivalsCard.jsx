@@ -1,4 +1,8 @@
+
 function ArrivalsCard() {
+
+  
+
     return (
         <div className="">
 

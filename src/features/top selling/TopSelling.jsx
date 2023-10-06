@@ -1,5 +1,6 @@
-import Button from "@/ui/Button";
+
 import TopSellingCards from "./TopSellingCards";
+import ViewAll from "@/ui/ViewAll";
 
 function TopSelling() {
     return (
@@ -15,10 +16,7 @@ function TopSelling() {
                 <TopSellingCards/>
             </div>
 
-            <div className="lg:flex lg:justify-center">
-                <Button text={"view all"}/>
-
-            </div>
+            <ViewAll/>
 
             <hr className="w-[100%] bg-stone-700 mt-6 lg:mt-8 xl:mt-10  mb-2 2xl:mt-12"/>
 

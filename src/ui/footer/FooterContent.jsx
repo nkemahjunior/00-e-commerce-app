@@ -134,23 +134,23 @@ function FooterContent() {
                         <div className="flex space-x-2">
                             
                             <div className="bg-white    rounded-md h-[2rem] flex items-center justify-center">
-                                <Image src={"/visa.png"} height={40} width={55} alt="visa card accepted"/>
+                                <Image src={"/visa.png"} height={40} width={55} alt="visa card accepted" />
                             </div>
 
                             <div className="bg-white h-[2rem] flex items-center justify-center  rounded-md ">
-                                <Image src={"/masterCard.png"} height={40} width={55} alt="mastercard accepted"/>
+                                <Image src={"/masterCard.png"} height={40} width={55} alt="mastercard accepted" />
                             </div>
 
                             <div className="bg-white  flex items-center justify-center  rounded-md h-[2rem]">
-                                <Image src={"/paypal.png"} height={45} width={55} alt="paypal accepted"/>
+                                <Image src={"/paypal.png"} height={45} width={55} alt="paypal accepted" />
                             </div>
 
                             <div className="bg-white  flex items-center justify-center  rounded-md h-[2rem]">
-                                <Image src={"/applePay.png"} height={40} width={55} alt="applePay accepted"/>
+                                <Image src={"/applePay.png"} height={40} width={55} alt="applePay accepted" />
                             </div>
 
                             <div className="bg-white  flex items-center justify-center  rounded-md h-[2rem]">
-                                <Image src={"/googlePay.png"} height={40} width={55} alt="google pay accepted"/>
+                                <Image src={"/googlePay.png"} height={40} width={55} alt="google pay accepted" />
                             </div>
 
                         </div>

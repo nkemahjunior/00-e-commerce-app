@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { BsCart } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
@@ -51,13 +52,15 @@ function MobileHeader() {
             <div className="bg-black w-6 h-1"></div>
           </li>
 
+          <Link href={"/"}>
           <li
             className={`font-bold capitalize ${
               showSearch === true ? "hidden" : ""
             } transition-all`}
           >
+
             zeco shopping
-          </li>
+          </li></Link>
 
           <li
             className={` w-[12rem] rounded-md  overflow-hidden  ${

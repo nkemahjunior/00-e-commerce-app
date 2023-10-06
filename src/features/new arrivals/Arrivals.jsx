@@ -1,10 +1,19 @@
+
 import Button from "@/ui/Button";
 import ArrivalsCard from "./ArrivalsCard";
+import { getAllClothes } from "@/api/getAllClothes";
+import ViewAll from "@/ui/ViewAll";
 
 
+export const  revalidate  = 3600
+
+async function Arrivals() {    
 
 
-function Arrivals() {    
+    const allClothes = await getAllClothes();
+    console.log(allClothes)
+
+    
 
     return (
         
@@ -19,10 +28,7 @@ function Arrivals() {
                 <ArrivalsCard/>
             </div>
 
-            <div className="lg:flex lg:justify-center">
-                <Button text={"view all"}/>
-
-            </div>
+            <ViewAll/>
 
             <hr className="w-[100%] bg-stone-700 mt-6 lg:mt-8 xl:mt-10  mb-2 2xl:mt-12"/>
 

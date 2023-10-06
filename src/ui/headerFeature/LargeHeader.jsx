@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { BsCart } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
 import { VscAccount } from "react-icons/vsc";
@@ -16,7 +17,10 @@ function LargeHeader() {
         className="flex space-x-4 lg:space-x-5 xl:space-x-12 2xl:space-x-10 items-center  pl-[2rem] lg:pl-[3rem] xl:pl-[4rem] 2xl:pl-[6rem]  py-4
       bg-white backdrop-filter backdrop-blur-lg bg-opacity-10"
       >
-        <li className="text-2xl font-bold capitalize">zeco shopping</li>
+        <Link href={"/"}>
+          <li className="text-2xl font-bold capitalize">zeco shopping</li>
+        </Link>
+       
 
         <li className=" font-light capitalize cursor-pointer">Shop</li>
         <li className=" font-light capitalize cursor-pointer">on sale</li>

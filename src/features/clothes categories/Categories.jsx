@@ -16,19 +16,19 @@ function Categories() {
                 <div className="grid grid-cols-1 md:grid-cols-3 md:gap-x-4 gap-y-3 md:gap-4 relative">
 
                     <div className="h-[10rem] xl:h-[14rem]  relative lg:hover:brightness-50 transition-all cursor-pointer delay-75">
-                        <Image src={casual} alt="causual" fill  />
+                        <Image src={casual} alt="causual" fill sizes="100vw" />
                     </div>
 
                     <div className="h-[10rem] xl:h-[14rem]  relative md:col-span-2 lg:hover:brightness-50 transition-all cursor-pointer delay-75">
-                        <Image src={formal} alt="formal" fill />
+                        <Image src={formal} alt="formal" fill  sizes="100vw"/>
                     </div>
 
                     <div className="h-[10rem] xl:h-[14rem]  relative md:col-span-2 lg:hover:brightness-50 transition-all cursor-pointer delay-75">
-                        <Image src={party} alt="party" fill />
+                        <Image src={party} alt="party" fill sizes="100vw" />
                     </div>
 
                     <div className="h-[10rem] xl:h-[14rem]  relative lg:hover:brightness-50 transition-all cursor-pointer delay-75">
-                        <Image src={gym} alt="gym" fill />
+                        <Image src={gym} alt="gym" fill  sizes="100vw"/>
                     </div>
 
                 </div>

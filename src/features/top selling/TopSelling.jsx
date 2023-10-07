@@ -29,7 +29,7 @@ async function TopSelling() {
             {
                 homePageTopSelling.map(el => (
                     <Suspense fallback={<LoadingCard/>} key={el.id }>
-                        <TopSellingCards   price={el.price} name={el.name} />
+                        <TopSellingCards  image={el.image} price={el.price} name={el.name} />
                     </Suspense>
                     
                 ))

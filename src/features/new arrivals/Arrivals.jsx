@@ -37,7 +37,7 @@ async function Arrivals() {
                 {
                     homePageNewArrivals.map(el => (
                         <Suspense fallback={<LoadingCard/>} key={el.id }>
-                         <ArrivalsCard   price={el.price} name={el.name} />
+                         <ArrivalsCard  image={el.image} price={el.price} name={el.name} />
                       </Suspense>
                         
                     ))

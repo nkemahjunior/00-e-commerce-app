@@ -6,7 +6,7 @@ export async function newArrivals(){
     const { data, error } = await supabase
     .from('clothes')
     .select('*')
-    .order('created_at',{ascending:false});
+    // .order('created_at',{ascending:false});
 
 
     return data;

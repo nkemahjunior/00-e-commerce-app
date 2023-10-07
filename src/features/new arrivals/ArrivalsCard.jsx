@@ -12,6 +12,7 @@ function ArrivalsCard({image,name,price}) {
 
                 <div className=" h-[9.5rem] lg:h-[13rem]  xl:h-[17rem] 2xl:h-[19rem] w-[100%] bg-[#F0EEED] rounded-xl overflow-hidden relative">
                     <Image fill src={image} alt={`photo of ${name}`}/>
+
                 </div>
 
                 <div className=" max-h-fit w-[100%]  py-2">

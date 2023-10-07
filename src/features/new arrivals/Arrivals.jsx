@@ -1,7 +1,9 @@
 
 import ArrivalsCard from "./ArrivalsCard";
 import { newArrivals as newArrivalsApi } from "@/api/getAllClothes";
+import LoadingCard from "@/ui/LoadingCard";
 import ViewAll from "@/ui/ViewAll";
+import { Suspense } from "react";
 
 
 
@@ -35,7 +37,10 @@ async function Arrivals() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2">
                 {
                     homePageNewArrivals.map(el => (
-                        <ArrivalsCard key={el.id } image={el.image} price={el.price} name={el.name} />
+                        <Suspense fallback={<LoadingCard/>} key={el.id }>
+                         <ArrivalsCard  image={el.image} price={el.price} name={el.name} />
+                      </Suspense>
+                        
                     ))
                 }
             </div>

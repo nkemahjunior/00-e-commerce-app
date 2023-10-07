@@ -2,6 +2,8 @@
 import { topSelling as topSellingApi } from "@/api/getAllClothes";
 import TopSellingCards from "./TopSellingCards";
 import ViewAll from "@/ui/ViewAll";
+import { Suspense } from "react";
+import LoadingCard from "@/ui/LoadingCard";
 
 async function TopSelling() {
 
@@ -30,7 +32,10 @@ async function TopSelling() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-2">
             {
                 homePageTopSelling.map(el => (
-                    <TopSellingCards key={el.id } image={el.image} price={el.price} name={el.name} />
+                    <Suspense fallback={<LoadingCard/>} key={el.id }>
+                        <TopSellingCards  image={el.image} price={el.price} name={el.name} />
+                    </Suspense>
+                    
                 ))
             }
             </div>

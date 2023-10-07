@@ -1,17 +1,28 @@
 
-import Button from "@/ui/Button";
 import ArrivalsCard from "./ArrivalsCard";
-import { getAllClothes } from "@/api/getAllClothes";
+import { newArrivals as newArrivalsApi } from "@/api/getAllClothes";
 import ViewAll from "@/ui/ViewAll";
 
 
-export const  revalidate  = 3600
+
+export const  revalidate  = 1200;
 
 async function Arrivals() {    
 
 
-    const allClothes = await getAllClothes();
-    console.log(allClothes)
+    const newArrivals = await newArrivalsApi();
+  
+    const homePageNewArrivals = [];
+    const numOfCardsOnHomePage = 4;
+
+    for(let i = 0; i < numOfCardsOnHomePage ; i++){
+
+        homePageNewArrivals.push(newArrivals[i])
+    }
+
+    
+    
+    
 
     
 
@@ -22,10 +33,11 @@ async function Arrivals() {
             <h1 className=" mb-2 md:mb-4 capitalize font-bold text-2xl text-center lg:text-3xl xl:text-4xl 2xl:text-5xl lg:mb-6 xl:mb-8 2xl:mb-10">new arrivals</h1>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2">
-                <ArrivalsCard/>
-                <ArrivalsCard/>
-                <ArrivalsCard/>
-                <ArrivalsCard/>
+                {
+                    homePageNewArrivals.map(el => (
+                        <ArrivalsCard key={el.id } image={el.image} price={el.price} name={el.name} />
+                    ))
+                }
             </div>
 
             <ViewAll/>

@@ -7,7 +7,7 @@ import {PiStarFourFill} from "react-icons/pi"
 import Image from "next/image"
 
 import { useEffect, useState } from "react";
-import { test } from "@/api/test";
+
 
 
 

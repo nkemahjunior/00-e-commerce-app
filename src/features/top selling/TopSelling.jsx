@@ -1,8 +1,26 @@
 
+import { topSelling as topSellingApi } from "@/api/getAllClothes";
 import TopSellingCards from "./TopSellingCards";
 import ViewAll from "@/ui/ViewAll";
 
-function TopSelling() {
+async function TopSelling() {
+
+
+    const topSelling = await topSellingApi();
+  
+    const homePageTopSelling = [];
+    const numOfCardsOnHomePage = 4;
+
+    for(let i = 0; i < numOfCardsOnHomePage ; i++){
+
+        homePageTopSelling.push(topSelling[i])
+    }
+
+    
+    
+    
+
+
     return (
         
         <div className="mt-4 lg:mt-6    px-2 md:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[6rem]">
@@ -10,10 +28,11 @@ function TopSelling() {
             <h2 className=" mb-2 md:mb-4 capitalize font-bold text-2xl text-center lg:text-3xl xl:text-4xl 2xl:text-5xl lg:mb-6 xl:mb-8 2xl:mb-10">Top Selling</h2>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-2">
-                <TopSellingCards/>
-                <TopSellingCards/>
-                <TopSellingCards/>
-                <TopSellingCards/>
+            {
+                homePageTopSelling.map(el => (
+                    <TopSellingCards key={el.id } image={el.image} price={el.price} name={el.name} />
+                ))
+            }
             </div>
 
             <ViewAll/>

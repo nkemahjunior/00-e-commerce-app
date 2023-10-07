@@ -1,7 +1,7 @@
 import Image from "next/image"
 
-function ArrivalsCard({image,name,price}) {
-
+function ArrivalsCard({name,price}) {
+    
   
 
     return (

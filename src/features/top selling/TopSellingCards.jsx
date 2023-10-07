@@ -1,6 +1,7 @@
 import Image from "next/image"
 
-function TopSellingCards({image,name,price}) {
+function TopSellingCards({name,price}) {
+    
     return (
         <div className="">
 

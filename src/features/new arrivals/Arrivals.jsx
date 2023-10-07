@@ -23,7 +23,7 @@ async function Arrivals() {
     }
 
     
-    
+    console.log(homePageNewArrivals)
     
 
     

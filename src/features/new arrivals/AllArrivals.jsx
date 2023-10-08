@@ -1,33 +1,27 @@
+'use client'
 
-import ArrivalsCard from "./ArrivalsCard";
-import { newArrivals as newArrivalsApi } from "@/api/getAllClothes";
+import { allNewArrivals as allNewArrivalsApi  } from "@/api/getAllClothes";
 import LoadingCard from "@/ui/LoadingCard";
-import ViewAll from "@/ui/ViewAll";
 import { Suspense } from "react";
+import ArrivalsCard from "./ArrivalsCard";
+
+import GlobalLoading from "@/ui/GlobalLoading";
+import { useAllNewArrivals } from "./useAllNewArrivals";
+import toast from "react-hot-toast";
 
 
+ function AllArrivals() {
 
-export const  revalidate  = 1200;
+    // const allNewArrivals = await allNewArrivalsApi ();
 
-async function Arrivals() {    
+    const {isLoading,data,error} = useAllNewArrivals();
+    if(isLoading) return <GlobalLoading/>
+    if(error) return toast.error("could not fetch new arrivals. Refresh and try again ")
 
-
-    const newArrivals = await newArrivalsApi();
+    console.log(data)
+    
   
-    const homePageNewArrivals = [];
-    const numOfCardsOnHomePage = 4;
 
-    for(let i = 0; i < numOfCardsOnHomePage ; i++){
-
-        homePageNewArrivals.push(newArrivals[i])
-    }
-
-    
-
-    
-    
-
-    
 
     return (
         
@@ -37,7 +31,7 @@ async function Arrivals() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2">
                 {
-                    homePageNewArrivals.map(el => (
+                    data.data.map(el => (
                         <Suspense fallback={<LoadingCard/>} key={el.id }>
                          <ArrivalsCard  picture={el.image} price={el.price} name={el.name} />
                       </Suspense>
@@ -46,13 +40,8 @@ async function Arrivals() {
                 }
             </div>
 
-            <ViewAll/>
-
-            <hr className="w-[100%] bg-stone-700 mt-6 lg:mt-8 xl:mt-10  mb-2 2xl:mt-12"/>
-
         </div>
     );
 }
 
-export default Arrivals
-
+export default AllArrivals

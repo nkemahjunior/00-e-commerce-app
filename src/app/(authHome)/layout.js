@@ -1,9 +1,11 @@
 
-import NoUserHeader from '@/ui/headerFeature/NoUserHeader'
 import '../globals.css'
 import { Inter } from 'next/font/google'
 import Footer from '@/ui/footer/Footer'
 import BothHeaders from '@/ui/headerFeature/BothHeaders'
+import ReactQueryProvider from './ReactQueryProvider'
+import ReactHotToast from './ReactHotToast'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,16 +15,28 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+
+
+
  return (
+  
     <html lang="en">
+     
       
       <body className={`${inter.className} `} >
-      {/* <NoUserHeader/> */}
-      <BothHeaders/>
-        {children}
-      <Footer/>
+      <ReactQueryProvider>
+        <ReactHotToast/>
+        <BothHeaders/>
+        
+          {children}
+         
+        <Footer/>
+       </ReactQueryProvider>
       </body>
+
+      
      
     </html>
+  
   )
 }

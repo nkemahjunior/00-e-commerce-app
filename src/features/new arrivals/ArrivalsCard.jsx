@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-function ArrivalsCard({image,name,price}) {
+function ArrivalsCard({picture,name,price}) {
 
   
 
@@ -11,7 +11,7 @@ function ArrivalsCard({image,name,price}) {
             2xl:w-[19rem]">
 
                 <div className=" h-[9.5rem] lg:h-[13rem]  xl:h-[17rem] 2xl:h-[19rem] w-[100%] bg-[#F0EEED] rounded-xl overflow-hidden relative">
-                    <Image fill src={image} alt={`photo of ${name}`}/>
+                    <Image  src={picture} alt={`photo of ${name}`}  fill/>
 
                 </div>
 

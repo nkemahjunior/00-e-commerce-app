@@ -7,7 +7,7 @@ import GlobalLoading from "@/ui/GlobalLoading";
 import { useAllNewArrivals } from "../new arrivals/useAllNewArrivals";
 import toast from "react-hot-toast";
 import LoadMore from "./LoadMore";
-import { Pagination } from "swiper";
+
 
 
 

@@ -7,7 +7,7 @@ import Navigation from "./Navigation"
 import Pagination from "./Pagination"
 import Title from "./Title"
 
-function AllClothes() {
+function AllClothesLayout({page}) {
 
     const [show,setShow] = useState(false)
 
@@ -30,13 +30,16 @@ function AllClothes() {
 
                 <div className="md:flex md:space-x-6">
                     <Filters show={show}/>
-                    <TheClothes/>
+                    
+                    {page}
+                    
+                    {/* <TheClothes/> */}
                 </div>
 
-                <Pagination/>
+                
             </div>
         </div>
     )
 }
 
-export default AllClothes
+export default AllClothesLayout

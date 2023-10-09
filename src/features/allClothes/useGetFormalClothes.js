@@ -1,13 +1,11 @@
-import { getAllNewArrivals } from "@/api/getAllClothes";
+import { getFormalClothes } from "@/api/getFormalClothes";
 import { prefetchData } from "@/helpers/prefetchData";
-
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useCallback } from "react";
 
-export  function useAllNewArrivals(){
 
-
+export function useGetFormalClothes(){
 
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -31,17 +29,14 @@ export  function useAllNewArrivals(){
     curPage === 0 || null || undefined ? router.push(pathname + '?' + createQueryString('page', 1)) : Number(searchParams.get('page'))
 
 
-    const{isLoading,data} = useQuery({
-        queryKey:['allNewArrivals',curPage],
-        queryFn: () => getAllNewArrivals({curPage})
-    })
 
-    
+    const {isLoading,data:{data,count,error}={}} = useQuery({
+        queryKey:['formal',curPage],
+        queryFn:() =>  getFormalClothes({curPage})
+    });
 
     //prefetching
-    prefetchData(data?.count ?? 0,curPage,getAllNewArrivals,'allNewArrivals')
-    
-   
+    prefetchData(count,curPage,getFormalClothes,'formal')
 
-   return {isLoading,data}
+    return {isLoading,data,count,error}
 }

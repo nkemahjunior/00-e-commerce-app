@@ -1,13 +1,14 @@
 import { getAllNewArrivals } from "@/api/getAllClothes";
+import { getGymClothes } from "@/api/getGymClothes"
 import { prefetchData } from "@/helpers/prefetchData";
-
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import PAGE_SIZE from "@/ui/PAGE_SIZE";
+import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 
-export  function useAllNewArrivals(){
+export function useGetGymClothes(){
 
-
+   
 
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -31,17 +32,18 @@ export  function useAllNewArrivals(){
     curPage === 0 || null || undefined ? router.push(pathname + '?' + createQueryString('page', 1)) : Number(searchParams.get('page'))
 
 
-    const{isLoading,data} = useQuery({
-        queryKey:['allNewArrivals',curPage],
-        queryFn: () => getAllNewArrivals({curPage})
+    const {data:{data,count,error} = {},isLoading} = useQuery({
+        queryKey:['gym',curPage],
+        queryFn:() => getGymClothes({curPage})
+
     })
 
-    
 
-    //prefetching
-    prefetchData(data?.count ?? 0,curPage,getAllNewArrivals,'allNewArrivals')
-    
-   
+       //prefetching
+       prefetchData(count,curPage,getGymClothes,'gym')
 
-   return {isLoading,data}
+
+    //console.log(data,count,error)
+
+    return {data,count,error,isLoading}
 }

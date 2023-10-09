@@ -1,10 +1,10 @@
-import AllClothes from "@/features/allClothes/AllClothes"
+import CasualClothes from "@/features/allClothes/CasualClothes"
 
 function page() {
     return (
         <>
         
-           <AllClothes/> 
+           <CasualClothes/> 
         </>
     )
 }

@@ -1,13 +1,10 @@
-import { getAllNewArrivals } from "@/api/getAllClothes";
+import { getCasualClothes } from "@/api/getCasualClothes";
 import { prefetchData } from "@/helpers/prefetchData";
-
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useQuery } from "@tanstack/react-query";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 
-export  function useAllNewArrivals(){
-
-
+export  function useGetCasualClothes(){
 
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -31,17 +28,18 @@ export  function useAllNewArrivals(){
     curPage === 0 || null || undefined ? router.push(pathname + '?' + createQueryString('page', 1)) : Number(searchParams.get('page'))
 
 
-    const{isLoading,data} = useQuery({
-        queryKey:['allNewArrivals',curPage],
-        queryFn: () => getAllNewArrivals({curPage})
+
+
+    const {data:{data,count,error} = {},isLoading} = useQuery({
+        queryKey:['casual',curPage],
+        queryFn:() => getCasualClothes({curPage})
+
     })
 
-    
-
     //prefetching
-    prefetchData(data?.count ?? 0,curPage,getAllNewArrivals,'allNewArrivals')
-    
-   
+    prefetchData(count,curPage,getCasualClothes,'casual')
 
-   return {isLoading,data}
+    //console.log(data,count,error)
+
+    return {data,count,error,isLoading}
 }

@@ -1,6 +1,5 @@
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useCallback } from "react"
-
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
 
 // const searchParams = useSearchParams()
 
@@ -10,35 +9,25 @@ import { useCallback } from "react"
 
 //       const params = new URLSearchParams(searchParams)
 //       params.set(name, value)
- 
+
 //       return params.toString()
 //     },
 //     [searchParams]
 // )
 
+export function useSetParams(name, value,scroll=true) {
 
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
 
+  const createQueryString = useCallback(() => {
+    const params = new URLSearchParams(searchParams);
+    params.set(name, value);
 
-export function UseSetParams(name,value){
+    return params.toString();
+  }, [searchParams]);
 
-
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const pathname = usePathname()
-
-
-    const createQueryString = useCallback(
-
-      () => {
-
-        const params = new URLSearchParams(searchParams)
-        params.set(name, value)
+  router.push(pathname + "?" + createQueryString(name, value),{scroll:scroll});
   
-        return params.toString()
-      },
-      [searchParams]
-  )
-
-  return router.push(pathname + '?' + createQueryString(name, value))
-
 }

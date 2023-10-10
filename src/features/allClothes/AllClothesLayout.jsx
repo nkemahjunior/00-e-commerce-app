@@ -17,14 +17,16 @@ function AllClothesLayout({page}) {
     return (
         <div>
             <div>
+                <div className="  ">
                 
-                <Navigation/>
-                <div className=" phones:flex phones:justify-between ">
-                    <Title/>
-                    <div className="flex justify-end md:hidden"
-                    onClick={handleShow}
-                    >
-                        <FilterButton/>
+                    <Navigation/>
+                    <div className=" phones:flex phones:justify-between sticky top-0">
+                        <Title/>
+                        <div className="flex justify-end md:hidden"
+                        onClick={handleShow}
+                        >
+                            <FilterButton/>
+                        </div>
                     </div>
                 </div>
 

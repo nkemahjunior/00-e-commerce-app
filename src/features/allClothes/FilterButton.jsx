@@ -1,6 +1,10 @@
+import { BsFilter } from "react-icons/bs"
+
 function FilterButton() {
     return (
-        <button className="  border-solid border-yellow-600 border-4 h-[3rem] w-[3rem] bg-black rounded-[50%] "></button>
+        <button className="   h-[3rem] w-[3rem]  rounded-[50%] flex justify-center items-center  ">
+            <BsFilter style={{height:"3rem",width:"2rem"}}/>
+        </button>
     )
 }
 

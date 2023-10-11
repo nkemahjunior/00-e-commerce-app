@@ -13,6 +13,7 @@ import LoadMore from "./LoadMore";
 
 
 function AllArrivals() {
+  
  
 
   const { isLoading, data } = useAllNewArrivals();

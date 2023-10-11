@@ -1,18 +1,18 @@
 'use client'
-import { useRouter } from "next/navigation"
+// import { useRouter } from "next/navigation"
 import Button from "./Button"
 
 function ViewAll() {
-    const router = useRouter()
+    // const router = useRouter()
 
 
-    function viewAllClothes(){
-        router.push('/allClothes')
-    }
+    // function viewAllClothes(){
+    //     router.push('/allClothes')
+    // }
 
     return (
 
-        <div className="lg:flex lg:justify-center" onClick={viewAllClothes}>
+        <div className="lg:flex lg:justify-center" >
         <Button text={"view all"}/>
 
     </div>

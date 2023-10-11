@@ -3,6 +3,7 @@ import ArrivalsCard from "./ArrivalsCard";
 import { newArrivals as newArrivalsApi } from "@/api/getAllClothes";
 import LoadingCard from "@/ui/LoadingCard";
 import ViewAll from "@/ui/ViewAll";
+import Link from "next/link";
 import { Suspense } from "react";
 
 
@@ -24,10 +25,6 @@ async function Arrivals() {
 
     
 
-    
-    
-
-    
 
     return (
         
@@ -46,7 +43,11 @@ async function Arrivals() {
                 }
             </div>
 
-            <ViewAll/>
+
+                <Link href="/newArrivals?page=1"   >
+                    <ViewAll/>
+                </Link>
+            
 
             <hr className="w-[100%] bg-stone-700 mt-6 lg:mt-8 xl:mt-10  mb-2 2xl:mt-12"/>
 

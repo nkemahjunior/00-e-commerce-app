@@ -1,21 +1,36 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import toast from "react-hot-toast";
 
 import PAGE_SIZE from "@/ui/PAGE_SIZE";
-import { useSetParams } from "@/hooks/useSetParams";
+
+import { useCallback } from "react";
 
 function LoadMore({ numberOfClothes }) {
-
-    
+  const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  console.log(pathname)
+
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams(searchParams);
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
+
+  // const searchParams = useSearchParams();
 
   const curPage = Number(searchParams.get("page"));
 
   curPage === 0 || null || undefined
-    ? useSetParams("page", 1)
+    ? router.push(pathname + "?" + createQueryString("page", 1),{scroll:false})
     : Number(searchParams.get("page"));
   const pagenumberOfClothes = Math.ceil(numberOfClothes / PAGE_SIZE);
 
@@ -25,7 +40,11 @@ function LoadMore({ numberOfClothes }) {
 
     const next = curPage === pagenumberOfClothes ? curPage : curPage + 1;
 
-    useSetParams("page", next, true);
+    // useSetParams("page", next, true);
+
+    router.push(pathname + "?" + createQueryString("page", next), {
+      scroll: false,
+    });
   }
 
   // function showLess(){

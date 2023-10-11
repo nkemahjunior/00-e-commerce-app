@@ -4,6 +4,7 @@ import casual from "../../../public//casual.png"
 import formal from "../../../public/formal.png"
 import party from "../../../public/party.png"
 import gym from "../../../public/gym.png"
+import Link from "next/link"
 
 function Categories() {
     return (
@@ -15,21 +16,32 @@ function Categories() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 md:gap-x-4 gap-y-3 md:gap-4 relative">
 
-                    <div className="h-[10rem] xl:h-[14rem]  relative lg:hover:brightness-50 transition-all cursor-pointer delay-75">
-                        <Image src={casual} alt="causual" fill sizes="100vw" />
-                    </div>
+                    <Link href={"/casual?page=1"} >
+                        <div className="h-[10rem] xl:h-[14rem]  relative lg:hover:brightness-50 transition-all cursor-pointer delay-75">
+                            <Image src={casual} alt="causual" fill sizes="100vw" />
+                        </div>
+                    </Link>
 
-                    <div className="h-[10rem] xl:h-[14rem]  relative md:col-span-2 lg:hover:brightness-50 transition-all cursor-pointer delay-75">
-                        <Image src={formal} alt="formal" fill  sizes="100vw"/>
-                    </div>
 
-                    <div className="h-[10rem] xl:h-[14rem]  relative md:col-span-2 lg:hover:brightness-50 transition-all cursor-pointer delay-75">
-                        <Image src={party} alt="party" fill sizes="100vw" />
-                    </div>
+                    <Link href ='/formal?page=1'  className="md:col-span-2 ">
+                        <div className="h-[10rem] xl:h-[14rem]  relative lg:hover:brightness-50 transition-all cursor-pointer delay-75">
+                            <Image src={formal} alt="formal" fill  sizes="100vw"/>
+                        </div>
+                    </Link>
 
-                    <div className="h-[10rem] xl:h-[14rem]  relative lg:hover:brightness-50 transition-all cursor-pointer delay-75">
-                        <Image src={gym} alt="gym" fill  sizes="100vw"/>
-                    </div>
+                    <Link href='/party?page=1'   className="md:col-span-2 ">
+
+                        <div className="h-[10rem] xl:h-[14rem]  relative lg:hover:brightness-50 transition-all cursor-pointer delay-75">
+                            <Image src={party} alt="party" fill sizes="100vw" />
+                        </div>
+                    </Link>
+
+
+                    <Link href='/gym?page=1'  >
+                        <div className="h-[10rem] xl:h-[14rem]  relative lg:hover:brightness-50 transition-all cursor-pointer delay-75">
+                            <Image src={gym} alt="gym" fill  sizes="100vw"/>
+                        </div>
+                    </Link>
 
                 </div>
             </div>

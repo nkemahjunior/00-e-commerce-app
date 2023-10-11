@@ -1,3 +1,4 @@
+import { filtersParams } from "@/api/filtersParams";
 import { getCasualClothes } from "@/api/getCasualClothes";
 import { prefetchData } from "@/helpers/prefetchData";
 import { useQuery } from "@tanstack/react-query";
@@ -24,6 +25,8 @@ export  function useGetCasualClothes(){
 
 
     const curPage = Number(searchParams.get('page'))
+
+    const {sortBy,startPriceRange,priceRange1,priceRange2,priceRange} = filtersParams(searchParams)
     
     curPage === 0 || null || undefined ? router.push(pathname + '?' + createQueryString('page', 1)) : Number(searchParams.get('page'))
 
@@ -31,8 +34,9 @@ export  function useGetCasualClothes(){
 
 
     const {data:{data,count,error} = {},isLoading} = useQuery({
-        queryKey:['casual',curPage],
-        queryFn:() => getCasualClothes({curPage})
+        queryKey:['casual',curPage,sortBy,startPriceRange,priceRange1,priceRange2,priceRange],
+
+        queryFn:() => getCasualClothes({curPage,sortBy,startPriceRange,priceRange1,priceRange2})
 
     })
 

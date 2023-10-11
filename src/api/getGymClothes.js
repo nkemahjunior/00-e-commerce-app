@@ -1,31 +1,32 @@
 import supabase from "@/services/supabase";
-import PAGE_SIZE from "@/ui/PAGE_SIZE";
+import { filters } from "./filters";
 
-export async function getGymClothes({curPage}){
+export async function getGymClothes({curPage,sortBy,startPriceRange,priceRange1,priceRange2}){
 
-    let query = supabase.from('clothes')
-    .select('*' , { count: "exact", })
-    .eq('type', 'gym')
+    try {
+        
 
-    //Pagination
-    if(curPage){
-        const from = (curPage - 1) * PAGE_SIZE;
-        const to = from + PAGE_SIZE - 1;
+        let query = supabase.from('clothes')
+        .select('*' , { count: "exact", })
+        .eq('type', 'gym')
 
-        query.range(0,to).order('created_at',{ascending:false});
+        const {data,error,count} = await filters(query,curPage,sortBy,startPriceRange,priceRange1,priceRange2);
+
+        if(error) console.log("could not get gym clothes " + error.message)
+
+        return  {data,count,error};
+
+    } catch (error) {
+        console.log("could not get gym clothes " + error.message)
     }
 
-    const { data, error , count} = await query;
 
-    // const { data, error,count } = await supabase
-    // .from('clothes')
-    // .select("*",{count:'exact'})
-  
-    // .eq('type', 'gym')
 
-    if(error) console.log("could not get gym clothes " + error.message)
 
-    return  {data,count,error};
+
+    
+
+
 
   
 }

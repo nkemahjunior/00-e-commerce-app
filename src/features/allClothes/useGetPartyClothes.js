@@ -1,3 +1,4 @@
+import { filtersParams } from "@/api/filtersParams"
 import { getPartyClothes } from "@/api/getPartyClothes"
 import { prefetchData } from "@/helpers/prefetchData"
 import { useQuery } from "@tanstack/react-query"
@@ -24,13 +25,16 @@ export function useGetPartyClothes(){
     )
 
     const curPage = Number(searchParams.get('page'))
+
+    const {sortBy,startPriceRange,priceRange1,priceRange2,priceRange} = filtersParams(searchParams)
     
     curPage === 0 || null || undefined ? router.push(pathname + '?' + createQueryString('page', 1)) : Number(searchParams.get('page'))
 
 
     const {data:{data,count,error} = {},isLoading} = useQuery({
-        queryKey:['party',curPage],
-        queryFn:() => getPartyClothes({curPage})
+        queryKey:['party',curPage,sortBy,startPriceRange,priceRange1,priceRange2,priceRange],
+
+        queryFn:() => getPartyClothes({curPage,sortBy,startPriceRange,priceRange1,priceRange2})
 
     })
 

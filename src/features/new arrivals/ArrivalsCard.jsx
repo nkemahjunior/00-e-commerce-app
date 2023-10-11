@@ -1,4 +1,5 @@
 import Image from "next/image"
+import AddToCart from "./AddToCart"
 
 function ArrivalsCard({picture,name,price}) {
 
@@ -21,6 +22,7 @@ function ArrivalsCard({picture,name,price}) {
                     <p className="block">x x x x x</p>
                     <p className="block font-bold">${price}</p>
                     
+                    <AddToCart/>
                 </div>
             </div>
 

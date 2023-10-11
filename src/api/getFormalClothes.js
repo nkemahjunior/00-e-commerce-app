@@ -1,25 +1,29 @@
 import supabase from "@/services/supabase";
 import PAGE_SIZE from "@/ui/PAGE_SIZE";
+import { filters } from "./filters";
 
 
-export async function getFormalClothes({curPage}){
+export async function getFormalClothes({curPage,sortBy,startPriceRange,priceRange1,priceRange2}){
 
-    // const {data,count,error} = await supabase
-   let query =  supabase.from('clothes')
-    .select("*",{count:'exact'})
-    .eq('type', 'formal')
 
-    //PAGINATION
-    if(curPage){
-        const from = (curPage - 1) * PAGE_SIZE;
-        const to = from + PAGE_SIZE - 1;
+    try {
 
-        query.range(0,to).order('created_at',{ascending:false});
+        // const {data,count,error} = await supabase
+         let query =  supabase.from('clothes')
+        .select("*",{count:'exact'})
+        .eq('type', 'formal')
+
+   
+        const {data,error,count} = await filters(query,curPage,sortBy,startPriceRange,priceRange1,priceRange2);
+
+        if(error) console.log("could not get formal clothes " + error.message)
+
+        return  {data,count,error};
+
+        
+    } catch (error) {
+        console.log("could not get formal clothes " + error.message)
     }
-
-    const { data, error , count} = await query;
-
-    if(error) console.log("could not get formal clothes " + error.message)
-
-    return  {data,count,error};
+    
+  
 }

@@ -1,3 +1,4 @@
+import { filtersParams } from "@/api/filtersParams";
 import { getAllNewArrivals } from "@/api/getAllClothes";
 import { prefetchData } from "@/helpers/prefetchData";
 
@@ -27,15 +28,25 @@ export  function useAllNewArrivals(){
 
 
     const curPage = Number(searchParams.get('page'))
+
+
+    const {sortBy,startPriceRange,priceRange1,priceRange2,priceRange} = filtersParams(searchParams)
+
+
+
+     
     
     curPage === 0 || null || undefined ? router.push(pathname + '?' + createQueryString('page', 1)) : Number(searchParams.get('page'))
 
 
     const{isLoading,data} = useQuery({
-        queryKey:['allNewArrivals',curPage],
-        queryFn: () => getAllNewArrivals({curPage})
+
+        queryKey:['allNewArrivals',curPage,sortBy,startPriceRange,priceRange1,priceRange2,priceRange],
+
+        queryFn: () => getAllNewArrivals({curPage,sortBy,startPriceRange,priceRange1,priceRange2})
     })
 
+    // console.log("query = " + data)
     
 
     //prefetching

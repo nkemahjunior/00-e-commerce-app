@@ -1,6 +1,7 @@
 
 import supabase from "@/services/supabase";
-import PAGE_SIZE from "@/ui/PAGE_SIZE";
+
+import { filters } from "./filters";
 
 export async function newArrivals(){
     
@@ -14,25 +15,26 @@ export async function newArrivals(){
 
 }
 
-export async function getAllNewArrivals({curPage}){
+export async function getAllNewArrivals({curPage,sortBy,startPriceRange,priceRange1,priceRange2}){
+
+try{
+
 
     let query = supabase.from('clothes')
     .select('*' , { count: "exact", })
 
-    //Pagination
-    if(curPage){
-        const from = (curPage - 1) * PAGE_SIZE;
-        const to = from + PAGE_SIZE - 1;
+   
+    const {data,error,count} = await filters(query,curPage,sortBy,startPriceRange,priceRange1,priceRange2);
 
-        query.range(0,to).order('created_at',{ascending:false});
-    }
-    
-    const { data, error , count} = await query;
-    
+   
 
     if(error) console.log("could not get all new arrivals " + error.message)
 
-    return {data,error,count};
+    return {data,error,count}
+}
+catch(err){
+    console.log("there was a problem fetching the data " + err.message)
+}
 
 }
 

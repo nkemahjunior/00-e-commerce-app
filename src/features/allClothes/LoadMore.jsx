@@ -13,7 +13,7 @@ function LoadMore({ numberOfClothes }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  console.log(pathname)
+ 
 
   const createQueryString = useCallback(
     (name, value) => {

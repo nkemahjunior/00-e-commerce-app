@@ -19,6 +19,11 @@ function AllArrivals() {
   const { isLoading, data } = useAllNewArrivals();
 
   if (isLoading) return <GlobalLoading />;
+
+  if(data?.data?.length === 0){
+   return toast.error("sorry, no clothes are available for that price range right now...")
+  } 
+
   if (data.error){
         return toast.error("could not fetch new arrivals. Refresh and try again ");
   }

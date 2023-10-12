@@ -1,9 +1,10 @@
 
 import { topSelling as topSellingApi } from "@/api/getAllClothes";
-import TopSellingCards from "./TopSellingCards";
+
 import ViewAll from "@/ui/ViewAll";
 import { Suspense } from "react";
 import LoadingCard from "@/ui/LoadingCard";
+import ArrivalsCard from "../new arrivals/ArrivalsCard";
 
 async function TopSelling() {
 
@@ -29,7 +30,7 @@ async function TopSelling() {
             {
                 homePageTopSelling.map(el => (
                     <Suspense fallback={<LoadingCard/>} key={el.id }>
-                        <TopSellingCards  picture={el.image} price={el.price} name={el.name} />
+                        <ArrivalsCard  picture={el.image} price={el.price} name={el.name} />
                     </Suspense>
                     
                 ))

@@ -7,12 +7,20 @@ import GlobalLoading from "@/ui/GlobalLoading";
 import { useAllNewArrivals } from "../new arrivals/useAllNewArrivals";
 import toast from "react-hot-toast";
 import LoadMore from "./LoadMore";
+import Link from "next/link";
+
+// export const dynamicParams = false; 
+
+
+
 
 
 
 
 
 function AllArrivals() {
+
+
   
  
 
@@ -40,7 +48,9 @@ function AllArrivals() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2">
         {data.data.map((el) => (
           <Suspense fallback={<LoadingCard />} key={el.id}>
-            <ArrivalsCard picture={el.image} price={el.price} name={el.name} />
+            <Link href={`/newArrivals/${el.name}/${el.id}`}>
+              <ArrivalsCard picture={el.image} price={el.price} name={el.name} />
+            </Link>
           </Suspense>
         ))}
       </div>

@@ -15,6 +15,23 @@ export async function newArrivals(){
 
 }
 
+
+export async function getClothDetail(id){
+    try {
+        const {data,error}  = await supabase.from('clothes')
+        .select('*')
+        .eq('id',id)
+
+        return {data,error}
+        
+    } catch (error) {
+        console.log("error fetching this cloth " + error.message)
+    }
+}
+
+
+
+
 export async function getAllNewArrivals({curPage,sortBy,startPriceRange,priceRange1,priceRange2}){
 
 try{

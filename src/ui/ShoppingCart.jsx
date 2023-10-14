@@ -17,7 +17,7 @@ function ShoppingCart() {
     return (
         <div className={`
         ${showCart === false ? 'hidden':''}
-         fixed   md:right-[4rem] z-[100] bg-white phones:h-fit pb-2 px-2 md:px-4`} > 
+         fixed   md:right-[4rem] z-[100] bg-white phones:h-fit pb-2 px-2 md:px-4 phones:w-full`} > 
 
         <div className="   h-full">
 
@@ -28,7 +28,7 @@ function ShoppingCart() {
 
             <hr  className="bg-stone-400 h-[0.15rem]"/>
 
-            <div className=" overflow-y-scroll  h-[45dvh]    md:h-[22rem] md:w-[30rem]">
+            <div className=" overflow-y-scroll    overscroll-y-auto h-[45dvh]    md:h-[22rem] md:w-[30rem]">
 
                 <div className="space-y-4">
                     {

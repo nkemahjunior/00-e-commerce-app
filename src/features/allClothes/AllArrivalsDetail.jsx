@@ -25,15 +25,15 @@ function AllArrivalsDetail({data,error}) {
    
     const cartItems = useSelector((state) => state.showCart.itemsInCart)
 
-    
-
     const [show,setShow] = useState(false)
     function handleShow(){
         setShow((v) => !v)
     }
 
-    let yes = false;
- 
+    if(error) toast.error("there was an error loading this item. Refresh and try again")
+
+
+
     function handleAddItemToCart(){
         // console.log(showCart)
         // cartItems.length === 0 ? dispatch(addItemToCart(data)) : 

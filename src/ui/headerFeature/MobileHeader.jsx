@@ -41,7 +41,7 @@ function MobileHeader() {
   useEffect(function(){
   
     function close(e){
-      if (ref.current && !ref.current.contains(e.target)) dispatch(hideCart())
+      if (ref2.current && !ref2.current.contains(e.target)) dispatch(hideCart())
     }
   
     document.addEventListener('click',close,true)

@@ -1,9 +1,12 @@
 "use client"
 
+import { addItemToCart } from "@/app/(authHome)/showCartSlice";
 // export async function generateStaticParams() {
 
 import Image from "next/image"
 import { useState } from "react"
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 
     
 //     const { data, error } = await supabase
@@ -17,13 +20,48 @@ import { useState } from "react"
 //   }
 
 function AllArrivalsDetail({data,error}) {
-    console.log(data)
+
+    const dispatch = useDispatch();
+   
+    const cartItems = useSelector((state) => state.showCart.itemsInCart)
+
+    
 
     const [show,setShow] = useState(false)
     function handleShow(){
         setShow((v) => !v)
     }
+
+    let yes = false;
  
+    function handleAddItemToCart(){
+        // console.log(showCart)
+        // cartItems.length === 0 ? dispatch(addItemToCart(data)) : 
+
+      if(cartItems.length === 0) dispatch(addItemToCart(data))
+
+      if(cartItems.length > 0){
+        for(let i = 0 ; i <= cartItems.length ; i++){
+
+            if(cartItems[i].id !== data.id){
+                dispatch(addItemToCart(data))
+                return
+            }
+
+            else if ((cartItems[i].id === data.id)) {
+                toast.error("item is already in cart.. if you want more than one of this item ,you can increase the quantity")
+                return
+            }
+        }
+      }
+      
+ 
+
+        // cartItems.forEach( (el) => (
+        //       el.id !== data.id ?  dispatch(addItemToCart(data)) : toast.error("item is already in cart.. if you want more than one of this item ,you can increase the quantity")
+        // ))
+        
+    }
 
     return (
         <div className="px-2 py-4 md:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[6rem]" >
@@ -83,7 +121,11 @@ function AllArrivalsDetail({data,error}) {
 
                         <button className="
                         phones:border-solid phones:border-black phones:border-2
-                        bg-black rounded-xl  text-white p-2 text-center w-full  md:w-[70%] md:hover:text-black md:hover:bg-white md:hover:border-2 md:hover:border-black md:hover:border-solid transition-colors delay-75">Add to cart</button>
+                        bg-black rounded-xl  text-white p-2 text-center w-full  md:w-[70%] md:hover:text-black md:hover:bg-white md:hover:border-2 md:hover:border-black md:hover:border-solid transition-colors delay-75"
+                        onClick={handleAddItemToCart}
+                        >
+                            Add to cart
+                        </button>
                     </div>
 
                 </div>

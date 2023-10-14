@@ -5,6 +5,8 @@ import Footer from '@/ui/footer/Footer'
 import BothHeaders from '@/ui/headerFeature/BothHeaders'
 import ReactQueryProvider from './ReactQueryProvider'
 import ReactHotToast from './ReactHotToast'
+import ShoppingCart from '@/ui/ShoppingCart'
+import ReduxProvider from './Redux'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,14 +26,17 @@ export default function RootLayout({ children }) {
      
       
       <body className={`${inter.className} `} >
-      <ReactQueryProvider>
-        <ReactHotToast/>
-        <BothHeaders/>
-        
-          {children}
-         
-        <Footer/>
-       </ReactQueryProvider>
+        <ReactQueryProvider>
+         <ReduxProvider>
+            <ReactHotToast/>
+            <BothHeaders/>
+            <ShoppingCart/>
+            
+              {children}        
+            
+            <Footer/>
+         </ReduxProvider>
+        </ReactQueryProvider>
       </body>
 
       

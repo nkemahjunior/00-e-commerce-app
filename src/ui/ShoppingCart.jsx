@@ -28,7 +28,7 @@ function ShoppingCart() {
 
             <hr  className="bg-stone-400 h-[0.15rem]"/>
 
-            <div className=" overflow-scroll  h-[45dvh]    md:h-[22rem] md:w-[30rem]">
+            <div className="  overflow-y-auto  h-[45dvh]    md:h-[22rem] md:w-[30rem]">
 
                 <div className="space-y-4">
                     {

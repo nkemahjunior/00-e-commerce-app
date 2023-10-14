@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
      
       
-      <body className={`${inter.className} `} >
+      <body className={`${inter.className} overflow-hidden`} >
         <ReactQueryProvider>
          <ReduxProvider>
             <ReactHotToast/>

@@ -19,7 +19,7 @@ function MobileHeader() {
   const [showNav, setShowNav] = useState(false);
   
   const ref = useRef();
-  const ref2 = useRef();
+  
 
 
 
@@ -38,15 +38,8 @@ function MobileHeader() {
 
 
   
-  useEffect(function(){
-  
-    function close(e){
-      if (ref2.current && !ref2.current.contains(e.target)) dispatch(hideCart())
-    }
-  
-    document.addEventListener('click',close,true)
-   return () => document.removeEventListener('click',close,true)
-  },[dispatch,hideCart])
+
+
 
 
 
@@ -115,7 +108,7 @@ function MobileHeader() {
             <CiSearch />
           </li>
 
-          <li className=" cursor-pointer flex" onClick={ handleShowShoppingCart} ref={ref2}>
+          <li className=" cursor-pointer flex" onClick={ handleShowShoppingCart} >
             <BsCart /> <p className=" -mt-2 bg-black text-white max-h-fit w-fit flex items-center rounded-[50%]">{numOfcartItems}</p> 
           </li>
           <li className=" cursor-pointer">

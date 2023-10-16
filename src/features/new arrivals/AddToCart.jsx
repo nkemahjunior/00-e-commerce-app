@@ -1,11 +1,23 @@
-function AddToCart() {
-    return (
-        
-            <button className=" bg-yellow-300 md:hover:bg-yellow-400  md:hover:scale-95 scale md:hover:transition-all md:hover:delay-75 rounded-lg capitalize font-bold p-2 text-sm ">
-                add to cart
-            </button>
-        
-    )
-}
+'use client'
 
-export default AddToCart
+import { useState } from "react"
+
+function ShopThis() {
+    const [slide,setSlide] = useState(false)
+
+    function handleSlide(){
+        setSlide((v) => !v)
+    }
+    return (
+        <>
+            <button className=" font-medium uppercase    " onMouseOver={handleSlide} onMouseLeave={handleSlide}>
+                shop this
+
+                 <div className={`border-b border-b-black ${slide && 'lg:animate-slide'}  `}></div> 
+            </button>
+            
+        </>
+    )
+} 
+
+export default ShopThis

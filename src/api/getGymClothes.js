@@ -19,14 +19,7 @@ export async function getGymClothes({curPage,sortBy,startPriceRange,priceRange1,
     } catch (error) {
         console.log("could not get gym clothes " + error.message)
     }
-
-
-
-
-
-    
-
-
-
   
 }
+
+

@@ -1,25 +1,44 @@
 'use client'
 
 
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import ShoppingCartItem from "./ShoppingCartItem"
+import { useEffect, useRef, useState } from "react"
+import { hideCart } from "@/app/(authHome)/showCartSlice"
 
 
 function ShoppingCart() {
 
      const cartItems = useSelector((state) => state.showCart.itemsInCart)
     const showCart = useSelector(state => state.showCart.show)
+    const ref = useRef()
+    const dispatch = useDispatch()
+
+    useEffect(function(){
+        function close(e){
+          if ( ref.current && !ref.current.contains(e.target) ) dispatch(hideCart())
+        }
+    
+        document.addEventListener('click',close,true)
+       return () => document.removeEventListener('click',close,true)
+      },[])
+    
+     function handleXclose(){
+       dispatch(hideCart())
+      }
 
 
     return (
         <div className={`
-        ${showCart === false ? 'hidden':''}
-         fixed   md:right-[4rem] z-[100] bg-white phones:h-fit pb-2 px-2 md:px-4 phones:w-full`} > 
+        ${showCart === false  ? 'hidden':''}
+         fixed   md:right-[4rem] z-[100] bg-white phones:h-fit pb-2 px-2 md:px-4 phones:w-full`} 
+         ref={ref}> 
 
         <div className="   h-full">
 
             <div className="p-4">
-                <h1 className="font-bold text-center uppercase">added to shopping bag <span className="absolute right-4 font-normal">X</span></h1>
+                <h1 className="font-bold text-center uppercase">added to shopping bag <span className="absolute right-4 font-normal cursor-pointer"
+                onClick={handleXclose}>X</span></h1>
                     
             </div>
 
@@ -30,7 +49,7 @@ function ShoppingCart() {
                 <div className="space-y-4">
                     {
                         cartItems.map((el) => (
-                            <ShoppingCartItem key={el.id} data={el}/>
+                            <ShoppingCartItem key={el.id * Math.random()} data={el}/>
                         ))
                     }
  

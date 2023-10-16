@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import LoadingCard from "@/ui/LoadingCard";
 import ArrivalsCard from "../new arrivals/ArrivalsCard";
 import LoadMore from "./LoadMore";
+import Link from "next/link";
 
 function GymClothes() {
     const {data,count,error,isLoading} = useGetGymClothes();
@@ -25,13 +26,15 @@ function GymClothes() {
     return (
       <div className="mt-4 lg:mt-6   px-2 md:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[6rem] border-solid border-pink-600 border-4">
         <h1 className=" mb-2 md:mb-4 capitalize font-bold text-2xl text-center lg:text-3xl xl:text-4xl 2xl:text-5xl lg:mb-6 xl:mb-8 2xl:mb-10">
-          new arrivals
+          gym
         </h1>
   
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2">
+        <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-2">
           {data.map((el) => (
             <Suspense fallback={<LoadingCard />} key={el.id}>
+            <Link href={`/gym/${el.name}/${el.id}`}>
               <ArrivalsCard picture={el.image} price={el.price} name={el.name} />
+            </Link>
             </Suspense>
           ))}
         </div>

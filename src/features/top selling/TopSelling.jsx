@@ -5,6 +5,7 @@ import ViewAll from "@/ui/ViewAll";
 import { Suspense } from "react";
 import LoadingCard from "@/ui/LoadingCard";
 import ArrivalsCard from "../new arrivals/ArrivalsCard";
+import Button from "@/ui/Button";
 
 async function TopSelling() {
 
@@ -37,7 +38,9 @@ async function TopSelling() {
             }
             </div>
 
-            <ViewAll/>
+            {/* <ViewAll/> */}
+            <div className="lg:flex lg:justify-center" >
+            <Button text={"still under development"}/></div>
 
             <hr className="w-[100%] bg-stone-700 mt-6 lg:mt-8 xl:mt-10  mb-2 2xl:mt-12"/>
 

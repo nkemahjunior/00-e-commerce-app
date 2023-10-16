@@ -81,9 +81,14 @@ function AllArrivalsDetail({data,error}) {
             return;
         }
         
-        
-        const dataWithsizes = {...data,selectedSize:size,
-        quantity:ref.current}
+        const {price} = data
+        const dataWithsizes = {
+            ...data,
+            price:quantity * price,
+            selectedSize:size,
+            quantity:ref.current,
+            deleteId:Math.random()
+        }
  
         
 
@@ -102,12 +107,12 @@ function AllArrivalsDetail({data,error}) {
           
         if(initialCart.length > 0 ) {
 
-            const duplicateItems = initialCart.some((el) => el.id === data.id)
+            const duplicateItems = initialCart.some((el) => el.id === data.id && el.selectedSize === size)
             
             
 
             if(duplicateItems){
-                toast.error("item is already in cart.. if you want more than one of this item ,you can increase the quantity")
+                toast.error("item is already in cart.. if you want this very item,you can add the quantity or select a different size..")
             }
 
             else{
@@ -132,15 +137,15 @@ function AllArrivalsDetail({data,error}) {
 
     return (
         <div className="px-2 py-4 md:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[6rem]" >
-            <div className="border-solid border-4 border-green-600
+            <div className="
             md:grid md:grid-cols-2  md:gap-x-4
             ">
 
-                <div className="border-solid border-4 border-red-600 relative h-[20rem]  md:h-[35rem] bg-[#F0F0F0]">
+                <div className=" relative h-[20rem]  md:h-[35rem] bg-[#F0F0F0]">
                     <Image src={data.image} alt={`image of ${data.name}`} fill sizes="100vw"/>
                 </div>
 
-                <div className="border-solid border-4 border-yellow-600 h-fit space-y-2 phones:mt-2 md:h-fit xl:h-[35rem]">
+                <div className=" h-fit space-y-2 phones:mt-2 md:h-fit xl:h-[35rem]">
 
                     <h1 className="font-extrabold text-3xl md:text-4xl capitalize">{data.name}</h1>
 

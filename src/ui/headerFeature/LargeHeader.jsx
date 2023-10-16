@@ -16,18 +16,10 @@ function LargeHeader() {
   const updateCount = useSelector(state => state.showCart.updateItemCount);
   const numOfcartItems = useSelector((state) => state.showCart.numberOfItemsInCart);
   const dispatch = useDispatch()
-  const ref = useRef()
+
 
  
 
-  useEffect(function(){
-    function close(e){
-      if ( ref.current && !ref.current.contains(e.target) ) dispatch(hideCart())
-    }
-
-    document.addEventListener('click',close,true)
-   return () => document.removeEventListener('click',close,true)
-  },[])
 
 
   // console.log(numberOfItemsInCart.length)
@@ -78,7 +70,7 @@ function LargeHeader() {
 
           <li className=" cursor-pointer flex"
           onClick={/*() => setShow((v) => !v)*/ handleShowShoppingCart}
-          ref={ref}>
+          >
             <BsCart /> <p className= {`${ updateCount === true ? 'animate-bounce ' : ''} -mt-2 bg-black text-white max-h-fit w-fit flex items-center rounded-[50%]`}>{numOfcartItems}</p> 
           </li>
 

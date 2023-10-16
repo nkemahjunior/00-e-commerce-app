@@ -23,6 +23,10 @@ async function Arrivals() {
         homePageNewArrivals.push(newArrivals[i])
     }
 
+
+    // console.log(homePageNewArrivals )
+    // console.log("boyc")
+
     
 
 

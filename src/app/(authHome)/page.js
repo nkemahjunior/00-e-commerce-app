@@ -11,6 +11,8 @@ import LoadingHero from "@/ui/Hero/LoadingHero";
 
 
 
+
+
 const Hero = dynamic(() => import("@/ui/Hero/Hero"),{
   ssr:false,
   loading:() => <LoadingHero/>
@@ -19,6 +21,8 @@ const Hero = dynamic(() => import("@/ui/Hero/Hero"),{
 
 
 export default  function Home() {
+
+ 
  
   return (
     <>
@@ -28,6 +32,8 @@ export default  function Home() {
       <TopSelling />
       <Categories />
       <Reviews />
+      
+      
     </>
   );
 }

@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 function MobileHeader() {
 
   const showCartOrNot = useSelector(state => state.showCart.show);
-  const cartItems = useSelector((state) => state.showCart.itemsInCart);
+  const numOfcartItems = useSelector((state) => state.showCart.numberOfItemsInCart);
   const dispatch = useDispatch()
 
   const [showSearch, setShowSearch] = useState(false);
@@ -116,7 +116,7 @@ function MobileHeader() {
           </li>
 
           <li className=" cursor-pointer flex" onClick={ handleShowShoppingCart} ref={ref2}>
-            <BsCart /> <p className=" -mt-2 bg-black text-white max-h-fit w-fit flex items-center rounded-[50%]">{cartItems.length}</p> 
+            <BsCart /> <p className=" -mt-2 bg-black text-white max-h-fit w-fit flex items-center rounded-[50%]">{numOfcartItems}</p> 
           </li>
           <li className=" cursor-pointer">
             <VscAccount />

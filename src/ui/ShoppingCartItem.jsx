@@ -18,8 +18,8 @@ function ShoppingCartItem({data}) {
 
                 <p className="uppercase  font-medium ">{data.name}</p>
                 <p className="font-medium">${data.price}</p>
-                <p className="capitalize">quantity:1  h</p>
-                <p className="capitalize">size: {data.id}</p>
+                <p className="capitalize">quantity: {data.quantity}</p>
+                <p className="capitalize">size: {data.selectedSize}</p>
                 
             </div>
         </div>

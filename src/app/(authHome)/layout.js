@@ -7,6 +7,9 @@ import ReactQueryProvider from './ReactQueryProvider'
 import ReactHotToast from './ReactHotToast'
 import ShoppingCart from '@/ui/ShoppingCart'
 import ReduxProvider from './Redux'
+import NumberOfItemsOnMount from '@/ui/NumberOfItemsOnMount'
+
+
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -17,6 +20,8 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+
+ 
 
 
 
@@ -29,6 +34,7 @@ export default function RootLayout({ children }) {
         <ReactQueryProvider>
          <ReduxProvider>
             <ReactHotToast/>
+            <NumberOfItemsOnMount/>
             <BothHeaders/>
             <ShoppingCart/>
             

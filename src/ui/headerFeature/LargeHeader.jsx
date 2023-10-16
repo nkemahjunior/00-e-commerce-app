@@ -13,9 +13,12 @@ import { useEffect, useRef } from "react";
 function LargeHeader() {
 
   const showCartOrNot = useSelector(state => state.showCart.show);
-  const cartItems = useSelector((state) => state.showCart.itemsInCart);
+  const updateCount = useSelector(state => state.showCart.updateItemCount);
+  const numOfcartItems = useSelector((state) => state.showCart.numberOfItemsInCart);
   const dispatch = useDispatch()
   const ref = useRef()
+
+ 
 
   useEffect(function(){
     function close(e){
@@ -25,6 +28,11 @@ function LargeHeader() {
     document.addEventListener('click',close,true)
    return () => document.removeEventListener('click',close,true)
   },[])
+
+
+  // console.log(numberOfItemsInCart.length)
+  
+
 
 
   function handleShowShoppingCart(){
@@ -71,11 +79,15 @@ function LargeHeader() {
           <li className=" cursor-pointer flex"
           onClick={/*() => setShow((v) => !v)*/ handleShowShoppingCart}
           ref={ref}>
-            <BsCart /> <p className=" -mt-2 bg-black text-white max-h-fit w-fit flex items-center rounded-[50%]">{cartItems.length}</p> 
+            <BsCart /> <p className= {`${ updateCount === true ? 'animate-bounce ' : ''} -mt-2 bg-black text-white max-h-fit w-fit flex items-center rounded-[50%]`}>{numOfcartItems}</p> 
           </li>
 
-          <li className=" cursor-pointer">
+          <li className=" cursor-pointer  ">
             <VscAccount />
+          </li>
+
+          <li className={`cursor-pointer `}>
+            test
           </li>
         </div>
       </ul>

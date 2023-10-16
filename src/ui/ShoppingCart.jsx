@@ -4,15 +4,12 @@
 import { useSelector } from "react-redux"
 import ShoppingCartItem from "./ShoppingCartItem"
 
+
 function ShoppingCart() {
 
-    const cartItems = useSelector((state) => state.showCart.itemsInCart)
-    
-   
-
-    
-
+     const cartItems = useSelector((state) => state.showCart.itemsInCart)
     const showCart = useSelector(state => state.showCart.show)
+
 
     return (
         <div className={`

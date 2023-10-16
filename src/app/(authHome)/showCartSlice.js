@@ -23,13 +23,17 @@ export const showCartSlice = createSlice({
 
     addItemToCart:(state,action)  => {
       
-      state.itemsInCart.unshift(action.payload)
+      state.itemsInCart = action.payload
+    },
+
+    increaseNumberOfItems: (state,action) =>{
+      state.numberOfItemsInCart = action.payload
     }
 
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { showCart,hideCart,addItemToCart} = showCartSlice.actions
+export const { showCart,hideCart,addItemToCart,increaseNumberOfItems} = showCartSlice.actions
 
 export default showCartSlice.reducer

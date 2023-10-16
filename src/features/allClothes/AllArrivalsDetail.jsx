@@ -1,67 +1,134 @@
 "use client"
 
-import { addItemToCart } from "@/app/(authHome)/showCartSlice";
+
+import { addItemToCart,  increaseNumberOfItems} from "@/app/(authHome)/showCartSlice";
 // export async function generateStaticParams() {
 
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-    
-//     const { data, error } = await supabase
-//     .from('clothes','name')
-//     .select('id')
-    
-   
-//     return data.map((el) => ({
-//      info:[`${el.name}`, `${el.id}`]
-//     }))
-//   }
 
 function AllArrivalsDetail({data,error}) {
 
-    const dispatch = useDispatch();
-   
-    const cartItems = useSelector((state) => state.showCart.itemsInCart)
-
+    
     const [show,setShow] = useState(false)
+    const [quantity,setQuantity] = useState(1)
+    const [noSizeError,SetNoSizeError] = useState(false)
+    const [size,setSize] = useState("")
+    // let noSizeError = false;
+    let ref = useRef(1)
+    const dispatch = useDispatch()
+    
+
+    
+    let initialCart = [];
+
     function handleShow(){
         setShow((v) => !v)
     }
 
-    if(error) toast.error("there was an error loading this item. Refresh and try again")
 
 
+    useEffect(function(){
+        
+       const storedItems = localStorage.getItem("cart") ;
+       initialCart = storedItems ? JSON.parse(storedItems) : []
 
+
+       if(initialCart.length === 0){
+       localStorage.setItem("cart",JSON.stringify(initialCart))}
+
+        // dispatch(increaseNumberOfItems(initialCart.length))
+
+     },["cart",initialCart]
+    )
+
+
+   
+    
+    function handleGetSize(e){
+        if(noSizeError ) SetNoSizeError(false)
+        const {size} = e.target.dataset
+        setSize(size)
+
+    }
+
+    function handleGetQuantity(e){
+        ref.current = e.target.value
+    }
+
+    function handleAddQuantity(){
+        ref.current = ref.current + 1
+        setQuantity((q) => q + 1)
+    }
+
+    function handleDecreaseQuantity(){
+        if(ref.current === 1) return
+        if(quantity === 1) return
+
+        ref.current = ref.current - 1
+        setQuantity((q) => q - 1)
+    }
+
+    
+    
     function handleAddItemToCart(){
-        // console.log(showCart)
-        // cartItems.length === 0 ? dispatch(addItemToCart(data)) : 
-
-      if(cartItems.length === 0) dispatch(addItemToCart(data))
-
-      if(cartItems.length > 0){
-        for(let i = 0 ; i <= cartItems.length ; i++){
-
-            if(cartItems[i].id !== data.id){
-                dispatch(addItemToCart(data))
-                return
-            }
-
-            else if ((cartItems[i].id === data.id)) {
-                toast.error("item is already in cart.. if you want more than one of this item ,you can increase the quantity")
-                return
-            }
+    
+        if( typeof size === 'undefined' || size === "") {
+            SetNoSizeError(true)
+            return;
         }
-      }
-      
+        
+        
+        const dataWithsizes = {...data,selectedSize:size,
+        quantity:ref.current}
  
+        
 
-        // cartItems.forEach( (el) => (
-        //       el.id !== data.id ?  dispatch(addItemToCart(data)) : toast.error("item is already in cart.. if you want more than one of this item ,you can increase the quantity")
-        // ))
+        if(initialCart?.length === 0 ) {
+
+            initialCart = [dataWithsizes]
+            localStorage.setItem("cart",JSON.stringify(initialCart))
+            dispatch(increaseNumberOfItems(initialCart.length))
+            dispatch(addItemToCart(initialCart))
+
+            
+            // SetNoSizeError(false)
+            return;
+        }
+        
+          
+        if(initialCart.length > 0 ) {
+
+            const duplicateItems = initialCart.some((el) => el.id === data.id)
+            
+            
+
+            if(duplicateItems){
+                toast.error("item is already in cart.. if you want more than one of this item ,you can increase the quantity")
+            }
+
+            else{
+
+
+                initialCart = [dataWithsizes,...initialCart]
+
+                localStorage.setItem("cart",JSON.stringify(initialCart))
+                dispatch(increaseNumberOfItems(initialCart.length))
+                dispatch(addItemToCart(initialCart))
+                // SetNoSizeError(false)
+            }
+
+    
+        }
+
         
     }
+    
+    if(error) toast.error("there was an error loading this item. Refresh and try again")
+
 
     return (
         <div className="px-2 py-4 md:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[6rem]" >
@@ -88,35 +155,76 @@ function AllArrivalsDetail({data,error}) {
 
                     <div className={`max-h-[fit] space-y-2
                     ${!show && "hidden"} transition-all delay-75
-                    md:flex md:flex-wrap md:space-x-2 md:pb-2 md:pt-2 xl:pb-8 xl:pt-4`}>
+                    md:flex md:flex-wrap md:space-x-2  md:pt-2  xl:pt-4 
+                    ${noSizeError === true ? '':'md:pb-2 xl:pb-8'}`}>
 
                         
+                        
+                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors    delay-75 px-4 py-2  font-medium uppercase" 
+                        onClick = {handleGetSize} 
+                        data-size = "XXS"
+                        
+                            >
+                                xxs
+                                <span  className=" text-xs font-light tracking-widest" > 
+                                   (0 remaining)
+                                </span>
+                        </p>
 
-                        <p className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium" >x-x-small<span className=" text-xs font-light tracking-widest"> (0 remaining)</span></p>
+                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" 
+                        onClick = {handleGetSize}
+                        data-size = "XS" >
+                            xs<span className=" text-xs font-light tracking-widest" > 
+                                (0 remaining)
+                            </span>
+                        </p>
 
-                        <p className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium" >x-small<span className=" text-xs font-light tracking-widest"> (0 remaining)</span></p>
+                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
+                        data-size = "S">
+                            s
+                            <span className=" text-xs font-light tracking-widest" > (0 remaining)</span>
+                        </p>
 
-                        <p className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium">small<span className=" text-xs font-light tracking-widest"> (0 remaining)</span></p>
+                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
+                        data-size = "M">
+                            m<span className=" text-xs font-light tracking-widest" > (0 remaining)</span>
+                        </p>
 
-                        <p className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium">medium<span className=" text-xs font-light tracking-widest"> (0 remaining)</span></p>
+                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
+                        data-size = "L">
+                            l<span className=" text-xs font-light tracking-widest" > (0 remaining)</span>
+                        </p>
 
-                        <p className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium">large<span className=" text-xs font-light tracking-widest"> (0 remaining)</span></p>
+                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
+                        data-size="XL">
+                            xl
+                            <span className=" text-xs font-light tracking-widest" > (0 remaining)</span>
+                        </p>
 
-                        <p className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium">x-large<span className=" text-xs font-light tracking-widest"> (0 remaining)</span></p>
-
-                        <p className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium">2x-large<span className=" text-xs font-light tracking-widest"> (0 remaining)</span></p>
+                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
+                        data-size="2XL">
+                            2xl<span className=" text-xs font-light tracking-widest" > (0 remaining)</span>
+                        </p>
 
                         
                     </div>
+
+                    <p className={`${ noSizeError === true ? '' : 'hidden'} text-red-600 md:pb-2 xl:pb-8`}>please choose a size</p>
 
                     <hr className="  bg-stone-400 mt-2 "/>
 
                     <div className="flex space-x-2 mt-2 pt-4 md:pt-2 xl:pt-8">
 
                         <div className="flex bg-[#F0F0F0] p-2 rounded-xl space-x-2 w-fit md:w-[30%] border-2 border-solid border-white">
-                            <button className="font-bold md:hover:scale-95">-</button>
-                            <input type="number" placeholder="1" className="w-[3rem] outline-none  md:w-full bg-[#F0F0F0] text-center placeholder:text-black"/>
-                            <button className="font-bold md:hover:scale-95">+</button>
+
+                            <button className="font-bold md:hover:scale-95"
+                            onClick={handleDecreaseQuantity}>-</button>
+
+                            <input type="number" placeholder={quantity} className="w-[3rem] outline-none  md:w-full bg-[#F0F0F0] text-center placeholder:text-black" onChange={handleGetQuantity}
+                            />
+
+                            <button className="font-bold md:hover:scale-95"
+                            onClick={handleAddQuantity}>+</button>
                         </div>
 
                         <button className="

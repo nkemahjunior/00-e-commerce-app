@@ -73,7 +73,7 @@ function MobileHeader() {
         <span className="capitalize underline font-semibold">Sign up Now</span>
       </div>
 
-      <ul className="flex items-center justify-between  px-2  py-2  bg-white backdrop-filter backdrop-blur-lg bg-opacity-10 h-[4rem]">
+      <ul className="flex items-center justify-between   760:justify-center  px-2  py-2  bg-white backdrop-filter backdrop-blur-lg bg-opacity-10 h-[4rem]">
         <div className="flex items-center space-x-2">
           <li onClick={handleShowNav}>
             <div className="bg-black w-6 h-1 mb-1"></div>
@@ -82,8 +82,9 @@ function MobileHeader() {
 
           <Link href={"/"}>
           <li
-            className={`font-bold capitalize ${
-              showSearch === true ? "hidden" : ""
+
+            className={`  760:block font-bold capitalize ${
+              showSearch === true ? "phones:hidden" : ""
             } transition-all`}
           >
 
@@ -92,8 +93,8 @@ function MobileHeader() {
 
           <li
             className={` w-[12rem] rounded-md  overflow-hidden  ${
-              showSearch === true ? "" : "hidden"
-            }  transition-all`}
+              showSearch === true ? "" : "phones:hidden"
+            }  transition-all 760:block`}
           >
             <input
               type="search"

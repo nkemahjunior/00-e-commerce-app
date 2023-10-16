@@ -36,7 +36,7 @@ function BothHeaders() {
 
     return (
         <>
-      {windowSize.innerWidth < 768 ? <MobileHeader /> : <LargeHeader />}
+      {windowSize.innerWidth < 1024 ? <MobileHeader /> : <LargeHeader />}
       </>
     )
 }

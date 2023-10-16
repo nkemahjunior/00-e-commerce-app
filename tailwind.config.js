@@ -39,7 +39,7 @@ module.exports = {
 
       },
       animation:{
-        slide:'slide 0.5s 0.1s infinite'
+        slide:'slide 0.5s 0.1s ease-in-out'
       }
 
 

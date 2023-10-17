@@ -142,7 +142,7 @@ function AllArrivalsDetail({data,error}) {
             ">
 
                 <div className=" relative h-[20rem]  md:h-[35rem] bg-[#F0F0F0]">
-                    <Image src={data.image} alt={`image of ${data.name}`} fill sizes="100vw"/>
+                    <Image src={data.image.trim()} alt={`image of ${data.name}`} fill sizes="100vw"/>
                 </div>
 
                 <div className=" h-fit space-y-2 phones:mt-2 md:h-fit xl:h-[35rem]">

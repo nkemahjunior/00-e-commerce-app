@@ -11,10 +11,19 @@ function ShoppingCartItem({data}) {
     const itemsInStorage = localStorage.getItem('cart')
     const itemsInStorageToObject = JSON.parse(itemsInStorage)
     const holdItemsFromStorage = [...itemsInStorageToObject].filter((el) => el.deleteId !== data.deleteId)
+    
 
+    console.log(holdItemsFromStorage)
+
+  
     localStorage.setItem('cart',JSON.stringify(holdItemsFromStorage))
+    
     dispatch(increaseNumberOfItems(holdItemsFromStorage.length))
     dispatch(addItemToCart(holdItemsFromStorage))
+
+
+    //const test =localStorage.getItem('cart')
+   // console.log(JSON.parse(test))
    
    }
   

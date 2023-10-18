@@ -108,6 +108,9 @@ function AllArrivalsDetail({data,error}) {
         if(initialCart.length > 0 ) {
 
             const duplicateItems = initialCart.some((el) => el.id === data.id && el.selectedSize === size)
+
+            console.log(duplicateItems)
+            console.log(initialCart)
             
             
 
@@ -137,6 +140,7 @@ function AllArrivalsDetail({data,error}) {
 
     return (
         <div className="px-2 py-4 md:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[6rem]" >
+
             <div className="
             md:grid md:grid-cols-2  md:gap-x-4
             ">

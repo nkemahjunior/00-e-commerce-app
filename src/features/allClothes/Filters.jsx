@@ -4,12 +4,14 @@ import { LiaExternalLinkAltSolid } from "react-icons/lia"
 import Link from "next/link"
 import { usePathname, useRouter, useSearchParams} from "next/navigation"
 import { useCallback, useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { hideTheFilter } from "@/app/(authHome)/showCartSlice"
 
 
 
 
 
-function Filters({show}) {
+function Filters() {
 
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -19,6 +21,13 @@ function Filters({show}) {
     const[rangeTo,setRangeTo] = useState(null)
 
     const [rangeError,setRangeError] = useState(false)
+
+    const dispatch = useDispatch()
+    const showFilter = useSelector((state) => state.showCart.showFilter)
+
+    useEffect(function(){
+        dispatch(hideTheFilter())
+    },[pathname,searchParams])
 
    
 
@@ -66,7 +75,7 @@ function Filters({show}) {
     
 
     return (
-        <div className= {` ${show === true  ? ' ' :'hidden'}
+        <div className= {` ${ showFilter === true ? ' ' :'hidden'}
         absolute  xl:sticky  top-24 
          bg-white md:relative md:block  h-screen w-[90vw] md:w-[30%] lg:w-[20%] z-10 p-4`}
          

@@ -7,11 +7,22 @@ import Navigation from "./Navigation"
 import Pagination from "./Pagination"
 import Title from "./Title"
 import { usePathname } from "next/navigation"
+import { useDispatch, useSelector } from "react-redux"
+import { hideTheFilter, showTheFilter } from "@/app/(authHome)/showCartSlice"
 
 function AllClothesLayout({page}) {
-    const [show,setShow] = useState(false)
+    
+    const dispatch = useDispatch()
+    const showFilter = useSelector((state) => state.showCart.showFilter)
+
     function handleShow(){
-        setShow((show) => !show)
+        //setShow((show) => !show)
+
+        if(showFilter === false)
+        dispatch(showTheFilter())
+
+        if(showFilter === true)
+        dispatch(hideTheFilter())
     }
     
     const pathname = usePathname()
@@ -40,7 +51,7 @@ function AllClothesLayout({page}) {
                 </div>
 
                 <div className="md:flex md:space-x-6 ">
-                    <Filters show={show} />
+                    <Filters  />
                     
                     {page}
                     

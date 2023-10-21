@@ -12,7 +12,7 @@ useEffect(function(){
 
     if(items){
         const itemsTOObject = JSON.parse(items)
-        console.log(itemsTOObject)
+       // console.log(itemsTOObject)
         dispatch(increaseNumberOfItems(itemsTOObject.length))
         dispatch(addItemToCart(itemsTOObject))
     }

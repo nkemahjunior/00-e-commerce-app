@@ -3,7 +3,7 @@ import AllArrivals from "@/features/allClothes/AllArrivals";
 
 function page() {
   return (
-    <div className="border-solid border-lime-600 border-4
+    <div className="
     h-fit w-full overflow-y-scroll">
       
       <AllArrivals/>

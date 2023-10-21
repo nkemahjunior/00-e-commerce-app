@@ -1,5 +1,6 @@
 import { getADress } from "@/api/getADress"
 import AllArrivalsDetail from "@/features/allClothes/AllArrivalsDetail"
+import Navigation from "@/features/allClothes/Navigation"
 import GlobalLoading from "@/ui/GlobalLoading"
 import { Suspense } from "react"
 
@@ -15,7 +16,7 @@ async function page({params}) {
     
      return (
         <Suspense fallback={<GlobalLoading/>}>
-            dfghjklm
+            <Navigation/>
             <AllArrivalsDetail data={detail} error={error} />
         </Suspense>
     )

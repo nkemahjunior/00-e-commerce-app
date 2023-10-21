@@ -66,8 +66,8 @@ function Filters({show}) {
 
     return (
         <div className= {` ${show === true ? ' ' :'hidden'}
-        absolute
-         bg-white md:relative md:block border-solid border-red-600 border-4 h-screen w-full md:w-[30%] lg:w-[20%] z-10 p-4`}>
+        absolute  xl:sticky  top-24 
+         bg-white md:relative md:block  h-screen w-full md:w-[30%] lg:w-[20%] z-10 p-4`}>
             <div >
                 <h1 className="capitalize font-bold text-2xl ">filters</h1>
 
@@ -108,7 +108,7 @@ function Filters({show}) {
                     <label htmlFor="sort price " className="font-bold">sort by price</label>
 
                     <select name="sort" id="sort" onChange={onValueChange}>
-                        <option value="nosort">no sort</option>
+                        <option value="nosort">newest</option>
                         <option value="highest">from highest</option>
                         <option value="lowest">from lowest</option>
                     </select>

@@ -23,14 +23,15 @@ function AllClothesLayout({page}) {
 
     
     return (
-        <div>
-            <div>
+        
+            <div className=" ">
                 <div className="  ">
                 
                     <Navigation/>
-                    <div className=" phones:flex phones:justify-between sticky top-0">
-                        <Title/>
-                        <div className="flex justify-end md:hidden"
+                    <div className=" phones:flex phones:justify-between ">
+                        {/* <Title/> */}
+                        <div></div>
+                        <div className="flex justify-end md:hidden "
                         onClick={handleShow}
                         >
                             <FilterButton/>
@@ -38,7 +39,7 @@ function AllClothesLayout({page}) {
                     </div>
                 </div>
 
-                <div className="md:flex md:space-x-6">
+                <div className="md:flex md:space-x-6 ">
                     <Filters show={show}/>
                     
                     {page}
@@ -48,7 +49,7 @@ function AllClothesLayout({page}) {
 
                 
             </div>
-        </div>
+       
     )
 }
 

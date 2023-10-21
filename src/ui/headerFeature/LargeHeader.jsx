@@ -52,7 +52,10 @@ function LargeHeader() {
 
         <li className=" font-light capitalize cursor-pointer">Shop</li>
         <li className=" font-light capitalize cursor-pointer">on sale</li>
-        <li className=" font-light capitalize cursor-pointer">new arrivals</li>
+        <Link href="/newArrivals?page=1"   >
+          <li className=" font-light capitalize cursor-pointer">new arrivals</li>
+        </Link>
+        
         <li className=" font-light capitalize cursor-pointer">brands</li>
 
         <li className="flex items-center bg-[#f2f0f1] p-1 w-[10rem] lg:w-[20rem] xl:w-[25rem] 2xl:w-[28rem] rounded-lg lg:rounded-xl cursor-pointer shadow-lg">

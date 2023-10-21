@@ -32,7 +32,7 @@ async function Arrivals() {
 
     return (
         
-        <div className="mt-4 lg:mt-6   px-1 md:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[6rem] border-solid border-blue-600 border-2">
+        <div className="mt-4 lg:mt-6   px-1 md:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[6rem] ">
 
             <h1 className=" mb-2 md:mb-4 capitalize font-bold text-2xl text-center lg:text-3xl xl:text-4xl 2xl:text-5xl lg:mb-6 xl:mb-8 2xl:mb-10">new arrivals</h1>
 

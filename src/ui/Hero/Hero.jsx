@@ -7,6 +7,7 @@ import {PiStarFourFill} from "react-icons/pi"
 import Image from "next/image"
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 
 
@@ -51,7 +52,10 @@ function Hero() {
 
                         <p className="font-light md:leading-tight"> Shop the latest trends in women&rsquo;s, men&rsquo;s and kid&rsquo;s clothing at Zeco Shopping, with new arrivals dropping every week</p>
 
-                        <button className="w-full text-center bg-black text-white uppercase font-semibold rounded-xl py-1 md:w-[40%]">shop now</button>
+                        <Link href="/newArrivals?page=1"  className="mt-2 block" >
+                            <button className="w-full text-center bg-black text-white uppercase font-semibold rounded-xl py-1 md:w-[40%]">shop now</button>
+                        </Link>
+                        
                     </div>
 
                     <div className=" space-y-2 mt-2 xl:mt-6">

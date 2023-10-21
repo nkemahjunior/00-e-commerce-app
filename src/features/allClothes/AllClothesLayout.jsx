@@ -40,7 +40,7 @@ function AllClothesLayout({page}) {
                 </div>
 
                 <div className="md:flex md:space-x-6 ">
-                    <Filters show={show}/>
+                    <Filters show={show} />
                     
                     {page}
                     

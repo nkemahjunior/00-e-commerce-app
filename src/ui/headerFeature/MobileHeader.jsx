@@ -67,6 +67,7 @@ function MobileHeader() {
 
 
   return (
+    <>
     <nav className="sticky top-0 z-20">
       <div className=" bg-black text-center text-white font-extralight   capitalize">
         sign up and 20% off to your first order.
@@ -147,6 +148,8 @@ function MobileHeader() {
         </div>
       </div>
     </nav>
+    <hr className="w-[100%] bg-stone-400 h-[0.5px] mt-2 "/>
+    </>
   );
 }
 

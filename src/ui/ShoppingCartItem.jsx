@@ -13,7 +13,7 @@ function ShoppingCartItem({data}) {
     const holdItemsFromStorage = [...itemsInStorageToObject].filter((el) => el.deleteId !== data.deleteId)
     
 
-    console.log(holdItemsFromStorage)
+    //console.log(holdItemsFromStorage)
 
   
     localStorage.setItem('cart',JSON.stringify(holdItemsFromStorage))

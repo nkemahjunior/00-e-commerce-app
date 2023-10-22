@@ -76,8 +76,8 @@ function Filters() {
 
     return (
         <div className= {` ${ showFilter === true ? ' ' :'hidden'}
-        absolute  xl:sticky  top-24 
-         bg-white md:relative md:block  h-screen w-[90vw] md:w-[30%] lg:w-[20%] z-10 p-4`}
+        absolute  md:sticky  top-24 
+         bg-white  md:block  h-screen w-[90vw] md:w-[30%] lg:w-[20%] z-10 p-4`}
          
          >
             <div >

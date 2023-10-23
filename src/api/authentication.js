@@ -1,10 +1,11 @@
+import { supabaseKey, supabaseUrl } from '@/services/supabase url&key';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
 
 export async function handleLogIn ({email,password}) {
 
     
-    const supabase = createClientComponentClient()
+    const supabase = createClientComponentClient({supabaseUrl,supabaseKey})
 
     const{data,error} = await supabase.auth.          signInWithPassword({
         email,
@@ -20,7 +21,7 @@ export async function handleLogIn ({email,password}) {
 
 
 export async function handleSignUp({ fullName, email, password}){
-    const supabase = createClientComponentClient()
+    const supabase = createClientComponentClient({supabaseUrl,supabaseKey})
 
     const{data,error} = await supabase.auth.signUp({
         email,

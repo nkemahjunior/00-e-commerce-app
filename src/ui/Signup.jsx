@@ -10,16 +10,14 @@ import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 
-import { useRouter } from 'next/navigation'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+
 import { useSignUp } from '@/app/(noAuth)/signup/useSignUp'
 
 function Signup() {
 
     const {signup,isLoading} = useSignUp();
 
-    const router = useRouter();
-    const supabase = createClientComponentClient()
+ 
 
     const { register,formState: { errors }, handleSubmit } = useForm()
 

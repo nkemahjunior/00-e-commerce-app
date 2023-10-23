@@ -35,7 +35,7 @@ function ShoppingCartItem({data}) {
 
                 <div className=" 
                 h-[7rem] w-[7rem] relative  ">
-                    <Image src={data.image} alt={`photo of ${data.name}`} fill/>
+                    <Image src={data.image.trim()} alt={`photo of ${data.name}`} fill/>
                 </div>
 
             </div>

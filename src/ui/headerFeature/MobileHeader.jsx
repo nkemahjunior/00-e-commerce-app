@@ -148,7 +148,7 @@ function MobileHeader() {
         </div>
       </div>
     </nav>
-    <hr className="w-[100%] bg-stone-400 h-[0.5px] mt-2 "/>
+    <hr className="w-[100%] bg-stone-400 h-[0.5px] mt-1 "/>
     </>
   );
 }

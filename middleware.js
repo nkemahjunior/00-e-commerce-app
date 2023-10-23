@@ -7,3 +7,5 @@ export async function middleware(req) {
   await supabase.auth.getSession()
   return res
 }
+
+

@@ -3,7 +3,7 @@
 
 import { useDispatch, useSelector } from "react-redux"
 import ShoppingCartItem from "./ShoppingCartItem"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { hideCart } from "@/app/(authHome)/showCartSlice"
 import Link from "next/link"
 
@@ -60,7 +60,10 @@ function ShoppingCart() {
 
             <hr  className="bg-stone-400 h-[0.15rem]"/>
             <div className="space-y-2 mt-2">
-                <button className="bg-black text-white p-4 text-center w-full uppercase md:hover:scale-90 border-2 border-solid border-black">checkout</button>
+                
+                <Link href={"/login"}>
+                    <button className="bg-black text-white p-4 text-center w-full uppercase md:hover:scale-90 border-2 border-solid border-black">checkout</button>
+                </Link>
 
                 <Link href={'/shoppingBag'} className="block">
                      <button className="bg-white text-black p-4 text-center w-full uppercase md:hover:scale-90 border-2 border-solid border-black">view shopping bag</button>

@@ -2,6 +2,7 @@
 
 import { useSelector } from "react-redux"
 import ShoppingBagItem from "./ShoppingBagItem"
+import Link from "next/link"
 
 
 
@@ -77,9 +78,11 @@ function ShoppingBag() {
                             
                         </ul>
 
-                        <button className="text center uppercase text-white bg-black p-3 w-full mt-4 lg:hover:scale-95 transition-all lg:delay-75 ">
-                            checkout
-                        </button>
+                        <Link href={"/login"} className="block" >
+                            <button className="text center uppercase text-white bg-black p-3 w-full mt-4 lg:hover:scale-95 transition-all lg:delay-75 ">
+                                checkout
+                            </button>
+                        </Link>
 
                     </div>
                 </div>

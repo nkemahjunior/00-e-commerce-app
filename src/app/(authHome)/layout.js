@@ -10,6 +10,12 @@ import ReduxProvider from './Redux'
 import NumberOfItemsOnMount from '@/ui/NumberOfItemsOnMount'
 
 
+// import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+// import { cookies } from "next/headers";
+// import { redirect } from "next/navigation";
+// import { revalidatePath } from 'next/cache'
+
+
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,9 +25,18 @@ export const metadata = {
   description: 'buy clothes online in bamenda, buea,douala,cameroon ',
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
 
- 
+
+
+  // const supabase = createServerComponentClient({cookies});
+
+  // const {data:{ session }} = await supabase.auth.getSession();
+
+  // if(!session) {
+  //     redirect('/login')
+  // }
+
 
 
 

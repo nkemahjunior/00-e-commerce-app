@@ -77,7 +77,7 @@ import toast from "react-hot-toast";
 
                 <div className=" h-[7rem] w-[7rem]
                 lg:h-[10rem] lg:w-[10rem] relative  ">
-                    <Image src={data.image} alt={`photo of ${data.name}`} fill/>
+                    <Image src={data.image.trim()} alt={`photo of ${data.name}`} fill/>
                 </div>
 
             </div>

@@ -7,8 +7,9 @@ import { redirect } from "next/navigation";
 
 async function page() {
     
+    const cookieStore = cookies()
 
-    const supabase = createServerComponentClient({cookies},{supabaseUrl,supabaseKey});
+    const supabase = createServerComponentClient({cookies: () => cookieStore},{supabaseUrl,supabaseKey});
 
     const {data:{ session }} = await supabase.auth.getSession();
 

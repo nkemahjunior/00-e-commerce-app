@@ -8,7 +8,9 @@ import { supabaseKey, supabaseUrl } from "@/services/supabase url&key";
 async function page() {
 
     
-        const supabase = createServerComponentClient({cookies},{supabaseUrl,supabaseKey});
+    const cookieStore = cookies()
+
+    const supabase = createServerComponentClient({cookies: () => cookieStore},{supabaseUrl,supabaseKey});
 
         const {data:{ session }} = await supabase.auth.getSession();
 

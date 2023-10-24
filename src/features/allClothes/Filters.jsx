@@ -75,8 +75,8 @@ function Filters() {
     
 
     return (
-        <div className= {` ${ showFilter === true ? ' ' :'hidden'}
-        absolute  md:sticky  top-24 
+        <div className= {` ${ showFilter === true ? "translate-x-[0%]" : "translate-x-[-100%]"}
+        absolute  md:sticky  top-24  transition-all    duration-200
          bg-white  md:block  h-screen w-[90vw] md:w-[30%] lg:w-[20%] z-10 p-4`}
          
          >

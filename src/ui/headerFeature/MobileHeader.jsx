@@ -120,14 +120,14 @@ function MobileHeader() {
       </ul>
 
       <div
-        className={`  absolute top-0  w-[100dvw] h-[100dvh]  ${
-          showNav === true ? "" : "hidden"
-        } transition-all
-         backdrop-filter backdrop-blur-lg bg-opacity-1  `}
+        className={`  absolute top-0  w-[100dvw] h-[100dvh] ${
+          showNav === true ? "translate-x-[0%]" : "translate-x-[-100%]"
+        } transition-all    duration-200
+         backdrop-filter backdrop-blur-lg bg-opacity-1   `}
          
       >
         <div
-          className=" pl-4  border-solid border-2  shadow-lg bg-white pb-4  h-[100vh] w-[80vw]"
+          className={`pl-4  border-solid border-2  shadow-lg bg-white pb-4  h-[100vh] w-[80vw] `}
           ref={ref}
         >
           <ul className="space-y-5 mt-2">

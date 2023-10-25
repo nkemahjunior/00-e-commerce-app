@@ -6,14 +6,23 @@ import ShoppingCartItem from "./ShoppingCartItem"
 import { useEffect, useRef } from "react"
 import { hideCart } from "@/app/(authHome)/showCartSlice"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 
 function ShoppingCart() {
+
+    const path = usePathname();
 
      const cartItems = useSelector((state) => state.showCart.itemsInCart)
     const showCart = useSelector(state => state.showCart.show)
     const ref = useRef()
     const dispatch = useDispatch()
+
+
+    useEffect(function(){
+        if(showCart === true)
+        dispatch(hideCart())
+    },[path])
 
     useEffect(function(){
         function close(e){
@@ -32,7 +41,7 @@ function ShoppingCart() {
     return (
         <div className={`
         ${showCart === false  ? 'hidden':''}
-         fixed   md:right-[4rem] z-[100] bg-white phones:h-fit pb-2 px-2 md:px-4 phones:w-full`} 
+         fixed   md:right-[4rem] z-[90] bg-white phones:h-fit pb-2 px-2 md:px-4 phones:w-full`} 
          ref={ref}> 
 
         <div className="   h-full">

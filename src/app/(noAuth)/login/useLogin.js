@@ -12,6 +12,7 @@ export function useLogin(){
         mutationFn:({email,password}) => handleLogIn({email,password}),
         onSuccess:(data) =>{ 
            router.refresh()
+           //router.replace('/signup')
            
         },
         onError: (err) => {

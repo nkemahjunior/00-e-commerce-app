@@ -113,9 +113,9 @@ function MobileHeader() {
           <li className=" cursor-pointer flex" onClick={ handleShowShoppingCart} >
             <BsCart /> <p className=" -mt-2 bg-black text-white max-h-fit w-fit flex items-center rounded-[50%]">{numOfcartItems}</p> 
           </li>
-          <li className=" cursor-pointer">
+          {/* <li className=" cursor-pointer">
             <VscAccount />
-          </li>
+          </li> */}
         </div>
       </ul>
 
@@ -144,6 +144,9 @@ function MobileHeader() {
             <li className="font-semibold">on sale</li>
             <li className="font-semibold">new arrivals</li>
             <li className="font-semibold">brands</li>
+            <li className="font-semibold">Login</li>
+            <li className="font-semibold">signup</li>
+            <li className="font-semibold">admin account</li>
           </ul>
         </div>
       </div>

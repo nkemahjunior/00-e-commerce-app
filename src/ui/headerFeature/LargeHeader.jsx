@@ -6,20 +6,40 @@ import { VscAccount } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 
 import { hideCart, showCart } from "@/app/(authHome)/showCartSlice";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import AdminLinks from "@/features/Admin Duties/AdminLinks";
 
 
 
-function LargeHeader() {
+
+function LargeHeader({session}) {
 
   const showCartOrNot = useSelector(state => state.showCart.show);
   const updateCount = useSelector(state => state.showCart.updateItemCount);
   const numOfcartItems = useSelector((state) => state.showCart.numberOfItemsInCart);
   const dispatch = useDispatch()
+  const ref = useRef()
+
+  const [showAccount,setShowAccount] = useState(false);
 
 
+  useEffect(function(){
+    
+    function show_Account(e){
+      if(showAccount && ref.current && !ref.current.contains(e.target) )
+      setShowAccount(false);
+    }
+
+    window.addEventListener('click',show_Account)
+
+    return () => window.removeEventListener('click',show_Account)
+  })
+
+    
  
-
+  function handleShowAccount(){
+    setShowAccount((v) => !v);
+  }
 
 
   // console.log(numberOfItemsInCart.length)
@@ -78,8 +98,17 @@ function LargeHeader() {
             <BsCart /> <p className= {`${ updateCount === true ? 'animate-bounce ' : ''} -mt-2 bg-black text-white max-h-fit w-fit flex items-center rounded-[50%]`}>{numOfcartItems}</p> 
           </li>
 
-          <li className=" cursor-pointer  ">
-            <VscAccount />
+          <li className={`cursor-pointer relative
+           `} ref={ref}>
+            <div onClick={handleShowAccount} 
+            >
+              <VscAccount />
+            </div>
+            
+
+            <div className={`border-4 border-solid border-red-600 h-fit w-[10rem] bg-white absolute z-[100] p-2 ${showAccount === false ? 'hidden' : ''}`}>
+              <AdminLinks  session={session}/>
+            </div>
           </li>
 
         </div>

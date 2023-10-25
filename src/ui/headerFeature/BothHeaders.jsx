@@ -8,13 +8,18 @@ import LargeHeader from "./LargeHeader";
 
 
 
+
 function getWindowSize() {
   const { innerWidth, innerHeight } = window;
   return { innerWidth, innerHeight };
 }
 
-function BothHeaders() {
- 
+function BothHeaders({session}) {
+
+    // const {data,isLoading} = useGetUser();
+
+    // if(!isLoading) console.log(data)
+
   const [windowSize, setWindowsize] = useState(0);
 
   useEffect(() => {      
@@ -36,7 +41,7 @@ function BothHeaders() {
 
     return (
         <>
-      {windowSize.innerWidth < 1024 ? <MobileHeader /> : <LargeHeader />}
+      {windowSize.innerWidth < 1024 ? <MobileHeader session={session}/> : <LargeHeader  session={session}/>}
       </>
     )
 }

@@ -25,10 +25,12 @@ function Signup() {
     const[confirmPassword2,setConfirmPassword2] = useState('')
     const [passWordNoMatch,setPasswordNoMatch] = useState()
     
-    function onSubmit({ fullName, email, password}){
+    function onSubmit({ name, email, password}){
+        
+        
         if(passWordNoMatch ) return
        
-        signup({ fullName, email, password})
+        signup({ name, email, password})
     }
 
     function handleConfirmPassword(e){

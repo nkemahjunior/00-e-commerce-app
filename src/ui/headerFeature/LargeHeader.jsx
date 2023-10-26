@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideCart, showCart } from "@/app/(authHome)/showCartSlice";
 import { useEffect, useRef, useState } from "react";
 import AdminLinks from "@/features/Admin Duties/AdminLinks";
+import { usePathname } from "next/navigation";
 
 
 
@@ -20,8 +21,15 @@ function LargeHeader({session}) {
   const dispatch = useDispatch()
   const ref = useRef()
 
+  const path = usePathname()
+
   const [showAccount,setShowAccount] = useState(false);
 
+
+  useEffect(function(){
+    if(showAccount)
+    setShowAccount(false)
+  },[path])
 
   useEffect(function(){
     

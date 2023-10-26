@@ -7,8 +7,11 @@ async function page() {
     await checkIfUserIsLogin('/login',false);
 
     return (
-        <div>
-            payment
+        <div className="h-screen  w-screen flex justify-center items-center">
+            <div className="">
+                <p>payment</p>
+                <p>still in development...</p>
+            </div>
         </div>
     )
 }

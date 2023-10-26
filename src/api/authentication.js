@@ -74,3 +74,15 @@ export async function getUser(){
     return data;
 
 }
+
+
+export async function handleSignOut(){
+
+    const {error} = await supabase.auth.signOut()
+
+    if(error) throw new Error("could not log out .. " + error.message )
+    
+
+    console.log("rrrrrrrrrrrrr")
+   
+}

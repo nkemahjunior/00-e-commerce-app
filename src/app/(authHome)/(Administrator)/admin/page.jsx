@@ -1,4 +1,5 @@
 import { checkIfSessionExists } from "@/app/auth/checkSession"
+import AddDresses from "@/features/Admin Duties/AddDresses";
 import { redirect } from "next/navigation";
 
 
@@ -14,9 +15,9 @@ async function page() {
    if(!isAdmin) redirect('/');
 
     return (
-        <div>
-            admin
-        </div>
+        <>
+          <AddDresses/>  
+        </>
     )
 }
 

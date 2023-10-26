@@ -1,15 +1,16 @@
 "use client";
 
 import { hideCart, showCart } from "@/app/(authHome)/showCartSlice";
+import AdminLinks from "@/features/Admin Duties/AdminLinks";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { BsCart } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
-import { VscAccount } from "react-icons/vsc";
+
 import { useDispatch, useSelector } from "react-redux";
 
 
-function MobileHeader() {
+function MobileHeader({session}) {
 
   const showCartOrNot = useSelector(state => state.showCart.show);
   const numOfcartItems = useSelector((state) => state.showCart.numberOfItemsInCart);
@@ -119,11 +120,18 @@ function MobileHeader() {
         </div>
       </ul>
 
+      <div className={`  absolute top-0  w-[100dvw] h-[100dvh] ${
+          showNav === true ? "" : "hidden"
+        } transition-all    duration-200
+         backdrop-filter backdrop-blur-lg bg-opacity-1   `}>
+            {/*bluring the screen when the nav bar is open */}
+      </div>
+
       <div
         className={`  absolute top-0  w-[100dvw] h-[100dvh] ${
           showNav === true ? "translate-x-[0%]" : "translate-x-[-100%]"
         } transition-all    duration-200
-         backdrop-filter backdrop-blur-lg bg-opacity-1   `}
+            `}
          
       >
         <div
@@ -132,7 +140,7 @@ function MobileHeader() {
         >
           <ul className="space-y-5 mt-2">
             <div className="flex justify-between items-center mr-8">
-              <li className="font-semibold">shop</li>
+              <li className="font-semibold capitalize" >shop</li>
 
               <div
                 className="border-solid border-2 border-black p-1 inline  bg-stone-400   "
@@ -141,12 +149,13 @@ function MobileHeader() {
                 X
               </div>
             </div>
-            <li className="font-semibold">on sale</li>
-            <li className="font-semibold">new arrivals</li>
-            <li className="font-semibold">brands</li>
-            <li className="font-semibold">Login</li>
-            <li className="font-semibold">signup</li>
-            <li className="font-semibold">admin account</li>
+
+            <li className="font-semibold capitalize">on sale</li>
+            <li className="font-semibold capitalize">new arrivals</li>
+            <li className="font-semibold capitalize">brands</li>
+            <AdminLinks  session={session}/>
+            
+
           </ul>
         </div>
       </div>

@@ -60,15 +60,22 @@ function LargeHeader({session}) {
     if(showCartOrNot === true) dispatch (hideCart())
   }
 
+  let signUpBonusLink = false;
+
+    if(session !== false)
+    signUpBonusLink = true
 
 
   return (
     <>
     <nav className="sticky top-0 z-20">
-      <div className=" bg-black text-center text-white font-light   capitalize">
+      
+      {signUpBonusLink ||<div className=" bg-black text-center text-white font-light   capitalize">
         sign up and 20% off to your first order.
-        <span className="capitalize underline font-semibold">Sign up Now</span>
-      </div>
+       
+          <Link href={'/signup'}><span className="capitalize underline font-semibold">Sign up Now</span></Link>
+       
+      </div>}
 
       <ul
         className="flex space-x-4 lg:space-x-5 xl:space-x-12 2xl:space-x-10 items-center  pl-[2rem] lg:pl-[3rem] xl:pl-[4rem] 2xl:pl-[6rem]  py-4

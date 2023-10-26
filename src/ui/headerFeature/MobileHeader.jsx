@@ -81,13 +81,13 @@ function MobileHeader({session}) {
   return (
     <>
     <nav className="sticky top-0 z-20">
-      <div className=" bg-black text-center text-white font-extralight   capitalize">
-        sign up and 20% off to your first order.
+       {
+           signUpBonusLink || <div className=" bg-black text-center text-white font-extralight   capitalize">
+          sign up and 20% off to your first order.
 
-        {
-           signUpBonusLink || <Link href={'/signup'}><span className="capitalize underline font-semibold">Sign up Now</span></Link>
-        }
-      </div>
+        <Link href={'/signup'}><span className="capitalize underline font-semibold">Sign up Now</span></Link>
+        
+      </div>}
 
       <ul className="flex items-center justify-between   760:justify-center  px-2  py-2  bg-white backdrop-filter backdrop-blur-lg bg-opacity-10 h-[4rem]">
         <div className="flex items-center space-x-2">

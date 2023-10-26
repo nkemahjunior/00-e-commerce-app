@@ -3,6 +3,7 @@
 import { hideCart, showCart } from "@/app/(authHome)/showCartSlice";
 import AdminLinks from "@/features/Admin Duties/AdminLinks";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { BsCart } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
@@ -20,6 +21,8 @@ function MobileHeader({session}) {
   const [showNav, setShowNav] = useState(false);
   
   const ref = useRef();
+
+  const path = usePathname();
   
 
 
@@ -35,6 +38,11 @@ function MobileHeader({session}) {
     return () => document.removeEventListener("click", handleClick, true);
   
   }, []);
+  
+
+  useEffect(function(){
+      if(showNav) setShowNav(false)
+  },[path])
 
 
 

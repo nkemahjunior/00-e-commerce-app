@@ -1,11 +1,10 @@
 'use client'
-import { useState } from "react"
+
 import Filters from "./Filters"
-import TheClothes from "./TheClothes"
+
 import FilterButton from "./FilterButton"
 import Navigation from "./Navigation"
-import Pagination from "./Pagination"
-import Title from "./Title"
+
 import { usePathname } from "next/navigation"
 import { useDispatch, useSelector } from "react-redux"
 import { hideTheFilter, showTheFilter } from "@/app/(authHome)/showCartSlice"

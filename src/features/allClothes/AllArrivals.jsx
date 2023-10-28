@@ -46,6 +46,7 @@ function AllArrivals() {
       </h1>
 
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-2">
+        
         {data.data.map((el) => (
           <Suspense fallback={<LoadingCard />} key={el.id}>
             <Link href={`/newArrivals/${el.name}/${el.id}`}>

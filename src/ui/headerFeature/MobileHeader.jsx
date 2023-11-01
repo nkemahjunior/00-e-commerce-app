@@ -2,6 +2,7 @@
 
 import { hideCart, showCart } from "@/app/(authHome)/showCartSlice";
 import AdminLinks from "@/features/Admin Duties/AdminLinks";
+import { useGetUser } from "@/features/Admin Duties/useGetUser";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -9,9 +10,10 @@ import { BsCart } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
 
 import { useDispatch, useSelector } from "react-redux";
+import FakeMobileHeader from "../FakeMobileHeader";
 
 
-function MobileHeader({session}) {
+function MobileHeader() {
 
   const showCartOrNot = useSelector(state => state.showCart.show);
   const numOfcartItems = useSelector((state) => state.showCart.numberOfItemsInCart);
@@ -24,6 +26,7 @@ function MobileHeader({session}) {
   const ref = useRef();
 
   const path = usePathname();
+  const {data, isLoading} = useGetUser();
   
 
 
@@ -44,13 +47,6 @@ function MobileHeader({session}) {
   useEffect(function(){
       if(showNav) setShowNav(false)
   },[path])
-
-
-
-  
-
-
-
 
 
 
@@ -75,15 +71,16 @@ function MobileHeader({session}) {
 
 
 
-  if(session !== false)
-  setBonusLink(true)
+  // if(userisLogin !== false)
+  // setBonusLink(true)
 
+  if(isLoading) return(<FakeMobileHeader/>)
 
   return (
     <>
     <nav className="sticky top-0 z-20">
        {
-           bonusLink || <div className=" bg-black text-center text-white font-extralight   capitalize">
+           !data &&  <div className=" bg-black text-center text-white font-extralight   capitalize">
           sign up and 20% off to your first order.
 
         <Link href={'/signup'}><span className="capitalize underline font-semibold">Sign up Now</span></Link>
@@ -169,7 +166,7 @@ function MobileHeader({session}) {
             <li className="font-semibold capitalize">on sale</li>
             <Link href={"/newArrivals?page=1"} className="block"> <li className="font-semibold capitalize">new arrivals</li></Link>
             <li className="font-semibold capitalize">brands</li>
-            <AdminLinks  session={session}/>
+            <AdminLinks   />
             
 
           </ul>

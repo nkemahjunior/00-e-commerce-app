@@ -9,11 +9,13 @@ import { hideCart, showCart } from "@/app/(authHome)/showCartSlice";
 import { useEffect, useRef, useState } from "react";
 import AdminLinks from "@/features/Admin Duties/AdminLinks";
 import { usePathname } from "next/navigation";
+import { useGetUser } from "@/features/Admin Duties/useGetUser";
+import FakeHeader from "../FakeHeader";
 
 
 
 
-function LargeHeader({session}) {
+function LargeHeader() {
 
   const showCartOrNot = useSelector(state => state.showCart.show);
   const updateCount = useSelector(state => state.showCart.updateItemCount);
@@ -25,6 +27,12 @@ function LargeHeader({session}) {
 
   const [showAccount,setShowAccount] = useState(false);
 
+  const {data, isLoading} = useGetUser();
+  
+  
+ 
+
+ 
 
   useEffect(function(){
     if(showAccount)
@@ -60,17 +68,18 @@ function LargeHeader({session}) {
     if(showCartOrNot === true) dispatch (hideCart())
   }
 
-  let signUpBonusLink = false;
+  // let signUpBonusLink = false;
 
-    if(session !== false)
-    signUpBonusLink = true
+  //   if(userisLogin !== false)
+  //   signUpBonusLink = true
 
+  if(isLoading ) return(<FakeHeader/>)
 
   return (
     <>
     <nav className="sticky top-0 z-20">
       
-      {signUpBonusLink ||<div className=" bg-black text-center text-white font-light   capitalize">
+      { !data && <div className=" bg-black text-center text-white font-light   capitalize">
         sign up and 20% off to your first order.
        
           <Link href={'/signup'}><span className="capitalize underline font-semibold">Sign up Now</span></Link>
@@ -122,7 +131,7 @@ function LargeHeader({session}) {
             
 
             <div className={`border-4 border-solid border-red-600 h-fit w-[10rem] bg-white absolute z-[100] p-2 ${showAccount === false ? 'hidden' : ''}`}>
-              <AdminLinks  session={session}/>
+              <AdminLinks   />
             </div>
           </li>
 

@@ -9,6 +9,7 @@ import ShoppingCart from '@/ui/ShoppingCart'
 import ReduxProvider from './Redux'
 import NumberOfItemsOnMount from '@/ui/NumberOfItemsOnMount'
 import { checkIfSessionExists } from '../auth/checkSession'
+import { getUser } from '@/api/authentication'
 
 
 // import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
@@ -38,11 +39,6 @@ export default async function RootLayout({ children }) {
   //     redirect('/login')
   // }
 
-  const session = await checkIfSessionExists();
-  
-
-
-
 
  return (
   
@@ -54,7 +50,7 @@ export default async function RootLayout({ children }) {
          <ReduxProvider>
             <ReactHotToast/>
             <NumberOfItemsOnMount/>
-            <BothHeaders session={ session }/>
+            <BothHeaders />
             <ShoppingCart/>
             
               {children}        

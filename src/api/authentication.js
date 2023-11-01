@@ -69,9 +69,17 @@ export async function handleSignUp({ name, email, password}){
 
 
 export async function getUser(){
-    const {data,error} = await supabase.auth.getUser();
 
-    return data;
+
+    try {
+        const {data,error} = await supabase.auth.getUser();
+    
+        return data;
+
+    } catch (error) {
+        
+        console.log("error getting user "+ error.message)
+    }
 
 }
 

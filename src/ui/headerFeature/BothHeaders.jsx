@@ -14,7 +14,7 @@ function getWindowSize() {
   return { innerWidth, innerHeight };
 }
 
-function BothHeaders({session}) {
+function BothHeaders({userisLogin}) {
 
     // const {data,isLoading} = useGetUser();
 
@@ -41,7 +41,7 @@ function BothHeaders({session}) {
 
     return (
         <>
-      {windowSize.innerWidth < 1024 ? <MobileHeader session={session}/> : <LargeHeader  session={session}/>}
+      {windowSize.innerWidth < 1024 ? <MobileHeader/> : <LargeHeader />}
       </>
     )
 }

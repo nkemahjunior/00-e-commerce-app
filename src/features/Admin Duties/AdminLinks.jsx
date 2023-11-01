@@ -40,7 +40,7 @@ import Link from "next/link";
            
            
            { 
-            isAdmin && <Link href={'/admin'} className="block"><li className="capitalize font-semibold md:font-light" > admin dashboard</li></Link>
+            isAdmin && <Link href={'/admin'} className="block"><li className="capitalize font-semibold md:font-light md:hover:text-red-500" > admin dashboard</li></Link>
            } 
         </ul>
     )

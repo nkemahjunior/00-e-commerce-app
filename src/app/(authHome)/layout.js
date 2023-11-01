@@ -8,7 +8,6 @@ import ReactHotToast from './ReactHotToast'
 import ShoppingCart from '@/ui/ShoppingCart'
 import ReduxProvider from './Redux'
 import NumberOfItemsOnMount from '@/ui/NumberOfItemsOnMount'
-import { checkIfUserIsLogin } from '../auth/checkLogin'
 import { checkIfSessionExists } from '../auth/checkSession'
 
 

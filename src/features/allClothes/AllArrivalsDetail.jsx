@@ -109,8 +109,8 @@ function AllArrivalsDetail({data,error}) {
 
             const duplicateItems = initialCart.some((el) => el.id === data.id && el.selectedSize === size)
 
-            console.log(duplicateItems)
-            console.log(initialCart)
+            // console.log(duplicateItems)
+            // console.log(initialCart)
             
             
 
@@ -162,7 +162,7 @@ function AllArrivalsDetail({data,error}) {
                     >choose size <span className="md:hidden">&gt;</span></h2>
 
 
-                    <div className={`max-h-[fit] space-y-2
+                    <div className={`max-h-[fit] space-y-2 md:space-y-0
                     ${!show && "hidden"} transition-all delay-75
                     md:flex md:flex-wrap md:space-x-2  md:pt-2  xl:pt-4 
                     ${noSizeError === true ? '':'md:pb-2 xl:pb-8'}`}>
@@ -176,7 +176,7 @@ function AllArrivalsDetail({data,error}) {
                             >
                                 xxs
                                 <span  className=" text-xs font-light tracking-widest" > 
-                                   (0 remaining)
+                                   {/*(0 remaining)*/}
                                 </span>
                         </p>
 
@@ -184,35 +184,35 @@ function AllArrivalsDetail({data,error}) {
                         onClick = {handleGetSize}
                         data-size = "XS" >
                             xs<span className=" text-xs font-light tracking-widest" > 
-                                (0 remaining)
+                                {/*(0 remaining)*/}
                             </span>
                         </p>
 
                         <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
                         data-size = "S">
                             s
-                            <span className=" text-xs font-light tracking-widest" > (0 remaining)</span>
+                            <span className=" text-xs font-light tracking-widest" > {/*(0 remaining)*/}</span>
                         </p>
 
                         <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
                         data-size = "M">
-                            m<span className=" text-xs font-light tracking-widest" > (0 remaining)</span>
+                            m<span className=" text-xs font-light tracking-widest" > {/*(0 remaining)*/}</span>
                         </p>
 
                         <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
                         data-size = "L">
-                            l<span className=" text-xs font-light tracking-widest" > (0 remaining)</span>
+                            l<span className=" text-xs font-light tracking-widest" > {/*(0 remaining)*/}</span>
                         </p>
 
                         <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
                         data-size="XL">
                             xl
-                            <span className=" text-xs font-light tracking-widest" > (0 remaining)</span>
+                            <span className=" text-xs font-light tracking-widest" > {/*(0 remaining)*/}</span>
                         </p>
 
                         <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
                         data-size="2XL">
-                            2xl<span className=" text-xs font-light tracking-widest" > (0 remaining)</span>
+                            2xl<span className=" text-xs font-light tracking-widest" > {/*(0 remaining)*/}</span>
                         </p>
 
                         

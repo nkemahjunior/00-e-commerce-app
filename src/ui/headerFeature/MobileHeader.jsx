@@ -19,6 +19,7 @@ function MobileHeader({session}) {
 
   const [showSearch, setShowSearch] = useState(false);
   const [showNav, setShowNav] = useState(false);
+  const [bonusLink,setBonusLink] = useState(false)
   
   const ref = useRef();
 
@@ -72,17 +73,17 @@ function MobileHeader({session}) {
     setShowSearch((show) => !show);
   }
 
-  let signUpBonusLink = false;
+
 
   if(session !== false)
-  signUpBonusLink = true
+  setBonusLink(true)
 
 
   return (
     <>
     <nav className="sticky top-0 z-20">
        {
-           signUpBonusLink || <div className=" bg-black text-center text-white font-extralight   capitalize">
+           bonusLink || <div className=" bg-black text-center text-white font-extralight   capitalize">
           sign up and 20% off to your first order.
 
         <Link href={'/signup'}><span className="capitalize underline font-semibold">Sign up Now</span></Link>
@@ -155,6 +156,7 @@ function MobileHeader({session}) {
           <ul className="space-y-5 mt-2">
             <div className="flex justify-between items-center mr-8">
               <li className="font-semibold capitalize" >shop</li>
+              <Link href={"/newArrivals?page=1"} className="block"> <li className="font-semibold capitalize" >shop</li></Link>
 
               <div
                 className="border-solid border-2 border-black p-1 inline  bg-stone-400   "
@@ -165,7 +167,7 @@ function MobileHeader({session}) {
             </div>
 
             <li className="font-semibold capitalize">on sale</li>
-            <li className="font-semibold capitalize">new arrivals</li>
+            <Link href={"/newArrivals?page=1"} className="block"> <li className="font-semibold capitalize">new arrivals</li></Link>
             <li className="font-semibold capitalize">brands</li>
             <AdminLinks  session={session}/>
             

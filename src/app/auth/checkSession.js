@@ -1,7 +1,7 @@
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+
 
 import { supabaseKey, supabaseUrl } from "@/services/supabase url&key";
 
@@ -16,11 +16,14 @@ export async function checkIfSessionExists(){
 
         const {data:{ session }} = await supabase.auth.getSession();
 
-     if(session)
-    return session;
+    if(session){
+    return session
+    }else{
+        return false;
+    }
 
-    if(!session)
-    return false
+    // else if(!session){
+    // return false}
 
         
     

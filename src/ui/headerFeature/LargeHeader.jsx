@@ -85,8 +85,8 @@ function LargeHeader({session}) {
           <li className="text-2xl font-bold capitalize">zeco shopping</li>
         </Link>
        
-
-        <li className=" font-light capitalize cursor-pointer">Shop</li>
+        <Link href="/newArrivals?page=1"   ><li className=" font-light capitalize cursor-pointer">Shop</li></Link>
+        
         <li className=" font-light capitalize cursor-pointer">on sale</li>
         <Link href="/newArrivals?page=1"   >
           <li className=" font-light capitalize cursor-pointer">new arrivals</li>

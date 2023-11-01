@@ -1,6 +1,11 @@
 import { checkIfSessionExists } from "@/app/auth/checkSession"
 import AddDresses from "@/features/Admin Duties/AddDresses";
+
+import { cookies } from "next/headers";
+
 import { redirect } from "next/navigation";
+
+
 
 
 async function page() {
@@ -13,6 +18,8 @@ async function page() {
      ({isAdmin} = session.user.user_metadata)
 
    if(!isAdmin) redirect('/');
+
+    
 
     return (
         <>

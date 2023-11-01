@@ -13,7 +13,7 @@ function ArrivalsCard({picture,name,price}) {
             2xl:w-[16rem] 1400:w-[14rem] ">
 
                 <div className=" h-[9.5rem] lg:h-[13rem]  xl:h-[17rem] 2xl:h-[19rem] w-[100%] bg-[#F0EEED] rounded-xl overflow-hidden relative">
-                    <Image  src={picture.trim()} alt={`photo of ${name}`}  fill/>
+                    <Image  src={picture?.trim()} alt={`photo of ${name}`}  fill/>
 
                 </div>
 

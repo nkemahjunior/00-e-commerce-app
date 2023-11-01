@@ -83,8 +83,8 @@ import { useLogin } from '@/app/(noAuth)/login/useLogin'
                         
 
                         <div className='flex justify-center '>
-                            <button className='capitalize bg-black text-white text-center p-2 w-[60%] rounded-md lg:hover:scale-95 flex justify-center items-center space-x-2'
-                           
+                            <button className={`capitalize  text-white text-center p-2 w-[60%] rounded-md lg:hover:scale-95 flex justify-center items-center space-x-2 ${isLoading ? 'bg-[#373737]' : 'bg-black'}`}
+                            disabled={isLoading}
                             >
                             Login { isLoading && <span className=' animate-spin'> <BiLoaderAlt/> </span> }
                         </button>

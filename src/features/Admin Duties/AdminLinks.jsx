@@ -22,6 +22,7 @@ import { useState } from "react";
     if(isLoading) return(<></>)
 
    
+    console.log(user)
 
 
     let active = false;

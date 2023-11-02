@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { BiLoaderAlt } from "react-icons/bi";
+import { useStoreImage } from "./useStoreImages";
+
 
  function AddDresses() {
 
@@ -11,7 +13,11 @@ import { BiLoaderAlt } from "react-icons/bi";
 
   const [loading,setLoading] = useState(false)
 
-  const [file,setFile] = useState()
+  const [file,setFile] = useState(null)
+
+
+  const {storeImage, isLoading,error} = useStoreImage()
+
 
   
 
@@ -19,36 +25,45 @@ import { BiLoaderAlt } from "react-icons/bi";
   async function submitForm(e){
 
     e.preventDefault();
-   
-    setLoading(true);
-    
-    const obj = Object.fromEntries(new FormData(e.currentTarget))
 
-    // const test = new FormData()
-    // test.append("z",file)
+    
+     setLoading(true);
+    
+    
+     const obj = Object.fromEntries(new FormData(e.currentTarget))
+
+     
+    //console.log(objAndImageName)
     
 
+    const imagePath = `${Math.random()}-${file?.name}`.replaceAll("/","")
+
+    const objAndImageName = {...obj,imageName:imagePath}
+
+
+      storeImage({file,imagePath})
+     
 
     const res = await fetch(`${location.origin}/addADressAPI`,{
       
         method:'post',
-        body:JSON.stringify(obj)
+        body:JSON.stringify(objAndImageName)
     })
 
-    if(!res.ok) {
+    if(!res.ok || error) {
       setLoading(false)
       toast.error("error adding dress..Refresh page and try again")
     }
 
-    if(res.ok) {
+    if(res.ok && !isLoading) {
       setLoading(false)
       toast.success("Dress added")
     }
 
-    const data =  await res.json()
-    console.log(res) //check for res.ok
-    console.log("////////////////////")
-    console.log(data)
+    // const data =  await res.json()
+     console.log(res) //check for res.ok
+    // console.log("////////////////////")
+    // console.log(data)
 
   }
 
@@ -62,13 +77,14 @@ import { BiLoaderAlt } from "react-icons/bi";
   return (
     <div className="px-2 md:pl-4 md:flex justify-center">
 
-      <form encType="multipart/form-data" id="FormAddDress" onSubmit={   submitForm}  className="space-y-3">
+      <form  id="FormAddDress" onSubmit={ submitForm}  className="space-y-3">
 
         <h1 className="uppercase text-2xl font-light">add a new dress</h1>
 
         <div className="flex flex-col ">
           <label htmlFor="name">cloth name </label>
           <input
+          required
             name="clothName"
             type="text"
             className="outline-none border-2 border-solid border-black"
@@ -97,6 +113,7 @@ import { BiLoaderAlt } from "react-icons/bi";
         <div className="flex flex-col ">
           <label htmlFor="price">price </label>
           <input
+          required
             name="price"
             type="number"
             className="outline-none border-2 border-solid border-black"
@@ -125,6 +142,7 @@ import { BiLoaderAlt } from "react-icons/bi";
         <div className="flex flex-col ">
           <label htmlFor="qty">total QTY </label>
           <input
+          required
             name="quantity"
             type="number"
             className="outline-none border-2 border-solid border-black"
@@ -167,6 +185,7 @@ import { BiLoaderAlt } from "react-icons/bi";
         <div className="flex flex-col ">
           <label htmlFor="image">Image of dress </label>
           <input
+          required
             name="image"
             type="file"
            
@@ -186,6 +205,7 @@ import { BiLoaderAlt } from "react-icons/bi";
         <div className="flex flex-col ">
           <label htmlFor="xs">Qty of xs available </label>
           <input
+          required
             name="xs"
             type="number"
             
@@ -215,6 +235,7 @@ import { BiLoaderAlt } from "react-icons/bi";
         <div className="flex flex-col ">
           <label htmlFor="s">Qty of s available </label>
           <input
+          required
             name="s"
             type="number"
             className="outline-none border-2 border-solid border-black"
@@ -243,6 +264,7 @@ import { BiLoaderAlt } from "react-icons/bi";
         <div className="flex flex-col ">
           <label htmlFor="m">Qty of m available </label>
           <input
+          required
             name="m"
             type="number"
             className="outline-none border-2 border-solid border-black"
@@ -271,6 +293,7 @@ import { BiLoaderAlt } from "react-icons/bi";
         <div className="flex flex-col ">
           <label htmlFor="l">Qty of l available </label>
           <input
+          required
             name="l"
             type="number"
             className="outline-none border-2 border-solid border-black"
@@ -299,6 +322,7 @@ import { BiLoaderAlt } from "react-icons/bi";
         <div className="flex flex-col ">
           <label htmlFor="xl">Qty of xl available </label>
           <input
+          required
             name="xl"
             type="number"
             className="outline-none border-2 border-solid border-black"
@@ -327,6 +351,7 @@ import { BiLoaderAlt } from "react-icons/bi";
         <div className="flex flex-col ">
           <label htmlFor="2xl">Qty of 2xl available </label>
           <input
+          required
             name="twoXl"
             type="number"
             className="outline-none border-2 border-solid border-black"
@@ -355,6 +380,7 @@ import { BiLoaderAlt } from "react-icons/bi";
         <div className="flex flex-col ">
           <label htmlFor="3xl">Qty of 3xl available </label>
           <input
+          required
             name="threeXl"
             type="number"
             className="outline-none border-2 border-solid border-black"

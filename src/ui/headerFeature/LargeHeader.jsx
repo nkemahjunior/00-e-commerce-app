@@ -28,6 +28,7 @@ function LargeHeader() {
   const [showAccount,setShowAccount] = useState(false);
 
   const {data, isLoading} = useGetUser();
+  const [signUpBonus,setsignUpBonus] = useState(false)
   
   
  
@@ -75,11 +76,15 @@ function LargeHeader() {
 
   if(isLoading ) return(<FakeHeader/>)
 
+  if(data?.user !== null ){
+    setsignUpBonus(true)
+  }
+
   return (
     <>
     <nav className="sticky top-0 z-20">
       
-      { !data && <div className=" bg-black text-center text-white font-light   capitalize">
+      { !signUpBonus && <div className=" bg-black text-center text-white font-light   capitalize">
         sign up and 20% off to your first order.
        
           <Link href={'/signup'}><span className="capitalize underline font-semibold">Sign up Now</span></Link>

@@ -21,7 +21,8 @@ function MobileHeader() {
 
   const [showSearch, setShowSearch] = useState(false);
   const [showNav, setShowNav] = useState(false);
-  const [bonusLink,setBonusLink] = useState(false)
+  const [signUpBonus,setsignUpBonus] = useState(false)
+  
   
   const ref = useRef();
 
@@ -76,11 +77,15 @@ function MobileHeader() {
 
   if(isLoading) return(<FakeMobileHeader/>)
 
+  if(data?.user !== null ){
+    setsignUpBonus(true)
+  }
+
   return (
     <>
     <nav className="sticky top-0 z-20">
        {
-           !data &&  <div className=" bg-black text-center text-white font-extralight   capitalize">
+           !signUpBonus &&  <div className=" bg-black text-center text-white font-extralight   capitalize">
           sign up and 20% off to your first order.
 
         <Link href={'/signup'}><span className="capitalize underline font-semibold">Sign up Now</span></Link>

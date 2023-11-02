@@ -8,7 +8,7 @@ export async function handleLogIn ({email,password}) {
 
     
 
-    const{data,error} = await supabase.auth.          signInWithPassword({
+    const{data,error} = await supabase.auth.signInWithPassword({
         email,
         password,
     })
@@ -43,7 +43,7 @@ export async function handleSignUp({ name, email, password}){
     return data
 }
 
- async function createProfile(){
+async function createProfile(){
 
 
     const {data: { user },error} = await supabase.auth.getUser()

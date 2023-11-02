@@ -14,20 +14,23 @@ import { useState } from "react";
     // const {data:{user},error} = await supabase.auth.getUser();
 
     const router = useRouter();
-    const {logout} = useLogOut();
+    const {logout,isLoading:load} = useLogOut();
     const {data:user, isLoading} = useGetUser();
-    const [active,setActive] = useState(false)
-    const [admin,setAdmin] = useState(false)
+    // const [active,setActive] = useState(false)
+    // const [admin,setAdmin] = useState(false)
 
     if(isLoading) return(<></>)
 
    
 
 
-    if(user.user !== null){
-      setActive(true)
+    let active = false;
+    let admin = false;
+    if(user?.user !== null){
+      // setActive(true)
+      active = true
       if(user?.user?.user_metadata?.isAdmin === true)
-        setAdmin(true)
+        admin = true
     }
 
 
@@ -56,10 +59,7 @@ import { useState } from "react";
            {
             !active ? <Link href={'/login'} className="block"><li className="capitalize font-semibold md:font-light">sign in</li></Link>
              : 
-             <li className="capitalize font-semibold md:font-light md:hover:text-red-500" onClick={() => {
-              logout
-              router.refresh();
-             }}>logout</li>
+             <li className="capitalize font-semibold md:font-light md:hover:text-red-500" onClick={logout} >{load ? 'logging Out..' : 'logout' }</li>
            }
            
            

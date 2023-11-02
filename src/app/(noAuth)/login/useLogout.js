@@ -24,6 +24,6 @@ export function useLogOut(){
     })
 
    
-    return {logout}
+    return {logout,isLoading}
 }
 

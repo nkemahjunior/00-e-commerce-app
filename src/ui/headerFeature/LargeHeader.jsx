@@ -28,7 +28,7 @@ function LargeHeader() {
   const [showAccount,setShowAccount] = useState(false);
 
   const {data, isLoading} = useGetUser();
-  const [signUpBonus,setsignUpBonus] = useState(false)
+  // const [signUpBonus,setsignUpBonus] = useState(false)
   
   
  
@@ -76,8 +76,12 @@ function LargeHeader() {
 
   if(isLoading ) return(<FakeHeader/>)
 
-  if(data?.user !== null ){
-    setsignUpBonus(true)
+  let signUpBonus = false
+
+  if(data?.user?.id  ){
+    signUpBonus = true
+    // setsignUpBonus(true)
+
   }
 
   return (
@@ -136,7 +140,7 @@ function LargeHeader() {
             
 
             <div className={`border-4 border-solid border-red-600 h-fit w-[10rem] bg-white absolute z-[100] p-2 ${showAccount === false ? 'hidden' : ''}`}>
-              <AdminLinks   />
+             <AdminLinks/>
             </div>
           </li>
 

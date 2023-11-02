@@ -21,7 +21,7 @@ function MobileHeader() {
 
   const [showSearch, setShowSearch] = useState(false);
   const [showNav, setShowNav] = useState(false);
-  const [signUpBonus,setsignUpBonus] = useState(false)
+  // const [signUpBonus,setsignUpBonus] = useState(false)
   
   
   const ref = useRef();
@@ -77,8 +77,12 @@ function MobileHeader() {
 
   if(isLoading) return(<FakeMobileHeader/>)
 
-  if(data?.user !== null ){
-    setsignUpBonus(true)
+  let signUpBonus = false
+
+  if(data?.user?.id  ){
+    signUpBonus = true
+    // setsignUpBonus(true)
+
   }
 
   return (

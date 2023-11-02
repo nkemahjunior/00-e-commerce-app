@@ -161,7 +161,7 @@ function MobileHeader() {
         >
           <ul className="space-y-5 mt-2">
             <div className="flex justify-between items-center mr-8">
-              <li className="font-semibold capitalize" >shop</li>
+             
               <Link href={"/newArrivals?page=1"} className="block"> <li className="font-semibold capitalize" >shop</li></Link>
 
               <div

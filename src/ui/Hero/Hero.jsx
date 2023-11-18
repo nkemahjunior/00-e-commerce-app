@@ -9,6 +9,8 @@ import Image from "next/image"
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+import {motion} from "framer-motion"
+
 
 
 
@@ -53,7 +55,7 @@ function Hero() {
                         <p className="font-light md:leading-tight"> Shop the latest trends in women&rsquo;s, men&rsquo;s and kid&rsquo;s clothing at Zeco Shopping, with new arrivals dropping every week</p>
 
                         <Link href="/newArrivals?page=1"  className="mt-2 block" >
-                            <button className="w-full text-center bg-black text-white uppercase font-semibold rounded-xl py-1 md:w-[40%]">shop now</button>
+                            <motion.button whileTap={{scale:0.95}} whileHover={{scale:0.95}}  className="w-full text-center bg-black text-white uppercase font-semibold rounded-xl py-1 md:w-[40%]">shop now</motion.button>
                         </Link>
                         
                     </div>

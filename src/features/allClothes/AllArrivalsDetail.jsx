@@ -9,9 +9,12 @@ import { useEffect, useRef, useState } from "react"
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
+import {AnimatePresence, LayoutGroup, motion} from "framer-motion"
+
 
 function AllArrivalsDetail({data,error}) {
 
+    const [rotate,setRotate] = useState(false)
     
     const [show,setShow] = useState(false)
     const [quantity,setQuantity] = useState(1)
@@ -27,7 +30,9 @@ function AllArrivalsDetail({data,error}) {
 
     function handleShow(){
         setShow((v) => !v)
+        setRotate(v => !v)
     }
+
 
 
 
@@ -157,19 +162,22 @@ function AllArrivalsDetail({data,error}) {
 
                     <hr className="  bg-stone-400"/>
 
-                    <h2 className=" font-semibold capitalize"
+                    <h2 className=" font-semibold capitalize flex items-center"
                     onClick={handleShow}
-                    >choose size <span className="md:hidden">&gt;</span></h2>
+                    >choose size <span className= {`md:hidden transition-all duration-100 ${rotate && 'rotate-90'}`}  >&nbsp;&gt;</span></h2>
 
 
-                    <div className={`max-h-[fit] space-y-2 md:space-y-0
-                    ${!show && "hidden"} transition-all delay-75
+                    
+                    
+                    <AnimatePresence>
+                    <motion.div   className={`max-h-[fit] grid grid-cols-4 space-y-2 md:space-y-0
+                    ${!show && "hidden"} transition-all delay-75 duration-[1s]
                     md:flex md:flex-wrap md:space-x-2  md:pt-2  xl:pt-4 
-                    ${noSizeError === true ? '':'md:pb-2 xl:pb-8'}`}>
+                    ${noSizeError === true ? '':'md:pb-2 xl:pb-8'}  `}  >
 
                         
                         
-                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors    delay-75 px-4 py-2  font-medium uppercase" 
+                        <motion.p   className="   transition-colors delay-75 duration-[0.7s] w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white  -75 px-4 py-2  font-medium uppercase" 
                         onClick = {handleGetSize} 
                         data-size = "XXS"
                         
@@ -178,51 +186,54 @@ function AllArrivalsDetail({data,error}) {
                                 <span  className=" text-xs font-light tracking-widest" > 
                                    {/*(0 remaining)*/}
                                 </span>
-                        </p>
+                        </motion.p>
 
-                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" 
+                        <motion.p   className="   transition-colors delay-75 duration-[0.7s] w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white   px-4 py-2  font-medium uppercase" 
                         onClick = {handleGetSize}
                         data-size = "XS" >
                             xs<span className=" text-xs font-light tracking-widest" > 
                                 {/*(0 remaining)*/}
                             </span>
-                        </p>
+                        </motion.p>
 
-                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
+                        <motion.p   className="   transition-colors delay-75 duration-[0.7s] w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white   px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
                         data-size = "S">
                             s
                             <span className=" text-xs font-light tracking-widest" > {/*(0 remaining)*/}</span>
-                        </p>
+                        </motion.p>
 
-                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
+                        <motion.p   className="   transition-colors delay-75 duration-[0.7s] w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white   px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
                         data-size = "M">
                             m<span className=" text-xs font-light tracking-widest" > {/*(0 remaining)*/}</span>
-                        </p>
+                        </motion.p>
 
-                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
+                        <motion.p   className="   transition-colors delay-75 duration-[0.7s] w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white   px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
                         data-size = "L">
                             l<span className=" text-xs font-light tracking-widest" > {/*(0 remaining)*/}</span>
-                        </p>
+                        </motion.p>
 
-                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
+                        <motion.p   className="   transition-colors delay-75 duration-[0.7s] w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white   px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
                         data-size="XL">
                             xl
                             <span className=" text-xs font-light tracking-widest" > {/*(0 remaining)*/}</span>
-                        </p>
+                        </motion.p>
 
-                        <p  className="w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white transition-colors delay-75 px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
+                        <motion.p   className="   transition-colors delay-75 duration-[0.7s] w-fit rounded-xl   bg-[#F0F0F0] hover:bg-black hover:text-white   px-4 py-2  font-medium uppercase" onClick = {handleGetSize}
                         data-size="2XL">
                             2xl<span className=" text-xs font-light tracking-widest" > {/*(0 remaining)*/}</span>
-                        </p>
+                        </motion.p>
 
                         
-                    </div>
+                    </motion.div>
+                    </AnimatePresence>
+                    
+                    
 
-                    <p className={`${ noSizeError === true ? '' : 'hidden'} text-red-600 md:pb-2 xl:pb-8`}>please choose a size</p>
+                    <p  className={`${ noSizeError === true ? '' : 'hidden'} text-red-600 md:pb-2 xl:pb-8`}>please choose a size</p>
 
                     <hr className="  bg-stone-400 mt-2 "/>
 
-                    <div className="flex space-x-2 mt-2 pt-4 md:pt-2 xl:pt-8">
+                    <motion.div layout className="flex space-x-2 mt-2 pt-4 md:pt-2 xl:pt-8">
 
                         <div className="flex bg-[#F0F0F0] p-2 rounded-xl space-x-2 w-fit md:w-[30%] border-2 border-solid border-white">
 
@@ -243,7 +254,7 @@ function AllArrivalsDetail({data,error}) {
                         >
                             Add to cart
                         </button>
-                    </div>
+                    </motion.div>
 
                 </div>
 

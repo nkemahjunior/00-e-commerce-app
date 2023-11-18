@@ -3,6 +3,8 @@ import { addItemToCart, increaseNumberOfItems } from "@/app/(authHome)/showCartS
 import Image from "next/image"
 import { useDispatch } from "react-redux"
 
+import {motion} from "framer-motion"
+
 function ShoppingCartItem({data}) {
 
     const dispatch = useDispatch()
@@ -47,7 +49,7 @@ function ShoppingCartItem({data}) {
                 <div className="flex justify-between">
                     <p className="font-medium">${data.price}</p>
 
-                    <button className=" mr-8 text-xl md:hover:scale-95" onClick={handleDeleteItem}>x</button>
+                    <motion.button whileTap={{scale:0.95}} whileHover={{scale:0.95}} className=" mr-8 text-xl md:hover:scale-95" onClick={handleDeleteItem}>x</motion.button>
 
                 </div>
                 

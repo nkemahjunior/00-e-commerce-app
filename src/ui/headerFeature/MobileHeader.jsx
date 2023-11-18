@@ -12,6 +12,8 @@ import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import FakeMobileHeader from "../FakeMobileHeader";
 
+import {motion} from "framer-motion"
+
 
 function MobileHeader() {
 
@@ -132,9 +134,9 @@ function MobileHeader() {
             <CiSearch />
           </li>
 
-          <li className=" cursor-pointer flex" onClick={ handleShowShoppingCart} >
+          <motion.li className=" cursor-pointer flex" onClick={ handleShowShoppingCart}   whileTap={{scale:0.95}}>
             <BsCart /> <p className=" -mt-2 bg-black text-white max-h-fit w-fit flex items-center rounded-[50%]">{numOfcartItems}</p> 
-          </li>
+          </motion.li>
           {/* <li className=" cursor-pointer">
             <VscAccount />
           </li> */}
@@ -164,12 +166,13 @@ function MobileHeader() {
              
               <Link href={"/newArrivals?page=1"} className="block"> <li className="font-semibold capitalize" >shop</li></Link>
 
-              <div
+              <motion.div
                 className="border-solid border-2 border-black p-1 inline  bg-stone-400   "
                 onClick={handleShowNav}
+                whileTap={{scale:0.95}}
               >
                 X
-              </div>
+              </motion.div>
             </div>
 
             <li className="font-semibold capitalize">on sale</li>

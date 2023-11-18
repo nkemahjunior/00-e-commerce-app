@@ -8,6 +8,8 @@ import { hideCart } from "@/app/(authHome)/showCartSlice"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import {motion} from "framer-motion"
+
 
 function ShoppingCart() {
 
@@ -47,8 +49,9 @@ function ShoppingCart() {
         <div className="   h-full">
 
             <div className="p-4">
-                <h1 className="font-bold text-center uppercase">added to shopping bag <span className="absolute right-4 font-normal cursor-pointer"
-                onClick={handleXclose}>X</span></h1>
+                <h1 className="font-bold text-center uppercase">added to shopping bag <motion.span whileTap={{scale:0.95}} whileHover={{scale:0.95}} className="absolute right-4 font-normal cursor-pointer"
+                
+                onClick={handleXclose}>X</motion.span></h1>
                     
             </div>
 

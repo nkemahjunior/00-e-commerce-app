@@ -12,6 +12,8 @@ import { usePathname } from "next/navigation";
 import { useGetUser } from "@/features/Admin Duties/useGetUser";
 import FakeHeader from "../FakeHeader";
 
+import {motion} from "framer-motion"
+
 
 
 
@@ -100,17 +102,17 @@ function LargeHeader() {
       bg-white backdrop-filter backdrop-blur-lg bg-opacity-10"
       >
         <Link href={"/"}>
-          <li className="text-2xl font-bold capitalize">zeco shopping</li>
+          <li className="text-2xl font-bold capitalize hover:text-[#373737] transition duration-75  ">zeco shopping</li>
         </Link>
        
-        <Link href="/newArrivals?page=1"   ><li className=" font-light capitalize cursor-pointer">Shop</li></Link>
+        <Link href="/newArrivals?page=1"   ><li className=" font-light capitalize cursor-pointer hover:text-[#373737] transition duration-75">Shop</li></Link>
         
-        <li className=" font-light capitalize cursor-pointer">on sale</li>
+        <li className=" font-light capitalize cursor-pointer hover:text-[#373737] transition duration-75">on sale</li>
         <Link href="/newArrivals?page=1"   >
-          <li className=" font-light capitalize cursor-pointer">new arrivals</li>
+          <li className=" font-light capitalize cursor-pointer hover:text-[#373737] transition duration-75">new arrivals</li>
         </Link>
         
-        <li className=" font-light capitalize cursor-pointer">brands</li>
+        <li className=" font-light capitalize cursor-pointer hover:text-[#373737] transition duration-75">brands</li>
 
         <li className="flex items-center bg-[#f2f0f1] p-1 w-[10rem] lg:w-[20rem] xl:w-[25rem] 2xl:w-[28rem] rounded-lg lg:rounded-xl cursor-pointer shadow-lg">
           <span>
@@ -125,18 +127,18 @@ function LargeHeader() {
 
         <div className="flex items-center  space-x-6">
 
-          <li className=" cursor-pointer flex"
+          <motion.li whileHover={{scale:0.95}} whileTap={{scale:0.95}} className=" cursor-pointer flex"
           onClick={/*() => setShow((v) => !v)*/ handleShowShoppingCart}
           >
             <BsCart /> <p className= {`${ updateCount === true ? 'animate-bounce ' : ''} -mt-2 bg-black text-white max-h-fit w-fit flex items-center rounded-[50%]`}>{numOfcartItems}</p> 
-          </li>
+          </motion.li>
 
           <li className={`cursor-pointer relative
-           `} ref={ref}>
-            <div onClick={handleShowAccount} 
+           `} ref={ref} >
+            <motion.div onClick={handleShowAccount}  whileHover={{scale:0.95}} whileTap={{scale:0.95}}
             >
               <VscAccount />
-            </div>
+            </motion.div>
             
 
             <div className={`border-4 border-solid border-red-600 h-fit w-[10rem] bg-white absolute z-[100] p-2 ${showAccount === false ? 'hidden' : ''}`}>

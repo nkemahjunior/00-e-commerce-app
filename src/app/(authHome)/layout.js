@@ -25,6 +25,8 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   title: 'zeco shopping',
   description: 'buy clothes online in bamenda, buea,douala,cameroon ',
+  icon:"/favicon.png"
+
 }
 
 export default async function RootLayout({ children }) {

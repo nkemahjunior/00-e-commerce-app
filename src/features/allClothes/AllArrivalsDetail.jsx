@@ -169,8 +169,8 @@ function AllArrivalsDetail({data,error}) {
 
                     
                     
-                    <AnimatePresence>
-                    <motion.div   className={`max-h-[fit] grid grid-cols-4 space-y-2 md:space-y-0
+                    
+                    <motion.div  layout className={`max-h-[fit] grid grid-cols-4 space-y-2 md:space-y-0
                     ${!show && "hidden"} transition-all delay-75 duration-[1s]
                     md:flex md:flex-wrap md:space-x-2  md:pt-2  xl:pt-4 
                     ${noSizeError === true ? '':'md:pb-2 xl:pb-8'}  `}  >
@@ -225,7 +225,7 @@ function AllArrivalsDetail({data,error}) {
 
                         
                     </motion.div>
-                    </AnimatePresence>
+                
                     
                     
 

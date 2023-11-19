@@ -10,6 +10,7 @@ import ReduxProvider from './Redux'
 import NumberOfItemsOnMount from '@/ui/NumberOfItemsOnMount'
 import { checkIfSessionExists } from '../auth/checkSession'
 import { getUser } from '@/api/authentication'
+import Head from 'next/head'
 
 
 // import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
@@ -45,6 +46,9 @@ export default async function RootLayout({ children }) {
  return (
   
     <html lang="en">
+      <Head>
+      <meta name="google-site-verification" content="l7FBNCY3ohZpAdZki4ZBpIMpW8SXrHJ6o5AoYH5PwEg" />
+      </Head>
      
       
       <body className={`${inter.className} `} >

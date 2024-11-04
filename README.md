@@ -1,5 +1,5 @@
 # Zeco Shopping E-commerce App 👕 👖 👗 👟
-Zeco Shopping is a feature-rich e-commerce platform that enables users to browse, search, and purchase products with ease. This project demonstrates a robust, scalable e-commerce architecture with essential features such as product categorization, shopping cart management, and checkout processing.
+Zeco Shopping is an e-commerce platform that enables users to browse, search, and purchase clothes with ease. 
 
 ## Features
 - **Product Browsing** : Search and view various clothes

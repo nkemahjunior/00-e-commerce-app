@@ -10,9 +10,6 @@ import LoadingHero from "@/ui/Hero/LoadingHero";
 
 
 
-
-
-
 const Hero = dynamic(() => import("@/ui/Hero/Hero"),{
   ssr:false,
   loading:() => <LoadingHero/>

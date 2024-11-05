@@ -74,7 +74,7 @@ function Navigation() {
   
     
     return (
-        <div  className={`  ${pathArr.length > 2 ? 'px-2 py-4 md:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[6rem]':'pl-4 pt-2' }`}>
+        <div  className={`  ${pathArr.length > 2 ? 'px-2 py-4 md:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[6rem]':'pl-4 pt-2' } mt-1  md:mt-4 md:mb-4`}>
             {
                   pathArr.map((el,i) => <BackToAPage key={Math.random()} el={el} i={i} 
                   lastItem={pathArr.length}/>)

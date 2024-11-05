@@ -5,15 +5,18 @@ import Reviews from "@/features/customerReviews/Reviews";
 import Arrivals from "@/features/new arrivals/Arrivals";
 import TopSelling from "@/features/top selling/TopSelling";
 import LoadingHero from "@/ui/Hero/LoadingHero";
+import Hero from "@/ui/Hero/Hero";
 
 
 
 
 
-const Hero = dynamic(() => import("@/ui/Hero/Hero"),{
-  ssr:false,
-  loading:() => <LoadingHero/>
-} )
+
+
+// const Hero = dynamic(() => import("@/ui/Hero/Hero"), {
+//   ssr: false,
+//   loading:() => <LoadingHero/>
+// } )
 
 
 
@@ -28,7 +31,7 @@ export default  function Home() {
       <Arrivals />
       <TopSelling />
       <Categories />
-      <Reviews />
+      {/* <Reviews /> */}
       
       
     </>

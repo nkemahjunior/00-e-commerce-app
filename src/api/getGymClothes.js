@@ -1,25 +1,32 @@
-import supabase from "@/services/supabase";
+import { supabase } from "@/services/supabase";
 import { filters } from "./filters";
 
-export async function getGymClothes({curPage,sortBy,startPriceRange,priceRange1,priceRange2}){
+export async function getGymClothes({
+  curPage,
+  sortBy,
+  startPriceRange,
+  priceRange1,
+  priceRange2,
+}) {
+  try {
+    let query = supabase
+      .from("clothes")
+      .select("*", { count: "exact" })
+      .eq("type", "gym");
 
-    try {
-        
+    const { data, error, count } = await filters(
+      query,
+      curPage,
+      sortBy,
+      startPriceRange,
+      priceRange1,
+      priceRange2
+    );
 
-        let query = supabase.from('clothes')
-        .select('*' , { count: "exact", })
-        .eq('type', 'gym')
+    if (error) console.log("could not get gym clothes " + error.message);
 
-        const {data,error,count} = await filters(query,curPage,sortBy,startPriceRange,priceRange1,priceRange2);
-
-        if(error) console.log("could not get gym clothes " + error.message)
-
-        return  {data,count,error};
-
-    } catch (error) {
-        console.log("could not get gym clothes " + error.message)
-    }
-  
+    return { data, count, error };
+  } catch (error) {
+    console.log("could not get gym clothes " + error.message);
+  }
 }
-
-

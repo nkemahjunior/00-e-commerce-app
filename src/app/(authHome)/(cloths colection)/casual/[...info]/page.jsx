@@ -7,7 +7,8 @@ import { Suspense } from "react"
 
 async function page({params}) {
 
-    const info = params?.info
+        const param = await params;
+        const info = param?.info;
 
     const id = info[1]
 

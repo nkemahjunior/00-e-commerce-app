@@ -1,4 +1,4 @@
-import supabase from "@/services/supabase";
+import { supabase } from "@/services/supabase";
 
 import { filters } from "./filters";
 
@@ -12,24 +12,16 @@ export async function newArrivals() {
 }
 
 export async function getStablePrice(id) {
-    
-    try {
-        const { data, error } = await supabase
-        .from('clothes')
-        .select('price')
-        .eq("id", id);
+  try {
+    const { data, error } = await supabase
+      .from("clothes")
+      .select("price")
+      .eq("id", id);
 
-
-        return {data,error};
-
-    } catch (error) {
-        console.log("there was an error fetching the data", + error.message)
-
-    }
- 
-
-    
-  
+    return { data, error };
+  } catch (error) {
+    console.log("there was an error fetching the data", +error.message);
+  }
 }
 
 export async function getClothDetail(id) {

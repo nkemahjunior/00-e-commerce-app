@@ -1,36 +1,49 @@
-
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-
-import { supabaseKey, supabaseUrl } from "@/services/supabase url&key";
 
 
-export async function checkIfUserIsLogin(route,isLogin){
+import { supabaseKey, supabaseUrl } from "@/services/supabase";
 
-    const Login = isLogin;
+export async function checkIfUserIsLogin() {
+  const cookieStore = await cookies();
+  const supabase = createServerComponentClient(
+    { cookies: () => cookieStore },
+    { supabaseUrl, supabaseKey }
+  );
     
-    const cookieStore = cookies()
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
 
-    const supabase = createServerComponentClient({cookies: () => cookieStore},{supabaseUrl,supabaseKey});
+    return session
 
-        const {data:{ session }} = await supabase.auth.getSession();
-
-        if( Login && session) {
-            redirect(route)
-        }
-
-        if( !Login && !session){
-            redirect(route)
-        }
-
-        if(!route && !isLogin && session){
-            return session;
-        }else{
-            return false;
-        }
-
-
-        
-    
 }
+
+// export async function checkIfUserIsLogin(route,isLogin){
+
+//     const Login = isLogin;
+
+//     const cookieStore = await cookies()
+
+//     const supabase = createServerComponentClient({cookies: () => cookieStore},{supabaseUrl,supabaseKey});
+
+//     const { data: { session } } = await supabase.auth.getSession();
+
+//     console.log();
+//     console.log(data);
+
+//         if( Login && session) {
+//             redirect(route)
+//         }
+
+//         if( !Login && !session){
+//             redirect(route)
+//         }
+
+//         if(!route && !isLogin && session){
+//             return session;
+//         }else{
+//             return false;
+//         }
+
+// }

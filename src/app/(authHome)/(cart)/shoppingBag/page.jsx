@@ -6,7 +6,7 @@ import Navigation from "@/features/allClothes/Navigation"
 function page() {
 
     const ShoppingBag = dynamic(() => import('@/features/shoppinBag-checkout/ShoppingBag'),{
-        ssr:false,
+        //ssr:false,
         loading:() => <GlobalLoading/>
     }
    )

@@ -16,10 +16,11 @@ function ReactHotToast() {
           },
           style: {
             fontSize: "16px",
+            fontWeight: "bold",
             maxWidth: "500px",
             padding: "16px 24px",
-            backgroundColor: "#c7d2fe",
-            color: "#1e1b4b",
+            backgroundColor: "#ffffff",
+            color: "#000000",
           },
         }}
       />

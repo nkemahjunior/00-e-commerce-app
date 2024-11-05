@@ -75,8 +75,8 @@ function Filters() {
     
 
     return (
-        <div className= {` ${ showFilter === true ? "translate-x-[0%]" : "translate-x-[-100%]"}
-        absolute  md:sticky  top-24  transition-all    duration-200
+        <div className= {`  ${ showFilter === true ? "translate-x-[0%]" : "translate-x-[-100%]"}
+        absolute  md:sticky top-16  md:top-24  transition-all    duration-200
          bg-white   md:translate-x-0  h-screen w-[90vw] md:w-[30%] lg:w-[20%] z-10 p-4`}
          
          >
@@ -146,7 +146,7 @@ function Filters() {
                         }}
                        />
                     </div>
-                    {rangeError && !rangeFrom &&  <p className=" text-red-600 italic">input starting price first boy</p> }
+                    {rangeError && !rangeFrom &&  <p className=" text-red-600 italic">input start price</p> }
                     
 
                     <div className={`flex justify-center ${!rangeFrom && 'hidden'} transition-all`}>

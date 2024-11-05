@@ -1,4 +1,5 @@
-import supabase from "@/services/supabase"
+import { supabase } from "@/services/supabase"
+
 
 export async function getADress(type,id){
     try {

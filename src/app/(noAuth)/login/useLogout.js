@@ -3,17 +3,19 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-export function useLogOut(){
+export function useLogOut(origin){
 
     const router = useRouter();
 
-    const { mutate:logout ,isLoading} = useMutation({
+    const { mutate:logout ,isLoading, isSuccess} = useMutation({
         
         mutationFn: handleSignOut,
 
-        onSuccess:() => {
-            router.refresh()
-            router.replace('/')
+        onSuccess: () => {
+            router.refresh();
+            router.replace(origin);
+            
+            
         },
 
         onError:() => {
@@ -24,6 +26,6 @@ export function useLogOut(){
     })
 
    
-    return {logout,isLoading}
+    return {logout,isLoading, isSuccess}
 }
 

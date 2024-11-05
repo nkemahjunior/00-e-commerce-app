@@ -3,7 +3,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
 
-import { supabaseKey, supabaseUrl } from "@/services/supabase url&key";
+import { supabaseKey, supabaseUrl } from "@/services/supabase";
 
 
 export async function checkIfSessionExists(){

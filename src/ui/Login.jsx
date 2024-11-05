@@ -10,6 +10,7 @@ import { BiLoaderAlt } from 'react-icons/bi'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { useLogin } from '@/app/(noAuth)/login/useLogin'
+import { useSearchParams } from 'next/navigation'
 
 
 
@@ -17,16 +18,16 @@ import { useLogin } from '@/app/(noAuth)/login/useLogin'
 
  function Login() {
 
-    const { register,formState: { errors }, handleSubmit } = useForm();
-
-    const {Login,isLoading} = useLogin()
+    const searchParams = useSearchParams();
+     const redirect = searchParams.get("redirect") ? searchParams.get("redirect") : "/newArrivals?page=1"
+     
+     const { register, formState: { errors }, handleSubmit } = useForm();
+     const url = window.location.origin
+    const {Login,isLoading} = useLogin(origin)
     
 
     function onSubmit({email,password}){
-
-
         Login({email,password})
-
     }
 
     return (
@@ -37,11 +38,11 @@ import { useLogin } from '@/app/(noAuth)/login/useLogin'
 
                 
 
-                <div className='h-fit w-full md:w-[50%] flex flex-col justify-center items-center py-4 px-1 space-y-4'>
+                <div className='h-fit w-full  flex flex-col justify-center items-center py-4 px-1 space-y-4'>
 
 
                 
-                    <form action="/auth/login" className=' w-full md:w-[80%] space-y-4' onSubmit={handleSubmit(onSubmit)}>
+                    <form action="/auth/login" className=' w-full  space-y-6' onSubmit={handleSubmit(onSubmit)}>
 
                         <div>
                             <h1 className="text-center uppercase text-3xl">zeco shopping</h1>
@@ -94,9 +95,9 @@ import { useLogin } from '@/app/(noAuth)/login/useLogin'
 
 
 
-                    <div className=' w-full md:w-[80%] space-y-4'>
+                    <div className='  mt-6'>
 
-                        <div className='flex justify-around border-solid  items-center  '>
+                        {/* <div className='flex justify-around border-solid  items-center '>
 
                             <p className='bg-stone-400 h-[0.5px] w-[100%]  '></p>
 
@@ -104,9 +105,9 @@ import { useLogin } from '@/app/(noAuth)/login/useLogin'
 
                             <p className='bg-stone-400 h-[0.5px] w-[100%] '></p>
 
-                        </div>
+                        </div> */}
 
-                        <div className=' flex justify-between'>
+                        {/* <div className=' flex justify-between'>
 
                             <button className='border-solid border-2 border-stone-300 p-2 w-[4.3rem]  lg:w-[5.5rem] xl:w-[6.8rem] flex justify-center items-center rounded-md md:w-[4.1rem]
                             lg:hover:scale-95'><FcGoogle/></button>
@@ -117,11 +118,11 @@ import { useLogin } from '@/app/(noAuth)/login/useLogin'
 
                             <button className='border-solid border-2 border-stone-300 p-2 w-[4.3rem]  lg:w-[5.5rem]  xl:w-[6.8rem] flex justify-center items-center rounded-md md:w-[4.1rem] lg:hover:scale-95 '><SiFacebook style={{color:'#3b5998'}}/></button>
 
-                        </div>
+                        </div> */}
 
                         <div className='flex justify-center '>
                             <p > Don&apos;t have an account ? </p>
-                            <Link href={'/signup'} ><p className=' underline ' >sign up now</p></Link>
+                            <Link href={`/signup?redirect=${redirect}` } ><p className=' underline ' >&nbsp;sign up now</p></Link>
                         </div>
 
                     </div>

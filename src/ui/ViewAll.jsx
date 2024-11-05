@@ -11,12 +11,10 @@ function ViewAll() {
     // }
 
     return (
-
-        <div className="lg:flex lg:justify-center" >
-        <Button text={"view all"}/>
-
-    </div>
-    )
+      <div className="lg:flex lg:justify-center mt-2 md:mt-4 ">
+        <Button text={"view all"} />
+      </div>
+    );
 }
 
 export default ViewAll

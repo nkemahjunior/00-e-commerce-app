@@ -1,25 +1,21 @@
-import { supabaseKey, supabaseUrl } from '@/services/supabase url&key';
+import { supabaseKey, supabaseUrl } from "@/services/supabase";
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
-const supabase = createClientComponentClient({supabaseUrl,supabaseKey})
+ const supabase = createClientComponentClient({ supabaseUrl, supabaseKey })
+
+
 
 
 export async function handleLogIn ({email,password}) {
-
-    
 
     const{data,error} = await supabase.auth.signInWithPassword({
         email,
         password,
     })
 
-     
 
     if (error) throw new Error(error.message);
-
     return data
-        
-        
 }
 
 
@@ -70,7 +66,6 @@ async function createProfile(){
 
 export async function getUser(){
 
-
     try {
         const {data,error} = await supabase.auth.getUser();
     
@@ -89,8 +84,6 @@ export async function handleSignOut(){
     const {error} = await supabase.auth.signOut()
 
     if(error) throw new Error("could not log out .. " + error.message )
-    
 
-    console.log("rrrrrrrrrrrrr")
    
 }

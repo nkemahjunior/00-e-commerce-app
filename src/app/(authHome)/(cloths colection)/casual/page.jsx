@@ -1,12 +1,11 @@
-import CasualClothes from "@/features/allClothes/CasualClothes"
+import CasualClothes from "@/features/allClothes/CasualClothes";
 
 function page() {
-    return (
-        <>
-        
-           <CasualClothes/> 
-        </>
-    )
+  return (
+    <>
+      <CasualClothes />
+    </>
+  );
 }
 
-export default page
+export default page;

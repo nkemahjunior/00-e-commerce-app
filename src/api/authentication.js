@@ -1,89 +1,69 @@
 import { supabaseKey, supabaseUrl } from "@/services/supabase";
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
- const supabase = createClientComponentClient({ supabaseUrl, supabaseKey })
+const supabase = createClientComponentClient({ supabaseUrl, supabaseKey });
 
+export async function handleLogIn({ email, password }) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
 
-
-
-export async function handleLogIn ({email,password}) {
-
-    const{data,error} = await supabase.auth.signInWithPassword({
-        email,
-        password,
-    })
-
-
-    if (error) throw new Error(error.message);
-    return data
+  if (error) throw new Error(error.message);
+  return data;
 }
 
+export async function handleSignUp({ name, email, password }) {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        name,
+      },
+      emailRedirectTo: `${location.origin}/auth/callback`,
+    },
+  });
 
-export async function handleSignUp({ name, email, password}){
+  if (!error) await createProfile();
 
-    const{data,error} = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-            data:{
-                name,
-            },
-          emailRedirectTo: `${location.origin}/auth/callback`,
-        },
-    })
+  if (error) throw new Error(error.message);
 
-    if(!error) await createProfile();
-
-    if(error) throw new Error(error.message)
-
-    return data
+  return data;
 }
 
-async function createProfile(){
+async function createProfile() {
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+  let name = user?.user_metadata.name;
+  let id = user?.id;
 
+  const { data, error: err } = await supabase
+    .from("profiles")
+    .insert([{ userName: name, userID: id }])
+    .select();
 
-    const {data: { user },error} = await supabase.auth.getUser()
-    let name = user?.user_metadata.name
-    let id = user?.id
-   
+  if (error) console.log("could not get user ");
 
-       
-  
-    const { data, error:err } = await supabase
-    .from('profiles')
-    .insert([
-    { userName: name, userID: id },
-    ])
-    .select()
+  if (err) throw new Error(err.message);
 
-    if(error) console.log("could not get user ")
+  return data;
+}
 
-    if(err) throw new Error(err.message);
+export async function getUser() {
+  try {
+    const { data, error } = await supabase.auth.getUser();
 
     return data;
+  } catch (error) {
+    console.log("error getting user " + error.message);
+  }
 }
 
+export async function handleSignOut() {
+  const { error } = await supabase.auth.signOut();
 
-export async function getUser(){
-
-    try {
-        const {data,error} = await supabase.auth.getUser();
-    
-        return data;
-
-    } catch (error) {
-        
-        console.log("error getting user "+ error.message)
-    }
-
-}
-
-
-export async function handleSignOut(){
-
-    const {error} = await supabase.auth.signOut()
-
-    if(error) throw new Error("could not log out .. " + error.message )
-
-   
+  if (error) throw new Error("could not log out .. " + error.message);
 }

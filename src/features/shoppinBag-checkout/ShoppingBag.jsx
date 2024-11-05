@@ -7,10 +7,9 @@ import CheckoutBtn from "@/ui/CheckoutBtn";
 
 function ShoppingBag() {
   const itemsInCart = useSelector((state) => state.showCart.itemsInCart);
-  
-  
+
   const itemsInCartLength = useSelector(
-    (state) => state.showCart.numberOfItemsInCart
+    (state) => state.showCart.numberOfItemsInCart,
   );
 
   let subtotal = 0;
@@ -84,7 +83,11 @@ function ShoppingBag() {
                 </div>
               </ul>
 
-                <CheckoutBtn padding={"p-3"} mt={"mt-4"} cartItems={itemsInCart} />
+              <CheckoutBtn
+                padding={"p-3"}
+                mt={"mt-4"}
+                cartItems={itemsInCart}
+              />
               {/* <Link href={"/login"} className="block">
                 <button className="text center uppercase text-white bg-black p-3 w-full mt-4 lg:hover:scale-95 transition-all lg:delay-75 ">
                   checkout

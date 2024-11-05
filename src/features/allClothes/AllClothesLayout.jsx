@@ -1,66 +1,55 @@
-'use client'
+"use client";
 
-import Filters from "./Filters"
+import Filters from "./Filters";
 
-import FilterButton from "./FilterButton"
-import Navigation from "./Navigation"
+import FilterButton from "./FilterButton";
+import Navigation from "./Navigation";
 
-import { usePathname } from "next/navigation"
-import { useDispatch, useSelector } from "react-redux"
-import { hideTheFilter, showTheFilter } from "@/app/(authHome)/showCartSlice"
+import { usePathname } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { hideTheFilter, showTheFilter } from "@/app/(authHome)/showCartSlice";
 
-function AllClothesLayout({page}) {
-    
-    const dispatch = useDispatch()
-    const showFilter = useSelector((state) => state.showCart.showFilter)
+function AllClothesLayout({ page }) {
+  const dispatch = useDispatch();
+  const showFilter = useSelector((state) => state.showCart.showFilter);
 
-    function handleShow(){
-        //setShow((show) => !show)
+  function handleShow() {
+    //setShow((show) => !show)
 
-        if(showFilter === false)
-        dispatch(showTheFilter())
+    if (showFilter === false) dispatch(showTheFilter());
 
-        if(showFilter === true)
-        dispatch(hideTheFilter())
-    }
-    
-    const pathname = usePathname()
-    const currentPath = pathname.split('/')
+    if (showFilter === true) dispatch(hideTheFilter());
+  }
 
-    //  console.log(currentPath)
+  const pathname = usePathname();
+  const currentPath = pathname.split("/");
 
-    if(currentPath.length  > 2   )  return <div>{page}</div>
+  //  console.log(currentPath)
 
-    
-    return (
-        
-            <div className=" ">
-                <div className="  ">
-                
-                    <Navigation/>
-                    <div className=" phones:flex phones:justify-between ">
-                        {/* <Title/> */}
-                        <div></div>
-                        <div className="flex justify-end md:hidden "
-                        onClick={handleShow}
-                        >
-                            <FilterButton/>
-                        </div>
-                    </div>
-                </div>
+  if (currentPath.length > 2) return <div>{page}</div>;
 
-                <div className="md:flex md:space-x-6 ">
-                    <Filters  />
-                    
-                    {page}
-                    
-                    {/* <TheClothes/> */}
-                </div>
+  return (
+    <div className=" ">
+      <div className="  ">
+        <Navigation />
+        <div className=" phones:flex phones:justify-between ">
+          {/* <Title/> */}
+          <div></div>
+          <div className="flex justify-end md:hidden " onClick={handleShow}>
+            <FilterButton />
+          </div>
+        </div>
+      </div>
 
-                
-            </div>
-       
-    )
+      <div className="md:flex md:space-x-6 ">
+        <Filters />
+
+        {page}
+
+        {/* <TheClothes/> */}
+      </div>
+    </div>
+  );
 }
 
-export default AllClothesLayout
+export default AllClothesLayout;

@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 export const showCartSlice = createSlice({
   name: "showCart",
@@ -44,6 +44,14 @@ export const showCartSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { showCart,hideCart,showTheFilter,hideTheFilter, addItemToCart,increaseNumberOfItems, clearCart} = showCartSlice.actions
+export const {
+  showCart,
+  hideCart,
+  showTheFilter,
+  hideTheFilter,
+  addItemToCart,
+  increaseNumberOfItems,
+  clearCart,
+} = showCartSlice.actions;
 
-export default showCartSlice.reducer
+export default showCartSlice.reducer;

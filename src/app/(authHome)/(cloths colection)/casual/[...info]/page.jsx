@@ -1,27 +1,25 @@
-import { getADress } from "@/api/getADress"
-import AllArrivalsDetail from "@/features/allClothes/AllArrivalsDetail"
-import Navigation from "@/features/allClothes/Navigation"
-import GlobalLoading from "@/ui/GlobalLoading"
-import { Suspense } from "react"
+import { getADress } from "@/api/getADress";
+import AllArrivalsDetail from "@/features/allClothes/AllArrivalsDetail";
+import Navigation from "@/features/allClothes/Navigation";
+import GlobalLoading from "@/ui/GlobalLoading";
+import { Suspense } from "react";
 
+async function page({ params }) {
+  const param = await params;
+  const info = param?.info;
 
-async function page({params}) {
+  const id = info[1];
 
-        const param = await params;
-        const info = param?.info;
+  const { data, error } = await getADress("casual", id);
 
-    const id = info[1]
+  const [detail] = data;
 
-    const {data,error} = await getADress('casual',id)
-
-    const [detail] = data;
-    
-     return (
-        <Suspense fallback={<GlobalLoading/>}>
-            <Navigation/>
-            <AllArrivalsDetail data={detail} error={error} />
-        </Suspense>
-    )
+  return (
+    <Suspense fallback={<GlobalLoading />}>
+      <Navigation />
+      <AllArrivalsDetail data={detail} error={error} />
+    </Suspense>
+  );
 }
 
-export default page
+export default page;

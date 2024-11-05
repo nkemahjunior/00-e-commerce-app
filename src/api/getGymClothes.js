@@ -20,7 +20,7 @@ export async function getGymClothes({
       sortBy,
       startPriceRange,
       priceRange1,
-      priceRange2
+      priceRange2,
     );
 
     if (error) console.log("could not get gym clothes " + error.message);

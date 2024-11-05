@@ -4,17 +4,13 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(req) {
   try {
-    
     const user = await getUserServer();
     if (!user) throw new Error("invalid user");
 
     const url = new URL(req.url);
     const origin = url.origin;
 
-    const data = await req.json(); 
-    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    console.log(data);
-
+    const data = await req.json();
 
     const session = await stripe.checkout.sessions.create({
       customer_email: user.email,
@@ -37,14 +33,13 @@ export async function POST(req) {
       //cancel_url: `${origin}/?canceled=true`,
       automatic_tax: { enabled: true },
     });
-   
-    return Response.json({ sessionId: session.id });
 
+    return Response.json({ sessionId: session.id });
   } catch (err) {
     console.log(err);
     return Response.json(
       { error: err.message },
-      { status: err.statusCode || 500 }
+      { status: err.statusCode || 500 },
     );
   }
 }

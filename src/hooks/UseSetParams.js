@@ -15,8 +15,7 @@ import { useCallback } from "react";
 //     [searchParams]
 // )
 
-export function useSetParams(name, value,scroll=true) {
-
+export function useSetParams(name, value, scroll = true) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -28,6 +27,7 @@ export function useSetParams(name, value,scroll=true) {
     return params.toString();
   }, [searchParams]);
 
-  router.push(pathname + "?" + createQueryString(name, value),{scroll:scroll});
-  
+  router.push(pathname + "?" + createQueryString(name, value), {
+    scroll: scroll,
+  });
 }

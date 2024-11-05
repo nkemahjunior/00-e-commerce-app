@@ -13,8 +13,6 @@ function LoadMore({ numberOfClothes }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
- 
-
   const createQueryString = useCallback(
     (name, value) => {
       const params = new URLSearchParams(searchParams);
@@ -22,7 +20,7 @@ function LoadMore({ numberOfClothes }) {
 
       return params.toString();
     },
-    [searchParams]
+    [searchParams],
   );
 
   // const searchParams = useSearchParams();
@@ -30,7 +28,9 @@ function LoadMore({ numberOfClothes }) {
   const curPage = Number(searchParams.get("page"));
 
   curPage === 0 || null || undefined
-    ? router.push(pathname + "?" + createQueryString("page", 1),{scroll:false})
+    ? router.push(pathname + "?" + createQueryString("page", 1), {
+        scroll: false,
+      })
     : Number(searchParams.get("page"));
   const pagenumberOfClothes = Math.ceil(numberOfClothes / PAGE_SIZE);
 

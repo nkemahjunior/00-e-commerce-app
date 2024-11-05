@@ -12,63 +12,51 @@ import { usePathname } from "next/navigation";
 import { useGetUser } from "@/features/Admin Duties/useGetUser";
 import FakeHeader from "../FakeHeader";
 
-import {motion} from "framer-motion"
-
-
-
+import { motion } from "framer-motion";
 
 function LargeHeader() {
+  const showCartOrNot = useSelector((state) => state.showCart.show);
+  const updateCount = useSelector((state) => state.showCart.updateItemCount);
+  const numOfcartItems = useSelector(
+    (state) => state.showCart.numberOfItemsInCart,
+  );
+  const dispatch = useDispatch();
+  const ref = useRef();
 
-  const showCartOrNot = useSelector(state => state.showCart.show);
-  const updateCount = useSelector(state => state.showCart.updateItemCount);
-  const numOfcartItems = useSelector((state) => state.showCart.numberOfItemsInCart);
-  const dispatch = useDispatch()
-  const ref = useRef()
+  const path = usePathname();
 
-  const path = usePathname()
+  const [showAccount, setShowAccount] = useState(false);
 
-  const [showAccount,setShowAccount] = useState(false);
-
-  const {data, isLoading} = useGetUser();
+  const { data, isLoading } = useGetUser();
   // const [signUpBonus,setsignUpBonus] = useState(false)
-  
-  
- 
 
- 
+  useEffect(
+    function () {
+      if (showAccount) setShowAccount(false);
+    },
+    [path],
+  );
 
-  useEffect(function(){
-    if(showAccount)
-    setShowAccount(false)
-  },[path])
-
-  useEffect(function(){
-    
-    function show_Account(e){
-      if(showAccount && ref.current && !ref.current.contains(e.target) )
-      setShowAccount(false);
+  useEffect(function () {
+    function show_Account(e) {
+      if (showAccount && ref.current && !ref.current.contains(e.target))
+        setShowAccount(false);
     }
 
-    window.addEventListener('click',show_Account)
+    window.addEventListener("click", show_Account);
 
-    return () => window.removeEventListener('click',show_Account)
-  })
+    return () => window.removeEventListener("click", show_Account);
+  });
 
-    
- 
-  function handleShowAccount(){
+  function handleShowAccount() {
     setShowAccount((v) => !v);
   }
 
-
   // console.log(numberOfItemsInCart.length)
-  
 
-
-
-  function handleShowShoppingCart(){
-    if(showCartOrNot === false) dispatch(showCart())
-    if(showCartOrNot === true) dispatch (hideCart())
+  function handleShowShoppingCart() {
+    if (showCartOrNot === false) dispatch(showCart());
+    if (showCartOrNot === true) dispatch(hideCart());
   }
 
   // let signUpBonusLink = false;
@@ -78,12 +66,11 @@ function LargeHeader() {
 
   //if(isLoading ) return(<FakeHeader/>)
 
-  let signUpBonus = false
+  let signUpBonus = false;
 
-  if(data?.user?.id  ){
-    signUpBonus = true
+  if (data?.user?.id) {
+    signUpBonus = true;
     // setsignUpBonus(true)
-
   }
 
   return (

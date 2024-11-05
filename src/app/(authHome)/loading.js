@@ -1,10 +1,7 @@
-import GlobalLoading from "@/ui/GlobalLoading"
-
+import GlobalLoading from "@/ui/GlobalLoading";
 
 function loading() {
-    return (
-        <GlobalLoading/>
-    )
+  return <GlobalLoading />;
 }
 
-export default loading
+export default loading;

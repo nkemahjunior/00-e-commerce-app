@@ -1,12 +1,11 @@
-import FooterContent from "./FooterContent"
-
+import FooterContent from "./FooterContent";
 
 function Footer() {
-    return (
-        <>
-            <FooterContent/>
-        </>
-    )
+  return (
+    <>
+      <FooterContent />
+    </>
+  );
 }
 
-export default Footer
+export default Footer;

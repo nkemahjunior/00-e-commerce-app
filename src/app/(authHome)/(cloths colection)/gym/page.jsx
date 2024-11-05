@@ -1,9 +1,7 @@
-import GymClothes from "@/features/allClothes/GymClothes"
+import GymClothes from "@/features/allClothes/GymClothes";
 
 function page() {
-    return (
-        <GymClothes/>
-    )
+  return <GymClothes />;
 }
 
-export default page
+export default page;

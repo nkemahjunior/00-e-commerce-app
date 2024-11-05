@@ -9,7 +9,6 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import CheckoutBtn from "./CheckoutBtn";
 
-
 function ShoppingCart() {
   const path = usePathname();
 
@@ -22,7 +21,7 @@ function ShoppingCart() {
     function () {
       if (showCart === true) dispatch(hideCart());
     },
-    [path]
+    [path],
   );
 
   useEffect(function () {

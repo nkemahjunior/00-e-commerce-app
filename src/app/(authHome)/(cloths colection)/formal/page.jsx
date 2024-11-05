@@ -1,9 +1,7 @@
-import FormalClothes from "@/features/allClothes/FormalClothes"
+import FormalClothes from "@/features/allClothes/FormalClothes";
 
 function page() {
-    return (
-        <FormalClothes/>
-    )
+  return <FormalClothes />;
 }
 
-export default page
+export default page;

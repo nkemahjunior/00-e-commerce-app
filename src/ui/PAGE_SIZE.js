@@ -1,2 +1,2 @@
- const PAGE_SIZE = 10;
- export default PAGE_SIZE;
+const PAGE_SIZE = 10;
+export default PAGE_SIZE;

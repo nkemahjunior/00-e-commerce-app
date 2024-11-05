@@ -53,7 +53,7 @@ export async function getAllNewArrivals({
       sortBy,
       startPriceRange,
       priceRange1,
-      priceRange2
+      priceRange2,
     );
 
     if (error) console.log("could not get all new arrivals " + error.message);

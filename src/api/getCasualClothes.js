@@ -22,7 +22,7 @@ export async function getCasualClothes({
       sortBy,
       startPriceRange,
       priceRange1,
-      priceRange2
+      priceRange2,
     );
 
     if (error) console.log("could not get casual clothes " + error.message);

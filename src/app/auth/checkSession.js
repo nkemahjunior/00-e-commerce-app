@@ -1,30 +1,26 @@
-
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-
 import { supabaseKey, supabaseUrl } from "@/services/supabase";
 
+export async function checkIfSessionExists() {
+  const cookieStore = cookies();
 
-export async function checkIfSessionExists(){
+  const supabase = createServerComponentClient(
+    { cookies: () => cookieStore },
+    { supabaseUrl, supabaseKey },
+  );
 
-  
-    
-    const cookieStore = cookies()
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-    const supabase = createServerComponentClient({cookies: () => cookieStore},{supabaseUrl,supabaseKey});
+  if (session) {
+    return session;
+  } else {
+    return false;
+  }
 
-        const {data:{ session }} = await supabase.auth.getSession();
-
-    if(session){
-    return session
-    }else{
-        return false;
-    }
-
-    // else if(!session){
-    // return false}
-
-        
-    
+  // else if(!session){
+  // return false}
 }

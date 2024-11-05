@@ -14,8 +14,6 @@ function PartyClothes() {
 
   if (isLoading) return <GlobalLoading />;
 
-
-
   if (error) {
     return toast.error("could not fetch party clothes. Refresh and try again ");
   }

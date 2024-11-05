@@ -1,9 +1,7 @@
-import PartyClothes from "@/features/allClothes/PartyClothes"
+import PartyClothes from "@/features/allClothes/PartyClothes";
 
 function page() {
-    return (
-        <PartyClothes/>
-    )
+  return <PartyClothes />;
 }
 
-export default page
+export default page;

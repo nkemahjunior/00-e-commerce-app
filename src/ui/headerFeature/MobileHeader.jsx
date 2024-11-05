@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 function MobileHeader() {
   const showCartOrNot = useSelector((state) => state.showCart.show);
   const numOfcartItems = useSelector(
-    (state) => state.showCart.numberOfItemsInCart
+    (state) => state.showCart.numberOfItemsInCart,
   );
   const dispatch = useDispatch();
 
@@ -44,7 +44,7 @@ function MobileHeader() {
     function () {
       if (showNav) setShowNav(false);
     },
-    [path]
+    [path],
   );
 
   function handleShowShoppingCart() {

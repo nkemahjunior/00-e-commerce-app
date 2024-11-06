@@ -33,25 +33,23 @@ export async function POST(request) {
 
   const id = Date.now();
 
-  const { error } = await supabase
-    .from("clothes")
-    .insert([
-      {
-        id: id,
-        name: name,
-        type: category,
-        quantity: +qty,
-        price: +price,
-        image: imageUrl,
-        xs: +xs,
-        s: +s,
-        m: +m,
-        l: +l,
-        xl: +xl,
-        twoXl: +twoXl,
-        threeXl: +threeXl,
-      },
-    ]);
+  const { error } = await supabase.from("clothes").insert([
+    {
+      id: id,
+      name: name,
+      type: category,
+      quantity: +qty,
+      price: +price,
+      image: imageUrl,
+      xs: +xs,
+      s: +s,
+      m: +m,
+      l: +l,
+      xl: +xl,
+      twoXl: +twoXl,
+      threeXl: +threeXl,
+    },
+  ]);
 
   if (error) {
     console.log(error);

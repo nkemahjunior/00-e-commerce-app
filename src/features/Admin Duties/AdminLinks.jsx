@@ -12,10 +12,11 @@ function AdminLinks() {
   // const {data:{user},error} = await supabase.auth.getUser();
 
   const router = useRouter();
-  const origin = window.location.origin;
+  //const origin = window.location.origin;
+  const origin = typeof window !== "undefined" ? window.location.origin : "";
   const { logout, isLoading: load, isSuccess } = useLogOut(origin);
   const { data: user, isLoading } = useGetUser();
-  const [refreshing, setRefreshing] = useState(false);
+
   // const [active,setActive] = useState(false)
   // const [admin,setAdmin] = useState(false)
 
@@ -27,12 +28,11 @@ function AdminLinks() {
     if (user?.user?.user_metadata?.isAdmin === true) admin = true;
   }
 
-  if (refreshing) return <GlobalLoading />;
   return (
     <ul className="space-y-5 md:space-y-1">
       {!active && (
         <Link
-          href={`/signup?redirect=${location.pathname}${location.search}`}
+          href={`/signup?redirect=${typeof window !== "undefined" ? location.pathname + location.search : ""}`}
           className="block"
         >
           <li className="capitalize font-semibold  ">sign up</li>
@@ -41,7 +41,7 @@ function AdminLinks() {
 
       {!active ? (
         <Link
-          href={`/login?redirect=${location.pathname}${location.search}`}
+          href={`/login?redirect=${typeof window !== "undefined" ? location.pathname + location.search : ""}`}
           className="block"
         >
           <li className="capitalize font-semibold ">sign in</li>

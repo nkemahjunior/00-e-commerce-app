@@ -29,15 +29,9 @@ function CasualClothes() {
 
       <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-2">
         {data.map((el) => (
-          <Suspense fallback={<LoadingCard />} key={el.id}>
-            <Link href={`/casual/${el.name}/${el.id}`}>
-              <ArrivalsCard
-                picture={el.image}
-                price={el.price}
-                name={el.name}
-              />
-            </Link>
-          </Suspense>
+          <Link href={`/casual/${el.name}/${el.id}`} key={el.id}>
+            <ArrivalsCard picture={el.image} price={el.price} name={el.name} />
+          </Link>
         ))}
       </div>
 

@@ -1,7 +1,5 @@
 import GlobalLoading from "@/ui/GlobalLoading";
 
-function loading() {
+export default function Loading() {
   return <GlobalLoading />;
 }
-
-export default loading;

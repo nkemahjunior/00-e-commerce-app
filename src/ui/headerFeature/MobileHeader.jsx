@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 function MobileHeader() {
   const showCartOrNot = useSelector((state) => state.showCart.show);
   const numOfcartItems = useSelector(
-    (state) => state.showCart.numberOfItemsInCart,
+    (state) => state.showCart.numberOfItemsInCart
   );
   const dispatch = useDispatch();
 
@@ -44,7 +44,7 @@ function MobileHeader() {
     function () {
       if (showNav) setShowNav(false);
     },
-    [path],
+    [path]
   );
 
   function handleShowShoppingCart() {
@@ -172,12 +172,20 @@ function MobileHeader() {
                 </motion.div>
               </div>
 
-              <li className="font-semibold capitalize">on sale</li>
+              {/* <li className="font-semibold capitalize">on sale</li> */}
               <Link href={"/newArrivals?page=1"} className="block">
                 {" "}
                 <li className="font-semibold capitalize">new arrivals</li>
               </Link>
-              <li className="font-semibold capitalize">brands</li>
+              <Link href={"/casual?page=1"} className="block">
+                {" "}
+                <li className="font-semibold capitalize">Casual</li>
+              </Link>
+              <Link href={"/party?page=1"} className="block">
+                {" "}
+                <li className="font-semibold capitalize">Party</li>
+              </Link>
+              {/* <li className="font-semibold capitalize">brands</li> */}
               <AdminLinks />
             </ul>
           </div>

@@ -126,7 +126,7 @@ function AllArrivalsDetail({ data, error }) {
             md:grid md:grid-cols-2  md:gap-x-4
             "
       >
-        <div className=" relative h-[20rem]  md:h-[35rem] bg-[#F0F0F0]">
+        <div className=" relative h-[20rem] 2xl:h-[43rem]  md:h-[35rem] bg-[#F0F0F0]">
           <Image
             src={data.image.trim()}
             alt={`image of ${data.name}`}

@@ -1,17 +1,20 @@
-import { topSelling as topSellingApi } from "@/api/getAllClothes";
 
+"use client"
 import ViewAll from "@/ui/ViewAll";
 import { Suspense } from "react";
 import LoadingCard from "@/ui/LoadingCard";
 import ArrivalsCard from "../new arrivals/ArrivalsCard";
 import Button from "@/ui/Button";
 import Link from "next/link";
+import { numberOfCardsOnHomepage } from "@/utils/numberOfCardsOnHomePage";
 
-async function TopSelling() {
-  const topSelling = await topSellingApi();
 
+async function TopSelling({ topSelling }) {
+  console.log("------------------");
+  console.log(topSelling);
+  
   const homePageTopSelling = [];
-  const numOfCardsOnHomePage = 4;
+  const numOfCardsOnHomePage = numberOfCardsOnHomepage();
 
   for (let i = 0; i < numOfCardsOnHomePage; i++) {
     homePageTopSelling.push(topSelling[i]);
@@ -23,7 +26,7 @@ async function TopSelling() {
         Top Selling
       </h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-2">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-x-2 gap-y-2 2xl:gap-x-3">
         {homePageTopSelling.map((el) => (
           <Suspense fallback={<LoadingCard />} key={el.id}>
             <ArrivalsCard picture={el.image} price={el.price} name={el.name} />

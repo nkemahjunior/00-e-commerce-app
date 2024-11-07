@@ -65,7 +65,7 @@ export async function getAllNewArrivals({
 }
 
 export async function topSelling() {
-  const { data, error } = await supabase.from("clothes").select("*");
+  const { data, error } = await supabase.from("clothes").select("*").range(56,70);
 
   return data;
 }

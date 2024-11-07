@@ -1,17 +1,18 @@
+"use client";
 import ArrivalsCard from "./ArrivalsCard";
-import { newArrivals as newArrivalsApi } from "@/api/getAllClothes";
+
 import LoadingCard from "@/ui/LoadingCard";
 import ViewAll from "@/ui/ViewAll";
+import { numberOfCardsOnHomepage } from "@/utils/numberOfCardsOnHomePage";
 import Link from "next/link";
 import { Suspense } from "react";
 
 export const revalidate = 1200;
 
-async function Arrivals() {
-  const newArrivals = await newArrivalsApi();
+function Arrivals({ newArrivals }) {
+  const numOfCardsOnHomePage = numberOfCardsOnHomepage();
 
   const homePageNewArrivals = [];
-  const numOfCardsOnHomePage = 4;
 
   for (let i = 0; i < numOfCardsOnHomePage; i++) {
     homePageNewArrivals.push(newArrivals[i]);
@@ -26,17 +27,15 @@ async function Arrivals() {
         new arrivals
       </h1>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-2   ">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-x-2 gap-y-2 2xl:gap-x-3   ">
         {homePageNewArrivals.map((el) => (
-          <Suspense fallback={<LoadingCard />} key={el.id}>
-            <Link href={`/newArrivals/${el.name}/${el.id}`}>
-              <ArrivalsCard
-                picture={el.image}
-                price={el.price}
-                name={el.name}
-              />
-            </Link>
-          </Suspense>
+          <Link
+            href={`/newArrivals/${el.name}/${el.id}`}
+            key={el.id}
+            className="= "
+          >
+            <ArrivalsCard picture={el.image} price={el.price} name={el.name} />
+          </Link>
         ))}
       </div>
 

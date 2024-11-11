@@ -9,10 +9,8 @@ import Link from "next/link";
 import { numberOfCardsOnHomepage } from "@/utils/numberOfCardsOnHomePage";
 
 
-async function TopSelling({ topSelling }) {
-  console.log("------------------");
-  console.log(topSelling);
-  
+function TopSelling({ topSelling }) {
+
   const homePageTopSelling = [];
   const numOfCardsOnHomePage = numberOfCardsOnHomepage();
 
@@ -28,9 +26,13 @@ async function TopSelling({ topSelling }) {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-x-2 gap-y-2 2xl:gap-x-3">
         {homePageTopSelling.map((el) => (
-          <Suspense fallback={<LoadingCard />} key={el.id}>
+          <Link
+            href={`/newArrivals/${el.name}/${el.id}`}
+            key={el.id}
+            className="= "
+          >
             <ArrivalsCard picture={el.image} price={el.price} name={el.name} />
-          </Suspense>
+          </Link>
         ))}
       </div>
 

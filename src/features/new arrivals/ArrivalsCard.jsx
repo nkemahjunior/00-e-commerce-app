@@ -8,7 +8,7 @@ function ArrivalsCard({ picture, name, price }) {
     <div className="mt-6 md:mt-8 lg:mt-12  w-full">
       <div className=" w-full ">
         <div className=" h-[15rem] md:h-[20rem] 2xl:h-[25rem]    w-full bg-[#F0EEED]  overflow-hidden relative">
-          <Image src={picture?.trim()} alt={`photo of ${name}`} fill />
+          <Image src={picture?.trim()} alt={`photo of ${name}`} quality={90} fill />
         </div>
 
         <div
